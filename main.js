@@ -36,8 +36,9 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, lang, obj,
 		// Called after initialize at plugin startup (why all the tests for undefined). Also called after deactivate when user closes app by clicking X. 
 		hibernate: function () {
 			if (this.appDiv != undefined){
-				//$('#' + this.id + 'ch-ISL').val('').trigger('chosen:updated');
-				//$('#' + this.id + 'ch-ISL').trigger('change');
+				this.map.removeLayer(this.dynamicLayer);
+				this.map.removeLayer(this.basinFl);
+				this.map.graphics.clear();
 			}
 		},
 		// Called after hibernate at app startup. Calls the render function which builds the plugins elements and functions.   
@@ -50,6 +51,7 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, lang, obj,
 				this.dynamicLayer.setVisibility(true);
 			}else{
 				this.map.addLayer(this.dynamicLayer);
+				this.map.addLayer(this.basinFl);
 				// on set state it calls activate twice. on the second call render is true so it call this else. layer infos isn't done yet so if you call setNavBtns it can't use layer infos
 				if (this.obj.stateSet == "no"){	
 					//this.navigation.setNavBtns(this);	
