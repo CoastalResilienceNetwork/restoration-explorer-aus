@@ -5,32 +5,32 @@ require({
 // Bring in dojo and javascript api classes as well as varObject.json, js files, and content.html
 define([
 	"dojo/_base/declare", "framework/PluginBase", "dijit/layout/ContentPane", "dojo/dom", "dojo/dom-style", "dojo/dom-geometry", "dojo/_base/lang", "dojo/text!./obj.json", 
-	"jquery", "dojo/text!./html/content.html", './js/jquery-ui-1.11.2/jquery-ui', './js/navigation', './js/esriapi', './js/clicks', './js/stateCh', './js/barChart'
+	"jquery", "dojo/text!./html/content.html", './js/jquery-ui-1.11.2/jquery-ui', './js/navigation', './js/esriapi', './js/clicks', './js/barChart'
 ],
 function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, lang, obj, 
-			$, content, ui, navigation, esriapi, clicks, stateCh, barChart ) {
+			$, content, ui, navigation, esriapi, clicks, barChart ) {
 	return declare(PluginBase, {
 		// The height and width are set here when an infographic is defined. When the user click Continue it rebuilds the app window with whatever you put in.
-		toolbarName: "Coastline Change", showServiceLayersInLegend: true, allowIdentifyWhenActive: false, rendered: false, resizable: false,
-		hasCustomPrint: true, usePrintPreviewMap: true, previewMapSize: [1000, 550], height:"600", width:"430",
-		infoGraphic: 'plugins/coastline-change/assets/coastline_change_main_infographic.png',
+		toolbarName: "Benefits Explorer", showServiceLayersInLegend: true, allowIdentifyWhenActive: false, rendered: false, resizable: false,
+		hasCustomPrint: true, usePrintPreviewMap: true, previewMapSize: [1000, 550], height:"450", width:"360",
+		
 		// First function called when the user clicks the pluging icon. 
 		initialize: function (frameworkParameters) {
 			// Access framework parameters
 			declare.safeMixin(this, frameworkParameters);
 			// Set initial app size based on split screen state
-			this.con = dom.byId('plugins/coastline-change-0');
-			this.con1 = dom.byId('plugins/coastline-change-1');
+			this.con = dom.byId('plugins/benefits_explorer-0');
+			this.con1 = dom.byId('plugins/benefits_explorer-1');
 			if (this.con1 != undefined){
-				domStyle.set(this.con1, "width", "430px");
-				domStyle.set(this.con1, "height", "600px");
+				domStyle.set(this.con1, "width", "360px");
+				domStyle.set(this.con1, "height", "450px");
 			}else{
-				domStyle.set(this.con, "width", "430px");
-				domStyle.set(this.con, "height", "600px");
+				domStyle.set(this.con, "width", "360px");
+				domStyle.set(this.con, "height", "450px");
 			}	
 			// Define object to access global variables from JSON object. Only add variables to varObject.json that are needed by Save and Share. 
 			this.obj = dojo.eval("[" + obj + "]")[0];	
-			this.url = "http://dev.services2.coastalresilience.org:6080/arcgis/rest/services/Virginia/va_coastline_change/MapServer";
+			this.url = "http://dev.services2.coastalresilience.org:6080/arcgis/rest/services/Water_Blueprint/BenefitsExplorer/MapServer";
 			this.layerDefs = [];
 		},
 		// Called after initialize at plugin startup (why all the tests for undefined). Also called after deactivate when user closes app by clicking X. 
@@ -50,11 +50,9 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, lang, obj,
 				this.dynamicLayer.setVisibility(true);
 			}else{
 				this.map.addLayer(this.dynamicLayer);
-				this.map.addLayer(this.islandPolygons);
-				this.map.addLayer(this.islandPolygons_click);
 				// on set state it calls activate twice. on the second call render is true so it call this else. layer infos isn't done yet so if you call setNavBtns it can't use layer infos
 				if (this.obj.stateSet == "no"){	
-					this.navigation.setNavBtns(this);	
+					//this.navigation.setNavBtns(this);	
 				}else{
 					this.obj.stateSet = "no";
 				}	
@@ -62,14 +60,7 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, lang, obj,
 		},
 		// Called when user hits the minimize '_' icon on the pluging. Also called before hibernate when users closes app by clicking 'X'.
 		deactivate: function () {
-			this.map.showZoomSlider();
-			this.map.enableDoubleClickZoom();
-			this.map.enableRubberBandZoom();
-			this.map.enableScrollWheelZoom();
-			this.map.removeLayer(this.dynamicLayer);
-			this.map.removeLayer(this.islandPolygons);
-			this.map.removeLayer(this.islandPolygons_click);	
-			$('.basemap-selector').show();			
+				
 		},	
 		// Called when user hits 'Save and Share' button. This creates the url that builds the app at a given state using JSON. 
 		// Write anything to you varObject.json file you have tracked during user activity.		
@@ -109,7 +100,6 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, lang, obj,
 			this.navigation = new navigation();
 			this.esriapi = new esriapi();
 			this.clicks = new clicks();
-			this.stateCh = new stateCh();
 			// ADD HTML TO APP
 			// Define Content Pane as HTML parent		
 			this.appDiv = new ContentPane({style:'padding:8px 8px 8px 8px; position:relative;'});
@@ -121,20 +111,13 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, lang, obj,
 			
 			//create slider bar
 			$('#' + this.id + 'multiShoreSlider').slider({ min: 7,	max: 20, value: 7, step: 1 });
-			
-			this.obj.initialExtent = this.map.extent;
-			// SET UP BAR CHART
-			this.barChart.makeChart(this);
+			// Click listeners
+			this.clicks.clickListener(this);
 			// CALL NAVIGATION BUTTON EVENT LISTENERS 
 			this.navigation.navListeners(this);
-			//Call the function to populate the initial graph
-			this.esriapi.esriStartUp(this);
 			// CREATE ESRI OBJECTS AND EVENT LISTENERS	
 			this.esriapi.esriApiFunctions(this);
-			// CREATE CHOSEN SELECT MENUS AND EVENT LISTENERS	
-			this.clicks.chosenListeners(this);				
-			// UPDATE STATE IF SET STATE WAS CALLED
-			//this.stateCh.checkState(this);
+			
 			this.rendered = true;	
 			// resize the container in the render function after the container is built.
 			this.resize1();
