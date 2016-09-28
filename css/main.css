@@ -2,7 +2,7 @@ body.waiting * {
     cursor: progress;
 }	
 .largeHeader{
-	font-size:16pt; font-weight:100; margin-bottom:5px;
+	font-size:14pt; margin-bottom:5px;
 }
 .multiShoreCheck, .futureWrapper, .historicalShoreWrapper{
 	display:none;
@@ -19,9 +19,6 @@ body.waiting * {
 }
 .ch-yearCheck{
 	width:80%; columns:3; margin:auto; margin-top:10px; 
-}
-.lineWrap label{
-	
 }
 hr.hrStyle {
     border: 0; height: 1px;  background-image: linear-gradient(to right, #ccc, #29658C, #ccc); margin:12px 0 12px;
@@ -164,14 +161,14 @@ abbr.search-choice-close {
 	vertical-align:middle;
 }
 .lineHeader3{
-	font-size:12pt; text-align:center;  
+	font-size:12pt; text-align:center; margin-top:12px;
 }
 .sectionHeader{
 	font-size:12pt; font-weight:bold; text-align:center; 
 }
 
 .lineWrap{
-	margin-top:10px; margin-left:10px;
+	margin-top:10px; margin-left:10px; font-size:12pt;
 }
 .lineWrapCenter{
 	width:100%; text-align:center; margin-top:10px; margin-bottom:20px;
@@ -192,14 +189,14 @@ abbr.search-choice-close {
 	margin:-10px; display:inline-block;
 }
 .cbWrap{
-	font-size:14pt; text-align:left; 
+	font-size:14pt; text-align:left; display:inline-block; width:118px;
 }
 .cbLabel{
-	display:inline-block; margin-left:5px; font-size:14pt; padding:2px; vertical-align:middle; text-align:left; color:#000;
+	display:inline-block; margin-left:-4px; font-size:12pt; padding:2px; vertical-align:middle; text-align:left; color:#000; 
 }
 
 .pointer{
-	cursor:pointer;
+	cursor:pointer; display:none;
 }	
 .navSpacer{
 	margin-top:10px;
@@ -207,13 +204,9 @@ abbr.search-choice-close {
 .navSpacer1{
 	margin-top:60px;
 }	
-.futureCbWrap{
-	margin-left:10px;
-	margin-bottom:5px;
-}
-.futureCbLine{
-	margin-bottom:5px;
+.attDiv{
+	display:none;	
 }	
-.futureCb{
-	margin-right:5px;
+.atts{
+	font-weight:bold;	
 }	

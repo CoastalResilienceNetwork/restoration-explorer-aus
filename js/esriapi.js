@@ -17,7 +17,40 @@ function ( 	ArcGISDynamicMapServiceLayer, Extent, SpatialReference, Query, Query
 					}
 					t.layersArray = t.dynamicLayer.layerInfos;
 					t.clicks.layerDefUpdate(t);
-				}));		
+					t.map.setMapCursor("pointer");
+				}));	
+				var sym = new SimpleFillSymbol( SimpleFillSymbol.STYLE_SOLID, new SimpleLineSymbol(
+					SimpleLineSymbol.STYLE_SOLID, new Color([0,0,255]), 2 ), new Color([0,0,0,0.1])
+				);
+				t.basinFl = new FeatureLayer(t.url + "/1", { mode: FeatureLayer.MODE_SELECTION, outFields: ["*"] });
+				t.basinFl.setSelectionSymbol(sym);
+				t.map.addLayer(t.basinFl);
+				t.basinFl.on('selection-complete', lang.hitch(t,function(evt){
+					if (evt.features.length > 0){
+						$('#' + t.id + 'hydroHeader').html('Selected hydrobasin');
+						var atts = evt.features[0].attributes;
+						$.each($('#' + t.id + ' .atts'), lang.hitch(t,function(i,v){
+							var a = $(v).prop('id').substr($(v).prop('id').indexOf("-") + 1);
+							$(v).html(atts[a])
+						}));
+						$('#' + t.id + 'attDiv').slideDown();
+					}else{
+						$('#' + t.id + 'hydroHeader').html('Click map to select a hydrobasin');
+						$('#' + t.id + 'attDiv').slideUp();
+					}	
+				}));	
+				t.map.on("click", lang.hitch(t, function(evt) {
+					var pnt = evt.mapPoint;
+					var q = new Query();
+					q.geometry = pnt;
+					t.basinFl.selectFeatures(q,esri.layers.FeatureLayer.SELECTION_NEW);
+				}));
+				t.map.on("zoom-end", lang.hitch(t,function(e){
+					t.map.setMapCursor("pointer");
+				}));
+				t.map.on("update-end", lang.hitch(t,function(e){
+					t.map.setMapCursor("pointer");
+				}));				
 			}
 		});
     }

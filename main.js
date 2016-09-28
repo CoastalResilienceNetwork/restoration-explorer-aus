@@ -12,7 +12,7 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, lang, obj,
 	return declare(PluginBase, {
 		// The height and width are set here when an infographic is defined. When the user click Continue it rebuilds the app window with whatever you put in.
 		toolbarName: "Benefits Explorer", showServiceLayersInLegend: true, allowIdentifyWhenActive: false, rendered: false, resizable: false,
-		hasCustomPrint: true, usePrintPreviewMap: true, previewMapSize: [1000, 550], height:"450", width:"360",
+		hasCustomPrint: true, usePrintPreviewMap: true, previewMapSize: [1000, 550], height:"450", width:"400",
 		
 		// First function called when the user clicks the pluging icon. 
 		initialize: function (frameworkParameters) {
@@ -22,10 +22,10 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, lang, obj,
 			this.con = dom.byId('plugins/benefits_explorer-0');
 			this.con1 = dom.byId('plugins/benefits_explorer-1');
 			if (this.con1 != undefined){
-				domStyle.set(this.con1, "width", "360px");
+				domStyle.set(this.con1, "width", "400px");
 				domStyle.set(this.con1, "height", "450px");
 			}else{
-				domStyle.set(this.con, "width", "360px");
+				domStyle.set(this.con, "width", "400px");
 				domStyle.set(this.con, "height", "450px");
 			}	
 			// Define object to access global variables from JSON object. Only add variables to varObject.json that are needed by Save and Share. 
