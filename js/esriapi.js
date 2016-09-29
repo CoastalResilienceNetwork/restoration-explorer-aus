@@ -35,7 +35,7 @@ function ( 	ArcGISDynamicMapServiceLayer, Extent, SpatialReference, Query, Query
 						}	
 						var a = [atts.IUCN, co2, atts.ForLoss, atts.HMI]
 						t.barChart.updateChart(a,t);
-						$('#' + t.id + 'barGraphWrap').slideDown(); 
+						$('#' + t.id + 'barGraphWrap').show(); 
 						/* Code for filling atts as text 
 						$.each($('#' + t.id + ' .atts'), lang.hitch(t,function(i,v){
 							var a = $(v).prop('id').substr($(v).prop('id').indexOf("-") + 1);
@@ -45,7 +45,7 @@ function ( 	ArcGISDynamicMapServiceLayer, Extent, SpatialReference, Query, Query
 					}else{
 						$('#' + t.id + 'hydroHeader').html('Click map to select a hydrobasin');
 						//$('#' + t.id + 'attDiv').slideUp();
-						$('#' + t.id + 'barGraphWrap').slideUp(); 
+						$('#' + t.id + 'barGraphWrap').hide(); 
 					}	
 				}));	
 				t.map.on("click", lang.hitch(t, function(evt) {
