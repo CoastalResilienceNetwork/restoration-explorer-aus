@@ -29,14 +29,23 @@ function ( 	ArcGISDynamicMapServiceLayer, Extent, SpatialReference, Query, Query
 					if (evt.features.length > 0){
 						$('#' + t.id + 'hydroHeader').html('Selected hydrobasin');
 						var atts = evt.features[0].attributes;
+						var co2 = atts.CO2;
+						if (co2 == -99){
+							co2 = 0;	
+						}	
+						var a = [atts.IUCN, co2, atts.ForLoss, atts.HMI]
+						t.barChart.updateChart(a,t);
+						$('#' + t.id + 'barGraphWrap').slideDown(); 
+						/* Code for filling atts as text 
 						$.each($('#' + t.id + ' .atts'), lang.hitch(t,function(i,v){
 							var a = $(v).prop('id').substr($(v).prop('id').indexOf("-") + 1);
 							$(v).html(atts[a])
 						}));
-						$('#' + t.id + 'attDiv').slideDown();
+						$('#' + t.id + 'attDiv').slideDown(); */
 					}else{
 						$('#' + t.id + 'hydroHeader').html('Click map to select a hydrobasin');
-						$('#' + t.id + 'attDiv').slideUp();
+						//$('#' + t.id + 'attDiv').slideUp();
+						$('#' + t.id + 'barGraphWrap').slideUp(); 
 					}	
 				}));	
 				t.map.on("click", lang.hitch(t, function(evt) {

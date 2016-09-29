@@ -22,14 +22,14 @@ function ( Query, QueryTask, declare, FeatureLayer, lang, on, $, ui ) {
 				$('.sumBarsWrap').css('width', bWw + 'px')
 				$('.sumBars').css('width', bWw + 'px')
 				
-				//var a1 = [85,60,70,25,40,5,55,20,40,30,90]
-				//t.barChart.updateChart(a1, t)
+				var a1 = [1,5,3,4]
+				t.barChart.updateChart(a1, t)
 			},
 			updateChart: function(a, t){ 
-				var colors = ['#4052B4', '#406FB4', '#408cb4', '#4A8B6D', '#4FA84A', '#8FB842', '#cec83a', '#CBA62C', '#c8841d']
+				var colors = ['#8FB842', '#cec83a', '#CBA62C', '#c8841d','#4052B4', '#406FB4', '#408cb4','#4A8B6D','#4FA84A']
 				$('.barHolder').find('.sumBars').each(function(i,v){
 					$(v).css("background-color", colors[i]);
-					var h = Math.round(a[i]/90*100)
+					var h = a[i]*20;
 					$(v).animate({ height: h + '%'});
 				});
 			}

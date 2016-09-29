@@ -25,10 +25,9 @@ function ( Query, QueryTask, declare, FeatureLayer, lang, on, $, ui, esriapi ) {
 						$(c.currentTarget.children[0]).prop("checked", !$(c.currentTarget.children[0]).prop("checked") )	
 					}
 					if ($(c.currentTarget.children[0]).prop('checked') === true){
-						$(c.currentTarget).parent().find('.togBtnWrap').slideDown();
-						$(c.currentTarget).parent().find('.togBtnWrap').css('display', 'inline-block');
+						$(c.currentTarget).parent().find('.benefitWrap').slideDown();
 					}else{
-						$(c.currentTarget).parent().find('.togBtnWrap').slideUp();
+						$(c.currentTarget).parent().find('.benefitWrap').slideUp();
 						$.each($(c.currentTarget).parent().find('.togBtn'), lang.hitch(t,function(i, x){
 							$(x).removeClass('togBtnSel');
 						}))
@@ -38,7 +37,7 @@ function ( Query, QueryTask, declare, FeatureLayer, lang, on, $, ui, esriapi ) {
 			},
 			layerDefUpdate: function(t){
 				var expArray = [];
-				$.each($('#' + t.id + ' .togBtnWrap .cntrl'), lang.hitch(t,function(i, v){
+				$.each($('#' + t.id + ' .togBtnWrap .togBtn'), lang.hitch(t,function(i, v){
 					if ($(v).hasClass('togBtnSel')){
 						var lngId = $(v).prop('id').substr($(v).prop('id').indexOf("-") + 1);
 						var field = lngId.substr(0, lngId.indexOf('-'));

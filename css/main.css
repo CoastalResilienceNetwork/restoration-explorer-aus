@@ -166,9 +166,11 @@ abbr.search-choice-close {
 .sectionHeader{
 	font-size:12pt; font-weight:bold; text-align:center; 
 }
-
 .lineWrap{
 	margin-top:10px; margin-left:10px; font-size:12pt;
+}
+.lineWrap1{
+	margin-top:6px; margin-left:0px; font-size:12pt;
 }
 .lineWrapCenter{
 	width:100%; text-align:center; margin-top:10px; margin-bottom:20px;
@@ -189,14 +191,13 @@ abbr.search-choice-close {
 	margin:-10px; display:inline-block;
 }
 .cbWrap{
-	font-size:14pt; text-align:left; display:inline-block; width:110px;
+	font-size:14pt; text-align:left; display:inline-block;
 }
 .cbLabel{
-	display:inline-block; margin-left:-4px; font-size:12pt; padding:2px; vertical-align:middle; text-align:left; color:#000; 
+	display:inline-block; margin-left:2px; font-size:12pt; padding:2px; vertical-align:middle; text-align:left; color:#000; 
 }
-
 .pointer{
-	cursor:pointer; display:none;
+	cursor:pointer; 
 }	
 .navSpacer{
 	margin-top:10px;
@@ -209,4 +210,7 @@ abbr.search-choice-close {
 }	
 .atts{
 	font-weight:bold;	
+}	
+.benefitWrap{
+	display:none; margin-left:22px;	
 }	
