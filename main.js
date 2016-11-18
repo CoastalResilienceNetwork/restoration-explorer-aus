@@ -5,15 +5,14 @@ require({
 // Bring in dojo and javascript api classes as well as varObject.json, js files, and content.html
 define([
 	"dojo/_base/declare", "framework/PluginBase", "dijit/layout/ContentPane", "dojo/dom", "dojo/dom-style", "dojo/dom-geometry", "dojo/_base/lang", "dojo/text!./obj.json", 
-	"jquery", "dojo/text!./html/content.html", './js/jquery-ui-1.11.2/jquery-ui', './js/esriapi', './js/clicks', './js/barChart', './js/horizontalBar'
+	"jquery", "dojo/text!./html/content.html", "dojo/text!./html/infoGraphic.html", './js/jquery-ui-1.11.2/jquery-ui', './js/esriapi', './js/clicks', './js/barChart', './js/horizontalBar'
 ],
 function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, lang, obj, 
-			$, content, ui, esriapi, clicks, barChart, hbar ) {
+			$, content, ig, ui, esriapi, clicks, barChart, hbar ) {
 	return declare(PluginBase, {
 		// The height and width are set here when an infographic is defined. When the user click Continue it rebuilds the app window with whatever you put in.
 		toolbarName: "Benefits Explorer", showServiceLayersInLegend: true, allowIdentifyWhenActive: false, rendered: false, resizable: false,
-		hasCustomPrint: true, usePrintPreviewMap: true, previewMapSize: [1000, 550], height:"560", width:"400",
-		
+		hasCustomPrint: true, usePrintPreviewMap: true, previewMapSize: [1000, 550], height:"560", width:"400", infoGraphic: ig,		
 		// First function called when the user clicks the pluging icon. 
 		initialize: function (frameworkParameters) {
 			// Access framework parameters
