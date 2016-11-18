@@ -6,6 +6,7 @@
 		"plugins/benefits_explorer/css/chosen.css",
 		"plugins/benefits_explorer/css/barChart.css",
 		"plugins/benefits_explorer/css/toggleButtons.css",
+		"plugins/benefits_explorer/css/horizontalBar.css",
 		"plugins/benefits_explorer/css/main.css"
     ],
     "use": {

@@ -9,14 +9,23 @@ function ( 	ArcGISDynamicMapServiceLayer, Extent, SpatialReference, Query, Query
         return declare(null, {
 			esriApiFunctions: function(t){	
 				// Add dynamic map service
-				t.dynamicLayer = new ArcGISDynamicMapServiceLayer(t.url);
+				t.dynamicLayer = new ArcGISDynamicMapServiceLayer(t.url, {opacity:0.7});
 				t.map.addLayer(t.dynamicLayer);
 				t.dynamicLayer.on("load", lang.hitch(t, function () { 			
 					if (t.obj.visibleLayers.length > 0){	
 						t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
 					}
 					t.layersArray = t.dynamicLayer.layerInfos;
-					t.clicks.layerDefUpdate(t);
+					// Start with empty expressions
+					t.standingc = ""; 
+					t.forloss = "";
+					t.refor = "";
+					t.freshbiot = "";
+					t.terrsp = "";
+					t.vita = "";
+					t.agloss = "";
+					t.nitrogen = "";
+					t.clicks.layerDefsUpdate(t);
 					t.map.setMapCursor("pointer");
 				}));	
 				var sym = new SimpleFillSymbol( SimpleFillSymbol.STYLE_SOLID, new SimpleLineSymbol(
@@ -29,23 +38,24 @@ function ( 	ArcGISDynamicMapServiceLayer, Extent, SpatialReference, Query, Query
 					if (evt.features.length > 0){
 						$('#' + t.id + 'hydroHeader').html('Selected hydrobasin');
 						var atts = evt.features[0].attributes;
-						var co2 = atts.CO2;
-						if (co2 == -99){
-							co2 = 0;	
-						}	
-						var a = [atts.IUCN, co2, atts.ForLoss, atts.HMI]
-						t.barChart.updateChart(a,t);
-						$('#' + t.id + 'barGraphWrap').show(); 
-						/* Code for filling atts as text 
-						$.each($('#' + t.id + ' .atts'), lang.hitch(t,function(i,v){
-							var a = $(v).prop('id').substr($(v).prop('id').indexOf("-") + 1);
-							$(v).html(atts[a])
-						}));
-						$('#' + t.id + 'attDiv').slideDown(); */
+						var b = [['standingc',atts.standingc,9593.46], ['forloss',atts.forloss,19429.33], ['refor',atts.refor,65038.4], ['freshbiot',atts.freshbiot/10,1], 
+								 ['terrsp',atts.terrsp,219], ['vita',atts.vita,84.06], ['agloss',atts.agloss,68], ['nitrogen',atts.nitrogen,611.6]];
+						t.hbar.updateHbar(t,b);
+						
+						if ($('#' + t.id + 'cbListener').is(":visible")){
+							$('#' + t.id + 'hbbHeader').trigger('click');
+						};
+						if ($('#' + t.id + 'supDataWrap').is(":visible")){
+							$('#' + t.id + 'sdWrap').trigger('click');
+						};
+						if ($('#' + t.id + 'hydroWrap').is(":hidden")){
+							$('#' + t.id + 'hydroSection').trigger('click');
+						};
+						$('#' + t.id + 'graphWrap').slideDown();
 					}else{
 						$('#' + t.id + 'hydroHeader').html('Click map to select a hydrobasin');
-						//$('#' + t.id + 'attDiv').slideUp();
-						$('#' + t.id + 'barGraphWrap').hide(); 
+						$('#' + t.id + 'graphWrap').slideUp();
+							
 					}	
 				}));	
 				t.map.on("click", lang.hitch(t, function(evt) {

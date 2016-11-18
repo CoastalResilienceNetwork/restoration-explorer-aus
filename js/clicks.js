@@ -6,65 +6,134 @@ function ( Query, QueryTask, declare, FeatureLayer, lang, on, $, ui, esriapi ) {
 
         return declare(null, {
 			clickListener: function(t){
-				// Handle Class changes on all togBtn clicks
-				$('#' + t.id + ' .togBtn').on('click', lang.hitch(t,function(c){		
-					// Go to parent of selected button, find all elements with class togBtn, and remove togBtnSel from each one
-					$.each($(c.currentTarget).parent().find('.togBtn'), lang.hitch(t,function(i, x){
-						$(x).removeClass('togBtnSel');
-					}))
+				// Hide/show benefit sections
+				$('#' + t.id + ' .be_hs').on('click',lang.hitch(this,function(c){
+					if ($(c.currentTarget).next().is(":visible")){
+						$(c.currentTarget).children().html("&#xBB;");	
+					}else{
+						$(c.currentTarget).children().html("&#xAB;");
+					}	
+					$(c.currentTarget).next().slideToggle()
 				}));
-				// Update visibility on togBtn clicks
-				$('#' + t.id + ' .togBtnWrap .togBtn').on('click', lang.hitch(t,function(c){	
-					$(c.currentTarget).addClass('togBtnSel');
-					t.clicks.layerDefUpdate(t);
-				}));
-				// checkbox clicks
-				$('#' + t.id + 'cbListener .cbWrap').on('click',lang.hitch(this,function(c){
+				// Benefit CB Clicks
+				$('#' + t.id + 'cbListener .be_cbBenWrap').on('click',lang.hitch(this,function(c){
+					var ben = "";
 					// if they click a label toggle the checkbox
 					if (c.target.checked == undefined){
-						$(c.currentTarget.children[0]).prop("checked", !$(c.currentTarget.children[0]).prop("checked") )	
-					}
-					if ($(c.currentTarget.children[0]).prop('checked') === true){
-						$(c.currentTarget).parent().find('.benefitWrap').slideDown();
+						$(c.currentTarget.children[0].children[0]).prop("checked", !$(c.currentTarget.children[0].children[0]).prop("checked") )	
+						ben = $(c.currentTarget.children[0].children[0]).val()
 					}else{
-						$(c.currentTarget).parent().find('.benefitWrap').slideUp();
-						$.each($(c.currentTarget).parent().find('.togBtn'), lang.hitch(t,function(i, x){
-							$(x).removeClass('togBtnSel');
-						}))
-						t.clicks.layerDefUpdate(t);
+						ben = c.target.value;
 					}	
-				}));
+					if ($(c.currentTarget.children[0].children[0]).prop('checked') === true){
+						$(c.currentTarget).parent().find('.be_rangeWrap').slideDown();
+						var values = $('#' + t.id + '-' + ben).slider("option", "values");
+						$('#' + t.id + '-' + ben).slider('values', values); 
+					}else{
+						$(c.currentTarget).parent().find('.be_rangeWrap').slideUp();
+						t[ben] = "";
+						t.clicks.layerDefsUpdate(t);
+						$('#' + t.id + ben + '-range').html("")
+						$('#' + t.id + ben + '-unit').hide();
+					}	
+				}));	
+				// Standing Carbon range slider
+				$('#' + t.id + '-standingc').slider({range:true, min:0, max:9600, values:[0,9600], change:function(event,ui){t.clicks.sliderChange(event,ui,t)}});
+				// Forest Loss range slider
+				$('#' + t.id + '-forloss').slider({range:true, min:0, max:20000, values:[0,20000], change:function(event,ui){t.clicks.sliderChange(event,ui,t)}});
+				// Reforestation Potential range slider
+				$('#' + t.id + '-refor').slider({range:true, min:0, max:65100, values:[0,65100], change:function(event,ui){t.clicks.sliderChange(event,ui,t)}});	
+				// Freshwater Biodiversity Threats range slider
+				$('#' + t.id + '-freshbiot').slider({range:true, min:0, max:10, values:[0,10], change:function(event,ui){t.clicks.sliderChange(event,ui,t)}});	
+				// IUCN Listed Terrestrial Species range slider
+				$('#' + t.id + '-terrsp').slider({range:true, min:0, max:220, values:[0,220], change:function(event,ui){t.clicks.sliderChange(event,ui,t)}});
+				// Habitat for Pollinators and Impacts on Vitamin A range slider
+				$('#' + t.id + '-vita' ).slider({ range: true, min: 0, max: 85, values: [ 0, 85 ], change:function(event,ui){t.clicks.sliderChange(event,ui,t)}});
+				// Habitat for Pollinators and Impacts on Crop Yield Economic Output range slider
+				$('#' + t.id + '-agloss' ).slider({ range: true, min: 0, max: 70, values: [ 0, 70 ], change:function(event,ui){t.clicks.sliderChange(event,ui,t)}});
+				// Excess Nitrogen range slider
+				$('#' + t.id + '-nitrogen' ).slider({ range: true, min: 0, max: 615, values: [ 0, 615 ], change:function(event,ui){t.clicks.sliderChange(event,ui,t)}});	
 			},
-			layerDefUpdate: function(t){
-				var expArray = [];
-				$.each($('#' + t.id + ' .togBtnWrap .togBtn'), lang.hitch(t,function(i, v){
-					if ($(v).hasClass('togBtnSel')){
-						var lngId = $(v).prop('id').substr($(v).prop('id').indexOf("-") + 1);
-						var field = lngId.substr(0, lngId.indexOf('-'));
-						var val = lngId.slice(-1);
-						expArray.push(field + " = " + val ); 
-					}	
-				}));
-				var exp = "OBJECTID < 0";
-				if (expArray.length > 0){
-					$.each(expArray, lang.hitch(t,function(i,v){
-						if (i == 0){
-							exp = v;	
+			sliderChange: function( event, ui, t ){
+				var ben  = event.target.id.split("-").pop()
+				t[ben] = "(" + ben + " >= " + ui.values[0] + " AND " + ben + " <= " + ui.values[1] + ")";	
+				t.clicks.layerDefsUpdate(t);
+				var low = 0;
+				var high = 0;
+				if (ben == 'freshbiot'){
+					low = ui.values[0]/10;
+					high = ui.values[1]/10;			
+				}else{	
+					low = t.clicks.numberWithCommas(ui.values[0])
+					high = t.clicks.numberWithCommas(ui.values[1])
+				}
+				if (low == high){						
+					$('#' + t.id + ben + '-range').html("(" + low);
+				}else{
+					$('#' + t.id + ben + '-range').html("(" + low + " - " + high);
+				}
+				$('#' + t.id + ben + '-unit').show();
+			},	
+			layerDefsUpdate: function(t){
+				t.exp = [t.standingc, t.forloss, t.refor, t.freshbiot, t.terrsp, t.vita, t.agloss, t.nitrogen]
+				var exp = "";
+				var cnt = 0;
+				var nd = "f";
+				$.each(t.exp, lang.hitch(t,function(i, v){
+					if (v.length > 0){
+						if (exp.length == 0){
+							exp = v;
+							cnt = 1;
 						}else{
 							exp = exp + " AND " + v;
+							cnt = cnt + 1;
 						}	
-					}))	
-				}	
-				var layerDefinitions = [];
-				layerDefinitions[0] = exp;
-				t.dynamicLayer.setLayerDefinitions(layerDefinitions);
+					}	
+				}));
+				console.log(exp)
+				if (cnt == 1){
+					$('#' + t.id + 'cbListener input').each(function(i,v){
+						if ($(v).prop('checked')){
+							t.exp1 = $(v).val() + " = -99";
+						}	
+					});
+					var q = new Query();
+					var qt = new QueryTask(t.url + '/0');
+					q.where = t.exp1;
+					qt.executeForCount(q,function(count){
+						var layerDefinitions = [];
+						layerDefinitions[1] = exp;
+						if (count > 0){
+							layerDefinitions[0] = t.exp1;	
+							t.obj.visibleLayers = [0,1,2];
+						}else{
+							t.obj.visibleLayers = [1,2];
+						}
+						t.dynamicLayer.setLayerDefinitions(layerDefinitions);
+						t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);						
+					});
+				}else{	
+					if (exp.length == 0){
+						exp = "OBJECTID < 0";
+						t.obj.visibleLayers = [2];
+					}else{
+						t.obj.visibleLayers = [1,2];
+					}		
+					var layerDefinitions = [];		
+					layerDefinitions[1] = exp;	
+					t.dynamicLayer.setLayerDefinitions(layerDefinitions);
+					t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
+				}
 				var query = new Query();
 				var queryTask = new QueryTask(t.url + '/0');
 				query.where = exp;
 				queryTask.executeForCount(query,function(count){
 					$('#' + t.id + 'basinCnt').html(count); 
 				});
-			}	
+			},
+			numberWithCommas: function(x){
+				return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+			}			
         });
     }
 );

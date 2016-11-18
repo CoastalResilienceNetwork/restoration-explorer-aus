@@ -5,10 +5,10 @@ require({
 // Bring in dojo and javascript api classes as well as varObject.json, js files, and content.html
 define([
 	"dojo/_base/declare", "framework/PluginBase", "dijit/layout/ContentPane", "dojo/dom", "dojo/dom-style", "dojo/dom-geometry", "dojo/_base/lang", "dojo/text!./obj.json", 
-	"jquery", "dojo/text!./html/content.html", './js/jquery-ui-1.11.2/jquery-ui', './js/navigation', './js/esriapi', './js/clicks', './js/barChart'
+	"jquery", "dojo/text!./html/content.html", './js/jquery-ui-1.11.2/jquery-ui', './js/esriapi', './js/clicks', './js/barChart', './js/horizontalBar'
 ],
 function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, lang, obj, 
-			$, content, ui, navigation, esriapi, clicks, barChart ) {
+			$, content, ui, esriapi, clicks, barChart, hbar ) {
 	return declare(PluginBase, {
 		// The height and width are set here when an infographic is defined. When the user click Continue it rebuilds the app window with whatever you put in.
 		toolbarName: "Benefits Explorer", showServiceLayersInLegend: true, allowIdentifyWhenActive: false, rendered: false, resizable: false,
@@ -99,7 +99,7 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, lang, obj,
 			$('.basemap-selector').trigger('change', 3);
 			// BRING IN OTHER JS FILES
 			this.barChart = new barChart();
-			this.navigation = new navigation();
+			this.hbar = new hbar();
 			this.esriapi = new esriapi();
 			this.clicks = new clicks();
 			// ADD HTML TO APP
@@ -110,12 +110,8 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, lang, obj,
 			// Get html from content.html, prepend appDiv.id to html element id's, and add to appDiv
 			var idUpdate = content.replace(/id='/g, "id='" + this.id);	
 			$('#' + this.id).html(idUpdate);
-			// bar chart
-			this.barChart.makeChart(this);
 			// Click listeners
 			this.clicks.clickListener(this);
-			// CALL NAVIGATION BUTTON EVENT LISTENERS 
-			this.navigation.navListeners(this);
 			// CREATE ESRI OBJECTS AND EVENT LISTENERS	
 			this.esriapi.esriApiFunctions(this);
 			
