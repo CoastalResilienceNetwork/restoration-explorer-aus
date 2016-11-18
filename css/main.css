@@ -4,6 +4,9 @@ body.be_waiting * {
 .be_largeHeader{
 	font-size:14pt; margin-bottom:-4px; cursor:pointer;
 }
+.be_largeHeader1{
+	font-size:16pt; margin:15px; text-align:center;
+}
 .be_multiShoreCheck, .be_futureWrapper, .be_historicalShoreWrapper{
 	display:none;
 }	
