@@ -7,7 +7,7 @@ function ( Query, QueryTask, declare, FeatureLayer, lang, on, $, ui, esriapi ) {
         return declare(null, {
 			clickListener: function(t){
 				// Hide/show benefit sections
-				$('#' + t.id + ' .be_hs').on('click',lang.hitch(this,function(c){
+				$('#' + t.id + ' .be_hsm').on('click',lang.hitch(this,function(c){
 					if ($(c.currentTarget).next().is(":visible")){
 						$(c.currentTarget).children().html("&#xBB;");	
 					}else{
@@ -15,6 +15,19 @@ function ( Query, QueryTask, declare, FeatureLayer, lang, on, $, ui, esriapi ) {
 					}	
 					$(c.currentTarget).next().slideToggle()
 				}));
+				$('#' + t.id + ' .be_hs').on('click',lang.hitch(this,function(c){
+					if ($(c.currentTarget).next().next().is(":visible")){
+						$(c.currentTarget).children().html("&#xBB;");	
+					}else{
+						$(c.currentTarget).children().html("&#xAB;");
+					}	
+					$(c.currentTarget).next().next().slideToggle()
+				}));
+				// Explain benefits click
+				$('#' + t.id + 'moreInfo').on('click',lang.hitch(this,function(c){
+					$('#' + t.id + 'moreInfo span').toggle();
+					$('#' + t.id + ' .explanations').slideToggle();
+				}));	
 				// Benefit CB Clicks
 				$('#' + t.id + 'cbListener .be_cbBenWrap').on('click',lang.hitch(this,function(c){
 					var ben = "";

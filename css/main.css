@@ -7,6 +7,15 @@ body.be_waiting * {
 .be_largeHeader1{
 	font-size:16pt; margin:15px; text-align:center;
 }
+.moreInfo{
+	font-size:12pt; color:blue; cursor:pointer;	margin:5px 4px 2px 20px;
+}
+.moreInfo:hover{
+	color:#2795b6;	
+}
+.explanations{
+	font-size:11pt; margin-left:0px; margin-top:4px; color:#21658c; margin-right:5px; display:none;
+}
 .be_multiShoreCheck, .be_futureWrapper, .be_historicalShoreWrapper{
 	display:none;
 }	
