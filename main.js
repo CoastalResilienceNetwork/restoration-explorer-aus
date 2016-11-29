@@ -103,7 +103,7 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, lang, obj,
 			this.clicks = new clicks();
 			// ADD HTML TO APP
 			// Define Content Pane as HTML parent		
-			this.appDiv = new ContentPane({style:'padding:8px 8px 8px 8px; position:relative;'});
+			this.appDiv = new ContentPane({style:'padding:0px 8px 8px 8px; position:relative;'});
 			this.id = this.appDiv.id
 			dom.byId(this.container).appendChild(this.appDiv.domNode);					
 			// Get html from content.html, prepend appDiv.id to html element id's, and add to appDiv

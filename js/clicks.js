@@ -6,30 +6,37 @@ function ( Query, QueryTask, declare, FeatureLayer, lang, on, $, ui, esriapi ) {
 
         return declare(null, {
 			clickListener: function(t){
-				// Hide/show benefit sections
-				$('#' + t.id + ' .be_hsm').on('click',lang.hitch(this,function(c){
-					if ($(c.currentTarget).next().is(":visible")){
-						$(c.currentTarget).children().html("&#xBB;");	
-					}else{
-						$(c.currentTarget).children().html("&#xAB;");
+				// Infographic section clicks
+				$('.plugin-infographic .be_accordHeader').on('click',lang.hitch(t,function(c){
+					if ( $(c.currentTarget).next().is(":hidden") ){
+						$('.plugin-infographic .be_exWrap').slideUp();
+						$(c.currentTarget).next().slideDown();
 					}	
-					$(c.currentTarget).next().slideToggle()
 				}));
-				$('#' + t.id + ' .be_hs').on('click',lang.hitch(this,function(c){
-					if ($(c.currentTarget).next().next().is(":visible")){
+				$('#' + t.id + ' .be_minfo').on('click',lang.hitch(t,function(c){
+					var ben = c.target.id.split("-").pop();
+					$('.plugin-help').trigger('click');
+					$('.plugin-infographic .' + ben).trigger('click');
+				}));	
+				// Hide/show benefit sections
+				$('#' + t.id + ' .be_hs').on('click',lang.hitch(t,function(c){
+					/*if ($(c.currentTarget).next().is(":visible")){
 						$(c.currentTarget).children().html("&#xBB;");	
 					}else{
 						$(c.currentTarget).children().html("&#xAB;");
+					}*/	
+					if ( $(c.currentTarget).next().is(":hidden") ){
+						$('#' + t.id + ' .be_sectionWrap').slideUp();
+						$(c.currentTarget).next().slideDown();
 					}	
-					$(c.currentTarget).next().next().slideToggle()
 				}));
 				// Explain benefits click
-				$('#' + t.id + 'moreInfo').on('click',lang.hitch(this,function(c){
+				$('#' + t.id + 'moreInfo').on('click',lang.hitch(t,function(c){
 					$('#' + t.id + 'moreInfo span').toggle();
 					$('#' + t.id + ' .explanations').slideToggle();
 				}));	
 				// Benefit CB Clicks
-				$('#' + t.id + 'cbListener .be_cbBenWrap').on('click',lang.hitch(this,function(c){
+				$('#' + t.id + 'cbListener .be_cbBenWrap').on('click',lang.hitch(t,function(c){
 					var ben = "";
 					// if they click a label toggle the checkbox
 					if (c.target.checked == undefined){

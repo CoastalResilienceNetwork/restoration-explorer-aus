@@ -2,19 +2,16 @@ body.be_waiting * {
     cursor: progress;
 }	
 .be_largeHeader{
-	font-size:14pt; margin-bottom:-4px; cursor:pointer;
+	font-size:14pt; margin:10px 0px; cursor:pointer; font-weight:bold;
 }
 .be_largeHeader1{
 	font-size:16pt; margin:15px; text-align:center;
 }
 .moreInfo{
-	font-size:12pt; color:blue; cursor:pointer;	margin:5px 4px 2px 20px;
+	font-size:12pt; color:blue; cursor:pointer;	display:inline-block;
 }
 .moreInfo:hover{
 	color:#2795b6;	
-}
-.explanations{
-	font-size:11pt; margin-left:0px; margin-top:4px; color:#21658c; margin-right:5px; display:none;
 }
 .be_multiShoreCheck, .be_futureWrapper, .be_historicalShoreWrapper{
 	display:none;
@@ -150,25 +147,27 @@ abbr.search-choice-close {
 	height:20px; width:100%; display:inline-block; text-align:center; margin-bottom:10px; margin-left:-12px;
 }
 .be_lineHeader{
-	font-size:12pt; font-weight:bold; text-align:left; margin:5px 4px -2px 5px; cursor:pointer;
+	font-size:12pt; text-decoration:underline; text-align:left; margin:5px 4px 5px 5px; 
 }
 .be_headerHS{
-	color:#5E94B6; cursor:pointer; -webkit-transform:rotate(90deg); transform:rotate(90deg); display:inline-block; font-size:17pt; vertical-align:middle;
+	color:#5E94B6; cursor:pointer; -webkit-transform:rotate(90deg); transform:rotate(90deg); display:inline-block; font-size:17pt; 
+	display:none; vertical-align:middle;
 }
 .be_headerHSBig{
-	color:#5E94B6; cursor:pointer; -webkit-transform:rotate(90deg); transform:rotate(90deg); display:inline-block; font-size:20pt; vertical-align:middle;
+	color:#5E94B6; cursor:pointer; -webkit-transform:rotate(90deg); transform:rotate(90deg); display:inline-block; font-size:20pt; 
+	display:none; vertical-align:middle;
 }
 .be_sectionWrap{
-	margin-left:10px;
+
 }	
 .be_lineHeader2{
 	font-size:12pt; text-align:left; margin: 4px 10px -2px 8px;
 }
 .be_lineHeader3{
-	font-size:12pt; text-align:center; margin-top:5px; margin-bottom:5px;
+	font-size:12pt; text-align:center; margin-top:5px; margin-bottom:10px;
 }
 .be_lineHeader4{
-	font-size:12pt; font-weight:bold; text-align:left; margin:5px 4px 5px 8px; 
+	font-size:12pt; text-decoration:underline; text-align:left; margin:5px 4px 10px 8px; 
 }
 .be_sectionHeader{
 	font-size:12pt; font-weight:bold; text-align:center; 
@@ -228,8 +227,14 @@ abbr.search-choice-close {
 	margin-bottom:0px;	
 }	
 .be_bensWrap{
-	margin-left:18px; 	
+	margin-left:10px; 	
 }
 .be_bnum{
 	font-weight:bold;
+}
+.be_graphWrap{
+	margin-bottom:10px;
+}	
+.be_minfo{
+	margin-bottom:-2px; margin-left:3px; cursor:pointer;
 }	
