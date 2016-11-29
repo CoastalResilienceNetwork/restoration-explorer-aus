@@ -96,7 +96,7 @@ abbr.search-choice-close {
 	background: #b8e1fc !important;
 }	
 .be_rslide{
-	width:200px; display:inline-block; margin-bottom:2px;
+	width:180px; display:inline-block; margin-bottom:2px;
 }	
 .be_updown{
 	display:inline-block; width:10px; height:10px; margin:0 4px -1px 4px; 
@@ -227,7 +227,7 @@ abbr.search-choice-close {
 	margin-bottom:0px;	
 }	
 .be_bensWrap{
-	margin-left:10px; 	
+	margin-left:5px; 	
 }
 .be_bnum{
 	font-weight:bold;

@@ -17,6 +17,7 @@ function ( Query, QueryTask, declare, FeatureLayer, lang, on, $, ui, esriapi ) {
 					var ben = c.target.id.split("-").pop();
 					$('.plugin-help').trigger('click');
 					$('.plugin-infographic .' + ben).trigger('click');
+					$('.plugin-infographic .be_infoWrap').siblings('span').children().html('Back');
 				}));	
 				// Hide/show benefit sections
 				$('#' + t.id + ' .be_hs').on('click',lang.hitch(t,function(c){
