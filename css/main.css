@@ -238,3 +238,6 @@ abbr.search-choice-close {
 .be_minfo{
 	margin-bottom:-2px; margin-left:3px; cursor:pointer;
 }	
+.content .plugin-container-outer .plugin-container{
+	padding-bottom:0;	
+}	
