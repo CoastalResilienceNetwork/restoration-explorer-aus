@@ -4,6 +4,9 @@ body.be_waiting * {
 .be_largeHeader{
 	font-size:14pt; margin:10px 0px; cursor:pointer; font-weight:bold;
 }
+.be_largeHeader:hover{
+	text-shadow:1px 1px #cdcdcd;	
+}	
 .be_largeHeader1{
 	font-size:16pt; margin:15px; text-align:center;
 }
