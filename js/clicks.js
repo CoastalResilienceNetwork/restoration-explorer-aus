@@ -21,11 +21,6 @@ function ( Query, QueryTask, declare, FeatureLayer, lang, on, $, ui, esriapi ) {
 				}));	
 				// Hide/show benefit sections
 				$('#' + t.id + ' .be_hs').on('click',lang.hitch(t,function(c){
-					/*if ($(c.currentTarget).next().is(":visible")){
-						$(c.currentTarget).children().html("&#xBB;");	
-					}else{
-						$(c.currentTarget).children().html("&#xAB;");
-					}*/	
 					if ( $(c.currentTarget).next().is(":hidden") ){
 						$('#' + t.id + ' .be_sectionWrap').slideUp();
 						$(c.currentTarget).next().slideDown();
@@ -111,7 +106,6 @@ function ( Query, QueryTask, declare, FeatureLayer, lang, on, $, ui, esriapi ) {
 						}	
 					}	
 				}));
-				console.log(exp)
 				if (cnt == 1){
 					$('#' + t.id + 'cbListener input').each(function(i,v){
 						if ($(v).prop('checked')){
