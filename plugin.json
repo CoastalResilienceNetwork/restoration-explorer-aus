@@ -1,0 +1,17 @@
+{
+    "css": [
+		"//cdn.sencha.io/ext-4.1.1-gpl/resources/css/ext-all.css",
+        "plugins/benefits_explorer/js/jquery-ui-1.11.2/jquery-ui.css",
+		"plugins/benefits_explorer/css/prism.css",
+		"plugins/benefits_explorer/css/chosen.css",
+		"plugins/benefits_explorer/css/barChart.css",
+		"plugins/benefits_explorer/css/toggleButtons.css",
+		"plugins/benefits_explorer/css/horizontalBar.css",
+		"plugins/benefits_explorer/css/main.css"
+    ],
+    "use": {
+        "underscore": { "attach": "_" },
+        "tv4": { "attach": "tv4" },
+        "extjs": { "attach": "Ext" }
+    }
+}

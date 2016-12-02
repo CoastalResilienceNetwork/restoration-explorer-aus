@@ -1,0 +1,199 @@
+﻿<!--This HTML is used in the render function to build the elements within the plugin. The render function first creats a
+Dijit ContentPane to hold all the elements. The ContentPane is assigned a dynamic id upon creation. The render function
+takes the ContentPane id and prepends it to every element with a declared id in this HTML before the elements are created.
+The unique ContentPane id makes all the element ids unique and prevents duplicate id errors in split screen mode.-->
+
+<!--Opening view of the app. Give a little background and instructions to get started-->
+
+
+<div id='hbbHeader' class='be_largeHeader be_hs'><span class='be_headerHSBig'>&#xAB;</span> View Hydrobasins By Benefits</div>  
+<div id='cbListener' class='be_sectionWrap'>
+	<div class='be_lineHeader'><span class='be_headerHS'>&#xAB;</span> Climate Change Mitigation/Carbon<img src='plugins/benefits_explorer/images/info.png' alt='show climate info' class='be_minfo' id='-infoCarbon'></div> 
+	<div class='be_bensWrap'>
+		<!-- Standing Carbon -->
+		<div class='be_benefitWrap'>
+			<div class='be_cbBenWrap'><div class='be_cbLabel'><input type='checkbox' class='be_pointer' value='standingc'>Standing Carbon <span id='standingc-range'></span><span id='standingc-unit' class='be_hide'> million tonnes)</span></div></div>
+			<div class='be_rangeWrap'>
+				<div class='be_leftSlider'><img class='be_updown' src='plugins/benefits_explorer/images/red.png' alt='red circle'>0</div>	
+				<div id='-standingc' class='be_rslide'></div>
+				<div class='be_rightSlider'>9,600 Mt<img class='be_updown' src='plugins/benefits_explorer/images/green.png' alt='green circle'></div>	
+			</div>	
+		</div>
+		<!-- Forest Loss -->
+		<div class='be_benefitWrap'>
+			<div class='be_cbBenWrap'><div class='be_cbLabel'><input type='checkbox' class='be_pointer' value='forloss'>Forest Loss <span id='forloss-range'></span><span id='forloss-unit' class='be_hide'> km<sup>2</sup>)</span></div></div>
+			<div class='be_rangeWrap'>
+				<div class='be_leftSlider'><img class='be_updown' src='plugins/benefits_explorer/images/green.png' alt='green circle'>0</div>	
+				<div id='-forloss' class='be_rslide'></div>
+				<div class='be_rightSlider'>20,000 km<sup>2</sup><img class='be_updown' src='plugins/benefits_explorer/images/red.png' alt='red circle'></div>	
+			</div>	
+		</div>
+		<!--<hr class='be_hrStyle'>-->
+		<!-- Reforestation Potential -->
+		<div class='be_benefitWrap'>
+			<div class='be_cbBenWrap'><div class='be_cbLabel'><input type='checkbox' class='be_pointer' value='refor'>Reforestation Potential <span id='refor-range'></span><span id='refor-unit' class='be_hide'> km<sup>2</sup>)</span></div></div>
+			<div class='be_rangeWrap'>
+				<div class='be_leftSlider'><img class='be_updown' src='plugins/benefits_explorer/images/red.png' alt='red circle'>0</div>	
+				<div id='-refor' class='be_rslide'></div>
+				<div class='be_rightSlider'>65,100 km<sup>2</sup><img class='be_updown' src='plugins/benefits_explorer/images/green.png' alt='green circle'></div>	
+			</div>
+		</div>
+	</div>
+	<div class='be_lineHeader'><span class='be_headerHS'>&#xBB;</span> Biodiversity<img src='plugins/benefits_explorer/images/info.png' alt='show biodiversity info' class='be_minfo' id='-infoBio'></div>
+	<div class='be_bensWrap'>
+		<!-- Freshwater Biodiversity Threats -->
+		<div class='be_benefitWrap'>
+			<div class='be_cbBenWrap'><div class='be_cbLabel'><input type='checkbox' class='be_pointer' value='freshbiot'>Freshwater Biodiversity Threat Index <span id='freshbiot-range'></span><span id='freshbiot-unit' class='be_hide'>)</span></div></div>
+			<div class='be_rangeWrap'>	
+				<div class='be_leftSlider'><img class='be_updown' src='plugins/benefits_explorer/images/green.png' alt='green circle'>0</div>	
+				<div id='-freshbiot' class='be_rslide'></div>
+				<div class='be_rightSlider'>1<img class='be_updown' src='plugins/benefits_explorer/images/red.png' alt='red circle'></div>	
+			</div>	
+		</div>
+		<!-- Imperiled terrestrial Species - count -->
+		<div class='be_benefitWrap'>
+			<div class='be_cbBenWrap'><div class='be_cbLabel'><input type='checkbox' class='be_pointer' value='terrsp'>Imperiled Terrestrial Species - count <span id='terrsp-range'></span><span id='terrsp-unit' class='be_hide'>)</span></div></div>
+			<div class='be_rangeWrap'>	
+				<div class='be_leftSlider'><img class='be_updown' src='plugins/benefits_explorer/images/green.png' alt='green circle'>0</div>	
+				<div id='-terrsp' class='be_rslide'></div>
+				<div class='be_rightSlider'>220<img class='be_updown' src='plugins/benefits_explorer/images/red.png' alt='red circle'></div>	
+			</div>	
+		</div>
+	</div>
+	<div class='be_lineHeader'><span class='be_headerHS'>&#xBB;</span> Human Health &#38; Well Being<img src='plugins/benefits_explorer/images/info.png' alt='show biodiversity info' class='be_minfo' id='-infoHealth'></div>
+	<div class='be_bensWrap'>
+		<!-- Habitat for Pollinators &#38; Impacts on Vitamin A -->
+		<div class='be_benefitWrap'>
+			<div class='be_cbBenWrap'><div class='be_cbLabel'><input type='checkbox' class='be_pointer' value='vita'>Drop in Vitamin A Production w/o Pollination <span id='vita-range'></span><span id='vita-unit' class='be_hide'>%)</span></div></div>
+			<div class='be_rangeWrap'>		
+				<div class='be_leftSlider'><img class='be_updown' src='plugins/benefits_explorer/images/green.png' alt='green circle'>0</div>	
+				<div id='-vita' class='be_rslide'></div>
+				<div class='be_rightSlider'>85%<img class='be_updown' src='plugins/benefits_explorer/images/red.png' alt='red circle'></div>	
+			</div>	
+		</div>
+		<!-- Habitat for Pollinators and Impacts on Crop Yield Economic Output -->
+		<div class='be_benefitWrap'>
+			<div class='be_cbBenWrap'><div class='be_cbLabel'><input type='checkbox' class='be_pointer' value='agloss'>Agricultural Economic Value Lost w/o Pollination <span id='agloss-range'></span><span id='agloss-unit' class='be_hide'>%)</span></div></div>
+			<div class='be_rangeWrap'>
+				<div class='be_leftSlider'><img class='be_updown' src='plugins/benefits_explorer/images/green.png' alt='green circle'>0</div>	
+				<div id='-agloss' class='be_rslide'></div>
+				<div class='be_rightSlider'>70%<img class='be_updown' src='plugins/benefits_explorer/images/red.png' alt='red circle'></div>	
+			</div>	
+		</div>
+		<!-- Excess nitrogen -->
+		<div class='be_benefitWrap'>
+			<div class='be_cbBenWrap'><div class='be_cbLabel'><input type='checkbox' class='be_pointer' value='nitrogen'>Total Annual Excess Nitrogen Application <span id='nitrogen-range'></span><span id='nitrogen-unit' class='be_hide'> thousand tonnes)</span></div></div>
+			<div class='be_rangeWrap'>
+				<div class='be_leftSlider'><img class='be_updown' src='plugins/benefits_explorer/images/green.png' alt='green circle'>0</div>	
+				<div id='-nitrogen' class='be_rslide'></div>
+				<div class='be_rightSlider'>615 kt<img class='be_updown' src='plugins/benefits_explorer/images/red.png' alt='red circle'></div>	
+			</div>	
+		</div>
+	</div>
+	<div class='be_lineHeader3'><span id='basinCnt' style='font-weight:bold;'></span> of 1,761 hydrobasins selected</div>
+</div>	
+<hr class='be_hrStyle'>
+<div id='hydroSection' class='be_largeHeader be_hs'><span class='be_headerHSBig'>&#xAB;</span> View Benefits By Hydrobasin</div>
+<div id='hydroWrap' class='be_sectionWrap be_hide'>
+	<div class='be_lineHeader4' id='hydroHeader'>Click map to select a hydrobasin</div>
+	<div id='graphWrap' class='be_hide be_graphWrap'>
+		<!-- Standing Carbon -->
+		<div class='be_lineHeader2'>Standing Carbon: <span id='standingc-amount' class='be_bnum'></span><span id='standingc-label' class='be_bnum'> million tonnes</span></div>
+		<div class='be_barWrap'>
+			<div class='be_barLabel'><img class='be_updown' src='plugins/benefits_explorer/images/red.png' alt='red circle'></div>
+			<div class='be_barWrapper'>
+				<span class='be_bars be_spanBar be_backgroundBar'>
+					<span class='be_bars be_emBar be_valBar1' id='standingc-bar'></span>
+				</span>
+			</div>
+			<div class='be_barLabel'><img class='be_updown' src='plugins/benefits_explorer/images/green.png' alt='green circle'></div>
+		</div>
+		<!-- Forest Loss -->
+		<div class='be_lineHeader2'>Forest Loss: <span id='forloss-amount' class='be_bnum'></span><span id='forloss-label' class='be_bnum'> km<sup>2</sup></span></div>
+		<div class='be_barWrap'>
+			<div class='be_barLabel'><img class='be_updown' src='plugins/benefits_explorer/images/green.png' alt='green circle'></div>
+			<div class='be_barWrapper'>
+				<span class='be_bars be_spanBar be_backgroundBar'>
+					<span class='be_bars be_emBar be_valBar2' id='forloss-bar'></span>
+				</span>
+			</div>
+			<div class='be_barLabel'><img class='be_updown' src='plugins/benefits_explorer/images/red.png' alt='red circle'></div>
+		</div>
+		<!-- Reforestation Potential -->
+		<div class='be_lineHeader2'>Reforestation Potential: <span id='refor-amount' class='be_bnum'></span><span id='refor-label' class='be_bnum'> km<sup>2</sup></span></div>
+		<div class='be_barWrap'>
+			<div class='be_barLabel'><img class='be_updown' src='plugins/benefits_explorer/images/red.png' alt='red circle'></div>
+			<div class='be_barWrapper'>
+				<span class='be_bars be_spanBar be_backgroundBar'>
+					<span class='be_bars be_emBar be_valBar3' id='refor-bar'></span>
+				</span>
+			</div>
+			<div class='be_barLabel'><img class='be_updown' src='plugins/benefits_explorer/images/green.png' alt='green circle'></div>
+		</div>
+		<!-- Freshwater Biodiversity Threat Index -->
+		<div class='be_lineHeader2'>Freshwater Biodiversity Threat Index: <span id='freshbiot-amount' class='be_bnum'></span><span id='freshbiot-label' class='be_bnum'></span></div>
+		<div class='be_barWrap'>
+			<div class='be_barLabel'><img class='be_updown' src='plugins/benefits_explorer/images/green.png' alt='green circle'></div>
+			<div class='be_barWrapper'>
+				<span class='be_bars be_spanBar be_backgroundBar'>
+					<span class='be_bars be_emBar be_valBar4' id='freshbiot-bar'></span>
+				</span>
+			</div>
+			<div class='be_barLabel'><img class='be_updown' src='plugins/benefits_explorer/images/red.png' alt='red circle'></div>
+		</div>
+		<!-- Imperiled Terrestrial Species - count -->
+		<div class='be_lineHeader2'>Imperiled Terrestrial Species: <span id='terrsp-amount' class='be_bnum'></span><span id='terrsp-label' class='be_bnum'> species</span></div>
+		<div class='be_barWrap'>
+			<div class='be_barLabel'><img class='be_updown' src='plugins/benefits_explorer/images/green.png' alt='green circle'></div>
+			<div class='be_barWrapper'>
+				<span class='be_bars be_spanBar be_backgroundBar'>
+					<span class='be_bars be_emBar be_valBar5' id='terrsp-bar'></span>
+				</span>
+			</div>
+			<div class='be_barLabel'><img class='be_updown' src='plugins/benefits_explorer/images/red.png' alt='red circle'></div>
+		</div>
+		<!-- Percent Reduction in Vitamin A Production in Absence of Pollination Services -->
+		<div class='be_lineHeader2'>Drop in Vitamin A Production w/o Pollination: <span id='vita-amount' class='be_bnum'></span><span id='vita-label' class='be_bnum'>%</span></div>
+		<div class='be_barWrap'>
+			<div class='be_barLabel'><img class='be_updown' src='plugins/benefits_explorer/images/green.png' alt='green circle'></div>
+			<div class='be_barWrapper'>
+				<span class='be_bars be_spanBar be_backgroundBar'>
+					<span class='be_bars be_emBar be_valBar6' id='vita-bar'></span>
+				</span>
+			</div>
+			<div class='be_barLabel'><img class='be_updown' src='plugins/benefits_explorer/images/red.png' alt='red circle'></div>
+		</div>
+		<!-- The Percent of Total Agricultural Economic Value Lost in Absence of Pollination Services -->
+		<div class='be_lineHeader2'>Agricultural Economic Value Lost w/o Pollination: <span id='agloss-amount' class='be_bnum'></span><span id='agloss-label' class='be_bnum'>%</span></div>
+		<div class='be_barWrap'>
+			<div class='be_barLabel'><img class='be_updown' src='plugins/benefits_explorer/images/green.png' alt='green circle'></div>
+			<div class='be_barWrapper'>
+				<span class='be_bars be_spanBar be_backgroundBar'>
+					<span class='be_bars be_emBar be_valBar7' id='agloss-bar'></span>
+				</span>
+			</div>
+			<div class='be_barLabel'><img class='be_updown' src='plugins/benefits_explorer/images/red.png' alt='red circle'></div>
+		</div>
+		<!-- Total Annual Excess Nitrogen Application -->
+		<div class='be_lineHeader2'>Annual Excess Nitrogen Application: <span id='nitrogen-amount' class='be_bnum'></span><span id='nitrogen-label' class='be_bnum'>K tonnes</span></div>
+		<div class='be_barWrap'>
+			<div class='be_barLabel'><img class='be_updown' src='plugins/benefits_explorer/images/green.png' alt='green circle'></div>
+			<div class='be_barWrapper'>
+				<span class='be_bars be_spanBar be_backgroundBar'>
+					<span class='be_bars be_emBar be_valBar8' id='nitrogen-bar'></span>
+				</span>
+			</div>
+			<div class='be_barLabel'><img class='be_updown' src='plugins/benefits_explorer/images/red.png' alt='red circle'></div>
+		</div>
+	</div>	
+</div>
+<hr class='be_hrStyle'>	
+<div id='sdWrap' class='be_largeHeader be_hs be_hide'><span class='be_headerHSBig'>&#xBB;</span> View Supporting Data</div>
+<div id='supDataWrap' class='be_sectionWrap be_hide'>
+	<div class='be_bensWrap'>
+		<div class='be_cbSupWrap'><div class='be_cbLabel'><input type='checkbox' class='be_pointer' value='temp'>Placeholder for supporing layer 1</div></div>
+		<div class='be_cbSupWrap'><div class='be_cbLabel'><input type='checkbox' class='be_pointer' value='temp'>Placeholder for supporing layer 2</div></div>
+		<div class='be_cbSupWrap'><div class='be_cbLabel'><input type='checkbox' class='be_pointer' value='temp'>Placeholder for supporing layer 3</div></div>
+	</div>	
+</div>
+<hr class='be_hrStyle be_hide'>
