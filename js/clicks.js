@@ -54,7 +54,7 @@ function ( Query, QueryTask, declare, FeatureLayer, lang, on, $, ui, esriapi ) {
 					}	
 				}));	
 				// Standing Carbon range slider
-				$('#' + t.id + '-standingc').slider({range:true, min:0, max:9600, values:[0,9600], change:function(event,ui){t.clicks.sliderChange(event,ui,t)}});
+				$('#' + t.id + '-standingc').slider({range:true, min:0, max:6600, values:[0,6600], change:function(event,ui){t.clicks.sliderChange(event,ui,t)}});
 				// Forest Loss range slider
 				$('#' + t.id + '-forloss').slider({range:true, min:0, max:20000, values:[0,20000], change:function(event,ui){t.clicks.sliderChange(event,ui,t)}});
 				// Reforestation Potential range slider
