@@ -6,18 +6,45 @@ function ( Query, QueryTask, declare, FeatureLayer, lang, on, $, ui, esriapi ) {
 
         return declare(null, {
 			clickListener: function(t){
-				// Infographic section clicks
-				$('.plugin-infographic .be_accordHeader').on('click',lang.hitch(t,function(c){
-					if ( $(c.currentTarget).next().is(":hidden") ){
-						$('.plugin-infographic .be_exWrap').slideUp();
-						$(c.currentTarget).next().slideDown();
-					}	
-				}));
+				t.inAc = 'yes';
+				//make main accrodian
+				$( function() {
+					$( "#" + t.id + "be_mainAccord" ).accordion({
+						heightStyle: "fill"
+					});
+					$( ".plugin-infographic  #be_infoAccord" ).accordion({
+						heightStyle: "fill"
+					});
+				});
+				// Use map resize listener to to track browser window change and refresh accordians
+			/*	$(window).resize(function() {
+					clearTimeout(window.resizedFinished);
+					window.resizedFinished = setTimeout(function(){
+						t.clicks.updateAccord(t);
+						console.log('Resized finished.');
+					}, 250);
+				});*/
+
+				t.map.on('resize',lang.hitch(t,function(){
+					t.clicks.updateAccord(t);
+				}))		
+				t.clicks.updateAccord(t);						
+				// track when info window is closed
+				$('.sidebar-button-bottom button').on('click',lang.hitch(t,function(){
+					t.clicks.updateAccord(t);
+				}));	
+				
 				$('#' + t.id + ' .be_minfo').on('click',lang.hitch(t,function(c){
-					var ben = c.target.id.split("-").pop();
 					$('.plugin-help').trigger('click');
+					var ben = c.target.id.split("-").pop();
+					$( ".plugin-infographic  #be_infoAccord" ).accordion({
+						heightStyle: "fill"
+					});
+					t.inAc = 'yes';
+					t.clicks.updateAccord(t);	
 					$('.plugin-infographic .' + ben).trigger('click');
-					$('.plugin-infographic .be_infoWrap').siblings('span').children().html('Back');
+					$('.plugin-infographic .sidebar-button-bottom').children('button').html('Back');
+					
 				}));	
 				// Hide/show benefit sections
 				$('#' + t.id + ' .be_hs').on('click',lang.hitch(t,function(c){
@@ -88,7 +115,7 @@ function ( Query, QueryTask, declare, FeatureLayer, lang, on, $, ui, esriapi ) {
 				}else{
 					$('#' + t.id + ben + '-range').html("(" + low + " - " + high);
 				}
-				$('#' + t.id + ben + '-unit').show();
+				$('#' + t.id + ben + '-unit').css('display', 'inline-block');
 			},	
 			layerDefsUpdate: function(t){
 				t.exp = [t.standingc, t.forloss, t.refor, t.freshbiot, t.terrsp, t.vita, t.agloss, t.nitrogen]
@@ -143,12 +170,27 @@ function ( Query, QueryTask, declare, FeatureLayer, lang, on, $, ui, esriapi ) {
 				var queryTask = new QueryTask(t.url + '/0');
 				query.where = exp;
 				queryTask.executeForCount(query,function(count){
-					$('#' + t.id + 'basinCnt').html(count); 
+					var cnt = t.clicks.numberWithCommas(count)
+					$('#' + t.id + 'basinCnt').html(cnt); 
 				});
+			},
+			updateAccord: function(t){
+				var wh = $(window).height();
+				var hh = $('header').outerHeight();
+				//app accordian
+				$('#' + t.id).css('height', wh - hh - 42);
+				$( "#" + t.id + "be_mainAccord" ).accordion('refresh');	
+				
+				//info accordian
+				t.infoheight = wh - hh - 50;
+				$('.plugin-infographic').css('height', t.infoheight);
+				if (t.inAc == 'yes'){
+					$( ".plugin-infographic  #be_infoAccord" ).accordion('refresh');				
+				}
 			},
 			numberWithCommas: function(x){
 				return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 			}			
         });
     }
-);
+)

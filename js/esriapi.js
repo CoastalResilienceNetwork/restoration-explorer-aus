@@ -36,7 +36,7 @@ function ( 	ArcGISDynamicMapServiceLayer, Extent, SpatialReference, Query, Query
 				t.map.addLayer(t.basinFl);
 				t.basinFl.on('selection-complete', lang.hitch(t,function(evt){
 					if (evt.features.length > 0){
-						$('#' + t.id + 'hydroHeader').html('Selected hydrobasin');
+						$('#' + t.id + 'hydroHeader').html('<b>Selected Hydrobasin Attributes</b>');
 						var atts = evt.features[0].attributes;
 						var b = [['standingc',atts.standingc,6568.95], ['forloss',atts.forloss,19429.33], ['refor',atts.refor,65038.4], ['freshbiot',atts.freshbiot/10,1], 
 								 ['terrsp',atts.terrsp,219], ['vita',atts.vita,84.06], ['agloss',atts.agloss,68], ['nitrogen',atts.nitrogen,611.6]];

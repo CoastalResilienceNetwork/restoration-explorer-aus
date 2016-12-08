@@ -1,108 +1,118 @@
 ﻿<style>
+	.be_topPad{
+		height:40px;
+	}
+	.be_bottomPad{
+		height:36px;
+	}
 	.be_infoWrap{
-		padding:0px 10px; height:480px; width:410px;
+		padding:0px; color:#000; position:relative; margin-bottom: 2px;
+	}
+	.be_infoAccordWrap{
+		margin-bottom:36px;
 	}
 	.be_introText{
-		font-size:12pt; margin:0px; text-align:left;	
+		font-size:1.5rem; margin:0px; text-align:left;	
 	}
-	.be_explanations{
-		font-size:12pt; margin-top:5px; margin-bottom:5px; text-align:left; color:#21658c;	
+	.be_exWrap p{
+		font-size:1.4rem; margin-top:5px; margin-bottom:5px; text-align:left; color:#21658c;	
 	}
 	.be_accordHeader{
-		font-size:12pt; font-weight:bold; text-align:left; margin:10px 0px 0px 0px; cursor:pointer;
+		font-size:1.4rem; font-weight:bold; text-align:left; margin:10px 0px 0px 0px; cursor:pointer;
 	}
 	.be_accordHeader:hover{
 		text-shadow:1px 1px #cdcdcd;	
 	}
 	.be_docuHeader{
-		font-size:14pt; font-weight:bold; text-align:left; margin:10px 0px 0px 0px; 
+		font-size:14pt; font-weight:bold; text-align:left; margin:4px 0px 0px 5px; 
 	}
 	.be_dlHeader{
-		font-size:12pt; text-align:left; margin:10px 0px 5px 0px; text-decoration:underline;
-	}
-	.be_exWrap{
-		display:none; 
-	}
-	.be_exWrapTall{
-		max-height:328px; overflow:auto;
+		font-size:1.4rem; text-align:left; margin:10px 0px 5px 0px; text-decoration:underline;
 	}
 	.be_a{
 		color:blue !important; margin:0 !important;
 	}
+	.plugin-infographic{
+		text-align:center;
+	}
+	.plugin-infographic label{
+		color:#333; margin-left:3px;
+	}	
 </style>
-<div class='be_infoWrap'>
-	<div class='be_docuHeader'>Documentation</div>
-	<div class='be_accordHeader'>Introduction</div>
-	<div class='be_exWrap' style='display:block;'>
-		<div class='be_explanations'>
-			This app allows users to see where investments may achieve the most co-benefits for people and nature. 
-			Users can identify watersheds that meet user-defined criteria related to biodiversity conservation, climate change mitigation, 
-			and human health and well-being, as an aid in prioritizing investment and action. Users can also select individual 
-			watersheds and view more detailed information about what co-benefits may, or may not, be enhanced by investments in that watershed.<br><br>
-			<b>Data layers in this explorer are derivatives of the source data. Please note that the accuracy of each data layer is limited by the 
-			coverage and comprehensiveness of the original dataset. Please refer to the original source for more detailed information.<br><br>
-			See <a class='be_a' target='_blank' href='plugins/benefits_explorer/images/MethodsDocumentation.pdf'>data documentation</a> for full methodology and citations.</b><br>
+<div class='be_topPad'></div>
+
+	<div id='be_infoAccord' class='be_infoWrap'>
+		<h3>Documentation</h3>
+		<div class='be_exWrap'>
+			<p>
+				This app allows users to see where investments may achieve the most co-benefits for people and nature. 
+				Users can identify watersheds that meet user-defined criteria related to biodiversity conservation, climate change mitigation, 
+				and human health and well-being, as an aid in prioritizing investment and action. Users can also select individual 
+				watersheds and view more detailed information about what co-benefits may, or may not, be enhanced by investments in that watershed.
+			</p>
+			<p>Data layers in this explorer are derivatives of the source data. Please note that the accuracy of each data layer is limited by the 
+				coverage and comprehensiveness of the original dataset. Please refer to the original source for more detailed information.
+			</p>
+			<p>See <a class='be_a' target='_blank' href='plugins/benefits_explorer/images/MethodsDocumentation.pdf'>data documentation</a> for full methodology and citations.
+			</p> 
 		</div> 
-	</div> 
-	<hr class='be_hrStyle'>
-	<div class='be_accordHeader infoCarbon'>Climate Change Mitigation/Carbon</div>
-	<div class='be_exWrap'>
-		<div class='be_explanations'>
-			Activities like reforestation, forest protection, and agricultural BMPs can mitigate 
-			climate change by avoiding carbon dioxide emissions through actions that safeguard carbon stored in soil and plants and sequestering 
-			carbon through plant growth. The following data layers provide information on watersheds where these activities have the greatest potential 
-			to contribute to climate change mitigation:
+		<h3 class='infoCarbon'>Climate Change Mitigation/Carbon</h3>
+		<div class='be_exWrap'>
+			<p>
+				Activities like reforestation, forest protection, and agricultural BMPs can mitigate 
+				climate change by avoiding carbon dioxide emissions through actions that safeguard carbon stored in soil and plants and sequestering 
+				carbon through plant growth. The following data layers provide information on watersheds where these activities have the greatest potential 
+				to contribute to climate change mitigation:
+			</p>
+			<div class='be_dlHeader'>Standing Carbon</div>
+			<p>
+				Total carbon stored in living, above-ground biomass summarized by HydroBASINS across the tropics. (Source data: Baccini et al. in review; Zarin et al., 2016)
+			</p>
+			<div class='be_dlHeader'>Forest Loss</div>
+			<p class='be_explanations'>
+				Cumulative area of forest loss between 2001 and 2014. (Source data: Hansen et al., 2013)
+			</p>
+			<div class='be_dlHeader'>Reforestation Potential</div>
+			<p class='be_explanations'>
+				Area of degraded forest lands that have the potential to be restored and reforested.  (Source data: WRI 2014)
+			</p>
 		</div>
-		<div class='be_dlHeader'>Standing Carbon</div>
-		<div class='be_explanations'>
-			Total carbon stored in living, above-ground biomass summarized by HydroBASINS across the tropics. (Source data: Baccini et al. in review; Zarin et al., 2016)
-		</div>
-		<div class='be_dlHeader'>Forest Loss</div>
-		<div class='be_explanations'>
-			Cumulative area of forest loss between 2001 and 2014. (Source data: Hansen et al., 2013)
-		</div>
-		<div class='be_dlHeader'>Reforestation Potential</div>
-		<div class='be_explanations'>
-			Area of degraded forest lands that have the potential to be restored and reforested.  (Source data: WRI 2014)
-		</div>
+		<h3 class='infoBio'>Biodiversity</h3>
+		<div class='be_exWrap'>
+			<p>
+				Strategic land management and protection can conserve habitat for terrestrial species and benefit aquatic 
+				species by improving water quality and flow reliability. The following data layers provide information on where biodiversity is threatened and 
+				where improvements in watershed health may benefit biodiversity conservation:
+			</p>
+			<div class='be_dlHeader'>Freshwater Biodiversity Threat Index</div>
+			<p>
+				Levels of threat to freshwater biodiversity within HydroBASINS normalized and standardized between zero and one. Some basins do not have average threat values due to insufficient coverage of the index data. (Source data: Vörösmarty et al., 2010)
+			</p>
+			<div class='be_dlHeader'>Imperiled Terrestrial Species</div>
+			<p>
+				Number of terrestrial species, including mammals, birds and amphibians, classified by the IUCN Red List as critically endangered, endangered or vulnerable. (Source data: BirdLife International and NatureServe 2015; IUCN 2016)
+			</p>
+		</div>	
+		<h3 class='infoHealth'>Human Health &#38; Well Being</h3>
+		<div class='be_exWrap'>
+			<p>
+				Communities not only benefit from improved water security but also from improved watershed health overall. 
+				The following data layers show where land protection could maintain pollination services providing valuable micronutrient and crop yield benefits, 
+				and also identify places with the greatest need for reducing excess nitrogen in surface waters:
+			</p>
+			<div class='be_dlHeader'>Drop in Vitamin A Production w/o Pollination</div>
+			<p>
+				The estimated percent reduction in vitamin A production associated with reduced pollination services. Data are summarized in HydroBASINS currently experiencing moderate or severe vitamin A deficiency, and basins with no data are of low concern for vitamin A deficiency. (Source data: Klein et al., 2007; Monfreda et al., 2008; WHO 2009; FAO 2016)
+			</p>
+			<div class='be_dlHeader'>Agricultural Economic Value Lost w/o Pollination</div>
+			<p>
+				The estimated percent of total agricultural economic value lost with reduced pollination services. (Source data: Monfreda et al., 2008; FAO 2016)
+			</p>
+			<div class='be_dlHeader'>Total Annual Excess Nitrogen Application</div>
+			<p>
+				Estimated total potential excess nitrogen loading per year into adjacent waterbodies. (Source data: EarthStat total fertilizer balance data; West et al., 2014)
+			</p>
+		</div>	
 	</div>
-	<hr class='be_hrStyle'>
-	<div class='be_accordHeader infoBio'>Biodiversity</div>
-	<div class='be_exWrap'>
-		<div class='be_explanations'>
-			Strategic land management and protection can conserve habitat for terrestrial species and benefit aquatic 
-			species by improving water quality and flow reliability. The following data layers provide information on where biodiversity is threatened and 
-			where improvements in watershed health may benefit biodiversity conservation:
-		</div>
-		<div class='be_dlHeader'>Freshwater Biodiversity Threat Index</div>
-		<div class='be_explanations'>
-			Levels of threat to freshwater biodiversity within HydroBASINS normalized and standardized between zero and one. Some basins do not have average threat values due to insufficient coverage of the index data. (Source data: Vörösmarty et al., 2010)
-		</div>
-		<div class='be_dlHeader'>Imperiled Terrestrial Species</div>
-		<div class='be_explanations'>
-			Number of terrestrial species, including mammals, birds and amphibians, classified by the IUCN Red List as critically endangered, endangered or vulnerable. (Source data: BirdLife International and NatureServe 2015; IUCN 2016)
-		</div>
-	</div>	
-	<hr class='be_hrStyle'>
-	<div class='be_accordHeader infoHealth'>Human Health &#38; Well Being</div>
-	<div class='be_exWrap be_exWrapTall'>
-		<div class='be_explanations'>
-			Communities not only benefit from improved water security but also from improved watershed health overall. 
-			The following data layers show where land protection could maintain pollination services providing valuable micronutrient and crop yield benefits, 
-			and also identify places with the greatest need for reducing excess nitrogen in surface waters:
-		</div>
-		<div class='be_dlHeader'>Drop in Vitamin A Production w/o Pollination</div>
-		<div class='be_explanations'>
-			The estimated percent reduction in vitamin A production associated with reduced pollination services. Data are summarized in HydroBASINS currently experiencing moderate or severe vitamin A deficiency, and basins with no data are of low concern for vitamin A deficiency. (Source data: Klein et al., 2007; Monfreda et al., 2008; WHO 2009; FAO 2016)
-		</div>
-		<div class='be_dlHeader'>Agricultural Economic Value Lost w/o Pollination</div>
-		<div class='be_explanations'>
-			The estimated percent of total agricultural economic value lost with reduced pollination services. (Source data: Monfreda et al., 2008; FAO 2016)
-		</div>
-		<div class='be_dlHeader'>Total Annual Excess Nitrogen Application</div>
-		<div class='be_explanations'>
-			Estimated total potential excess nitrogen loading per year into adjacent waterbodies. (Source data: EarthStat total fertilizer balance data; West et al., 2014)
-		</div>
-	</div>	
-	<hr class='be_hrStyle'>
-</div
+
+

@@ -12,7 +12,7 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, lang, obj,
 	return declare(PluginBase, {
 		// The height and width are set here when an infographic is defined. When the user click Continue it rebuilds the app window with whatever you put in.
 		toolbarName: "Benefits Explorer", showServiceLayersInLegend: true, allowIdentifyWhenActive: false, rendered: false, resizable: false,
-		hasCustomPrint: true, usePrintPreviewMap: true, previewMapSize: [1000, 550], height:"560", width:"390", infoGraphic: ig,		
+		hasCustomPrint: true, usePrintPreviewMap: true, previewMapSize: [1000, 550], infoGraphic: ig, size:'small',	
 		// First function called when the user clicks the pluging icon. 
 		initialize: function (frameworkParameters) {
 			// Access framework parameters
@@ -20,13 +20,11 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, lang, obj,
 			// Set initial app size based on split screen state
 			this.con = dom.byId('plugins/benefits_explorer-0');
 			this.con1 = dom.byId('plugins/benefits_explorer-1');
-			if (this.con1 != undefined){
+			/*if (this.con1 != undefined){
 				domStyle.set(this.con1, "width", "390px");
-				domStyle.set(this.con1, "height", "560px");
 			}else{
 				domStyle.set(this.con, "width", "390px");
-				domStyle.set(this.con, "height", "560px");
-			}	
+			}*/	
 			// Define object to access global variables from JSON object. Only add variables to varObject.json that are needed by Save and Share. 
 			this.obj = dojo.eval("[" + obj + "]")[0];	
 			this.url = "http://dev.services2.coastalresilience.org:6080/arcgis/rest/services/Water_Blueprint/BenefitsExplorer/MapServer";
@@ -38,7 +36,7 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, lang, obj,
 				this.map.removeLayer(this.dynamicLayer);
 				this.map.removeLayer(this.basinFl);
 				this.map.graphics.clear();
-				$('.plugin-infographic .be_infoWrap').siblings('span').children().html('Next')
+				$('.plugin-infographic .sidebar-button-bottom').children('button').html('Get Started');
 			}
 		},
 		// Called after hibernate at app startup. Calls the render function which builds the plugins elements and functions.   
@@ -95,8 +93,7 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, lang, obj,
 		},
 		// Called by activate and builds the plugins elements and functions
 		render: function() {
-			
-			$('.basemap-selector').trigger('change', 3);
+			//$('.basemap-selector').trigger('change', 3);
 			// BRING IN OTHER JS FILES
 			this.barChart = new barChart();
 			this.hbar = new hbar();
@@ -104,7 +101,7 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, lang, obj,
 			this.clicks = new clicks();
 			// ADD HTML TO APP
 			// Define Content Pane as HTML parent		
-			this.appDiv = new ContentPane({style:'padding:0px 8px 8px 8px; position:relative;'});
+			this.appDiv = new ContentPane({style:'padding:0px 0px 0px 0px; position:relative; color:#000;'});
 			this.id = this.appDiv.id
 			dom.byId(this.container).appendChild(this.appDiv.domNode);					
 			// Get html from content.html, prepend appDiv.id to html element id's, and add to appDiv
@@ -118,6 +115,6 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, lang, obj,
 			this.rendered = true;	
 			// resize the container in the render function after the container is built.
 			this.resize1();
-		},
+		}
 	});
 });
