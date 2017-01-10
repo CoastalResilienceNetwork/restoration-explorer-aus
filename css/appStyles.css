@@ -207,6 +207,9 @@ abbr.search-choice-close {
 .plugin-minimize{
 	display:none;
 }	
-.background-primary, .button-primary, .nav-apps-button.active {
-    background-color: #333333;
+.nav-apps-button.active {
+    background-color: #333333 !important;
+}
+.nav-apps-button.active.app-displayed {
+    background-color: #0096D6 !important;
 }
