@@ -153,34 +153,42 @@ function ( Query, QueryTask, declare, FeatureLayer, lang, on, $, ui, esriapi, do
 						}	
 					});
 					var q = new Query();
-					var qt = new QueryTask(t.url + '/4');
+					var qt = new QueryTask(t.url + '/' + t.hbNoData);
 					q.where = t.exp1;
 					qt.executeForCount(q,function(count){
-						var layerDefinitions = [];
-						layerDefinitions[5] = exp;
+						t.layerDefinitions = [];
+						t.layerDefinitions[t.hbFil] = exp;
+						t.layerDefinitions[t.selHb] = t.selHbDef;
 						if (count > 0){
-							layerDefinitions[4] = t.exp1;	
-							t.obj.visibleLayers = [4,5,6];
+							t.layerDefinitions[t.hbNoData] = t.exp1;	
+							t.obj.visibleLayers = [t.hbNoData, t.hbFil, t.hbSwh];
 						}else{
-							t.obj.visibleLayers = [5,6];
+							t.obj.visibleLayers = [t.hbFil, t.hbSwh];
 						}
-						t.dynamicLayer.setLayerDefinitions(layerDefinitions);
+						if (t.selHbDef.length > 0){
+							t.obj.visibleLayers.push(t.selHb)
+						}
+						t.dynamicLayer.setLayerDefinitions(t.layerDefinitions);
 						t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);						
 					}); 
 				}else{	
 					if (exp.length == 0){
 						exp = "OBJECTID < 0";
-						t.obj.visibleLayers = [6];
+						t.obj.visibleLayers = [t.hbSwh];
 					}else{
-						t.obj.visibleLayers = [5,6];
+						t.obj.visibleLayers = [t.hbFil, t.hbSwh];
 					}		
-					var layerDefinitions = [];		
-					layerDefinitions[5] = exp;	
-					t.dynamicLayer.setLayerDefinitions(layerDefinitions);
+					if (t.selHbDef.length > 0){
+						t.obj.visibleLayers.push(t.selHb)
+					}
+					t.layerDefinitions = [];		
+					t.layerDefinitions[t.hbFil] = exp;
+					t.layerDefinitions[t.selHb] = t.selHbDef;					
+					t.dynamicLayer.setLayerDefinitions(t.layerDefinitions);
 					t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
 				}
 				var query = new Query();
-				var queryTask = new QueryTask(t.url + '/4');
+				var queryTask = new QueryTask(t.url + '/' + t.hbNoData);
 				query.where = exp;
 				queryTask.executeForCount(query,function(count){
 					var cnt = t.clicks.numberWithCommas(count)

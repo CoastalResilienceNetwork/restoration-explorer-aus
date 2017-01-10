@@ -26,9 +26,6 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, lang, obj,
 		hibernate: function () {
 			if (this.appDiv != undefined){
 				this.map.removeLayer(this.dynamicLayer);
-				this.map.removeLayer(this.basinFl);
-				this.map.graphics.clear();
-				
 			}
 		},
 		// Called after hibernate at app startup. Calls the render function which builds the plugins elements and functions.   
@@ -40,8 +37,6 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, lang, obj,
 				$(this.printButton).hide();
 			}else{
 				this.map.addLayer(this.dynamicLayer);
-				this.clicks.updateAccord(this);
-				this.map.addLayer(this.basinFl);
 				// on set state it calls activate twice. on the second call render is true so it call this else. layer infos isn't done yet so if you call setNavBtns it can't use layer infos
 				if (this.obj.stateSet == "no"){	
 					//this.navigation.setNavBtns(this);	
@@ -52,7 +47,9 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, lang, obj,
 		},
 		// Called when user hits the minimize '_' icon on the pluging. Also called before hibernate when users closes app by clicking 'X'.
 		deactivate: function () {
-				
+			if (this.appDiv != undefined){
+				this.map.removeLayer(this.dynamicLayer);
+			}	
 		},	
 		// Called when user hits 'Save and Share' button. This creates the url that builds the app at a given state using JSON. 
 		// Write anything to you varObject.json file you have tracked during user activity.		
