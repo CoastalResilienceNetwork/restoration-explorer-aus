@@ -6,6 +6,7 @@ function ( Query, QueryTask, declare, FeatureLayer, lang, on, $, ui, esriapi, do
 
         return declare(null, {
 			clickListener: function(t){
+<<<<<<< HEAD
 				//make accrodians
 				$( function() {
 					$( "#" + t.id + "mainAccord" ).accordion({heightStyle: "fill"}); 
@@ -42,6 +43,35 @@ function ( Query, QueryTask, declare, FeatureLayer, lang, on, $, ui, esriapi, do
 				}));		
 				// Benefit CB Clicks
 				$('#' + t.id + 'basinByBensWrap .sty_cbWrap').on('click',lang.hitch(t,function(c){
+=======
+				// Infographic section clicks
+				$('.plugin-infographic .be_accordHeader').on('click',lang.hitch(t,function(c){
+					if ( $(c.currentTarget).next().is(":hidden") ){
+						$('.plugin-infographic .be_exWrap').slideUp();
+						$(c.currentTarget).next().slideDown();
+					}	
+				}));
+				$('#' + t.id + ' .be_minfo').on('click',lang.hitch(t,function(c){
+					var ben = c.target.id.split("-").pop();
+					$('.plugin-help').trigger('click');
+					$('.plugin-infographic .' + ben).trigger('click');
+					$('.plugin-infographic .be_infoWrap').siblings('span').children().html('Back');
+				}));	
+				// Hide/show benefit sections
+				$('#' + t.id + ' .be_hs').on('click',lang.hitch(t,function(c){
+					if ( $(c.currentTarget).next().is(":hidden") ){
+						$('#' + t.id + ' .be_sectionWrap').slideUp();
+						$(c.currentTarget).next().slideDown();
+					}	
+				}));
+				// Explain benefits click
+				$('#' + t.id + 'moreInfo').on('click',lang.hitch(t,function(c){
+					$('#' + t.id + 'moreInfo span').toggle();
+					$('#' + t.id + ' .explanations').slideToggle();
+				}));	
+				// Benefit CB Clicks
+				$('#' + t.id + 'cbListener .be_cbBenWrap').on('click',lang.hitch(t,function(c){
+>>>>>>> origin/development
 					var ben = "";
 					// if they click a label toggle the checkbox
 					if (c.target.checked == undefined){
@@ -51,17 +81,26 @@ function ( Query, QueryTask, declare, FeatureLayer, lang, on, $, ui, esriapi, do
 						ben = c.target.value;
 					}	
 					if ($(c.currentTarget.children[0].children[0]).prop('checked') === true){
+<<<<<<< HEAD
 						$(c.currentTarget).parent().find('.sty_rangeWrap').slideDown();
 						var values = $('#' + t.id + '-' + ben).slider("option", "values");
 						$('#' + t.id + '-' + ben).slider('values', values); 
 					}else{
 						$(c.currentTarget).parent().find('.sty_rangeWrap').slideUp();
+=======
+						$(c.currentTarget).parent().find('.be_rangeWrap').slideDown();
+						var values = $('#' + t.id + '-' + ben).slider("option", "values");
+						$('#' + t.id + '-' + ben).slider('values', values); 
+					}else{
+						$(c.currentTarget).parent().find('.be_rangeWrap').slideUp();
+>>>>>>> origin/development
 						t[ben] = "";
 						t.clicks.layerDefsUpdate(t);
 						$('#' + t.id + ben + '-range').html("")
 						$('#' + t.id + ben + '-unit').hide();
 					}	
 				}));	
+<<<<<<< HEAD
 				// Sup data CB Clicks
 				$('#' + t.id + 'supDataWrap .sty_cbStackedWrap').on('click',lang.hitch(t,function(c){
 					var val = "";
@@ -93,6 +132,8 @@ function ( Query, QueryTask, declare, FeatureLayer, lang, on, $, ui, esriapi, do
 					}	
 					t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
 				}));	
+=======
+>>>>>>> origin/development
 				// Standing Carbon range slider
 				$('#' + t.id + '-standingc').slider({range:true, min:0, max:6600, values:[0,6600], change:function(event,ui){t.clicks.sliderChange(event,ui,t)}});
 				// Forest Loss range slider
@@ -128,7 +169,11 @@ function ( Query, QueryTask, declare, FeatureLayer, lang, on, $, ui, esriapi, do
 				}else{
 					$('#' + t.id + ben + '-range').html("(" + low + " - " + high);
 				}
+<<<<<<< HEAD
 				$('#' + t.id + ben + '-unit').css('display', 'inline-block');
+=======
+				$('#' + t.id + ben + '-unit').show();
+>>>>>>> origin/development
 			},	
 			layerDefsUpdate: function(t){
 				t.exp = [t.standingc, t.forloss, t.refor, t.freshbiot, t.terrsp, t.vita, t.agloss, t.nitrogen]
@@ -147,12 +192,17 @@ function ( Query, QueryTask, declare, FeatureLayer, lang, on, $, ui, esriapi, do
 					}	
 				}));
 				if (cnt == 1){
+<<<<<<< HEAD
 					$('#' + t.id + 'basinByBensWrap input').each(function(i,v){
+=======
+					$('#' + t.id + 'cbListener input').each(function(i,v){
+>>>>>>> origin/development
 						if ($(v).prop('checked')){
 							t.exp1 = $(v).val() + " = -99";
 						}	
 					});
 					var q = new Query();
+<<<<<<< HEAD
 					var qt = new QueryTask(t.url + '/4');
 					q.where = t.exp1;
 					qt.executeForCount(q,function(count){
@@ -176,10 +226,36 @@ function ( Query, QueryTask, declare, FeatureLayer, lang, on, $, ui, esriapi, do
 					}		
 					var layerDefinitions = [];		
 					layerDefinitions[5] = exp;	
+=======
+					var qt = new QueryTask(t.url + '/0');
+					q.where = t.exp1;
+					qt.executeForCount(q,function(count){
+						var layerDefinitions = [];
+						layerDefinitions[1] = exp;
+						if (count > 0){
+							layerDefinitions[0] = t.exp1;	
+							t.obj.visibleLayers = [0,1,2];
+						}else{
+							t.obj.visibleLayers = [1,2];
+						}
+						t.dynamicLayer.setLayerDefinitions(layerDefinitions);
+						t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);						
+					});
+				}else{	
+					if (exp.length == 0){
+						exp = "OBJECTID < 0";
+						t.obj.visibleLayers = [2];
+					}else{
+						t.obj.visibleLayers = [1,2];
+					}		
+					var layerDefinitions = [];		
+					layerDefinitions[1] = exp;	
+>>>>>>> origin/development
 					t.dynamicLayer.setLayerDefinitions(layerDefinitions);
 					t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
 				}
 				var query = new Query();
+<<<<<<< HEAD
 				var queryTask = new QueryTask(t.url + '/4');
 				query.where = exp;
 				queryTask.executeForCount(query,function(count){
@@ -191,6 +267,14 @@ function ( Query, QueryTask, declare, FeatureLayer, lang, on, $, ui, esriapi, do
 				$( "#" + t.id + "mainAccord" ).accordion('refresh');	
 				$( "#" + t.id +  "infoAccord" ).accordion('refresh');				
 			},
+=======
+				var queryTask = new QueryTask(t.url + '/0');
+				query.where = exp;
+				queryTask.executeForCount(query,function(count){
+					$('#' + t.id + 'basinCnt').html(count); 
+				});
+			},
+>>>>>>> origin/development
 			numberWithCommas: function(x){
 				return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 			}			

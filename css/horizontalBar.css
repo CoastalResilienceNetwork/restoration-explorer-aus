@@ -1,0 +1,52 @@
+.be_barWrapper {
+	width: 240px; height: 16px; position: relative; top:4px; left:0px; background-color:#333; display:inline-block;	
+	-moz-box-shadow: 3px 3px 5px #999; -webkit-box-shadow: 3px 3px 5px #999; box-shadow: 1px 1px 2px #999;
+} 
+.be_barLabel{
+	display:inline-block; margin:6px 0px 0px 0px;	
+}	
+.be_bars{
+	position: absolute; display: block; width:236px; height:12px; border: 0; left: 0px; bottom: 0%; float:left; color:black; 
+	-moz-box-shadow: inset 1px 2px 2px rgba(255, 255, 255, .4), inset -1px -1px 2px rgba(0, 0, 0, .4);
+	-webkit-box-shadow: inset 1px 2px 2px rgba(255, 255, 255, .4), inset -1px -1px 2px rgba(0, 0, 0, .4);
+	box-shadow: inset 1px 2px 2px rgba(255, 255, 255, .4), inset -1px -1px 2px rgba(0, 0, 0, .4);
+}
+.be_spanBar{
+	top:2px; left:2px; overflow:hidden; text-indent:-30px;
+}
+.be_emBar{
+	 border-right:1px solid #424542;
+} 
+.be_backgroundBar{
+	background:repeating-linear-gradient(45deg,#dedede,#dedede 5px,#eee 5px,#eee 10px);
+}
+.be_valBar{
+	background-color:#4fa84a;
+}
+.be_barWrap{
+	margin-left:10px; height:26px; 	
+}	
+.be_valBar1{
+	background-color:#603A14;
+}
+.be_valBar2{
+	background-color:#A14612;
+}
+.be_valBar3{
+	background-color:#C8841D;
+}
+.be_valBar4{
+	background-color:#CEA33A;
+}
+.be_valBar5{
+	background-color:#CEC83A;
+}
+.be_valBar6{
+	background-color:#8fb440;
+}
+.be_valBar7{
+	background-color:#408CB4;
+}
+.be_valBar8{
+	background-color:#6840B4;
+}

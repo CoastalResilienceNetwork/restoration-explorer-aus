@@ -5,6 +5,7 @@ require({
 // Bring in dojo and javascript api classes as well as varObject.json, js files, and content.html
 define([
 	"dojo/_base/declare", "framework/PluginBase", "dijit/layout/ContentPane", "dojo/dom", "dojo/dom-style", "dojo/dom-geometry", "dojo/_base/lang", "dojo/text!./obj.json", 
+<<<<<<< HEAD
 	"jquery", "dojo/text!./html/content.html", './js/jquery-ui-1.11.2/jquery-ui', './js/esriapi', './js/clicks', './js/barChart', './js/horizontalBar'
 ],
 function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, lang, obj, 
@@ -13,16 +14,41 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, lang, obj,
 		// The height and width are set here when an infographic is defined. When the user click Continue it rebuilds the app window with whatever you put in.
 		toolbarName: "Benefits Explorer", showServiceLayersInLegend: true, allowIdentifyWhenActive: false, rendered: false, resizable: false,
 		hasCustomPrint: true, usePrintPreviewMap: true, previewMapSize: [1000, 550], size:'custom', width:360,	
+=======
+	"jquery", "dojo/text!./html/content.html", "dojo/text!./html/infoGraphic.html", './js/jquery-ui-1.11.2/jquery-ui', './js/esriapi', './js/clicks', './js/barChart', './js/horizontalBar'
+],
+function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, lang, obj, 
+			$, content, ig, ui, esriapi, clicks, barChart, hbar ) {
+	return declare(PluginBase, {
+		// The height and width are set here when an infographic is defined. When the user click Continue it rebuilds the app window with whatever you put in.
+		toolbarName: "Benefits Explorer", showServiceLayersInLegend: true, allowIdentifyWhenActive: false, rendered: false, resizable: false,
+		hasCustomPrint: true, usePrintPreviewMap: true, previewMapSize: [1000, 550], height:"560", width:"390", infoGraphic: ig,		
+>>>>>>> origin/development
 		// First function called when the user clicks the pluging icon. 
 		initialize: function (frameworkParameters) {
 			// Access framework parameters
 			declare.safeMixin(this, frameworkParameters);
 			// Set initial app size based on split screen state
+<<<<<<< HEAD
 			this.con = dom.byId('plugins/benefits_explorer_prototype-0');
 			this.con1 = dom.byId('plugins/benefits_explorer_prototype-1');
 			// Define object to access global variables from JSON object. Only add variables to varObject.json that are needed by Save and Share. 
 			this.obj = dojo.eval("[" + obj + "]")[0];	
 			this.url = "http://dev.services2.coastalresilience.org:6080/arcgis/rest/services/Water_Blueprint/BenefitsExplorer_proto/MapServer";
+=======
+			this.con = dom.byId('plugins/benefits_explorer-0');
+			this.con1 = dom.byId('plugins/benefits_explorer-1');
+			if (this.con1 != undefined){
+				domStyle.set(this.con1, "width", "390px");
+				domStyle.set(this.con1, "height", "560px");
+			}else{
+				domStyle.set(this.con, "width", "390px");
+				domStyle.set(this.con, "height", "560px");
+			}	
+			// Define object to access global variables from JSON object. Only add variables to varObject.json that are needed by Save and Share. 
+			this.obj = dojo.eval("[" + obj + "]")[0];	
+			this.url = "http://dev.services2.coastalresilience.org:6080/arcgis/rest/services/Water_Blueprint/BenefitsExplorer/MapServer";
+>>>>>>> origin/development
 			this.layerDefs = [];
 		},
 		// Called after initialize at plugin startup (why all the tests for undefined). Also called after deactivate when user closes app by clicking X. 
@@ -31,7 +57,11 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, lang, obj,
 				this.map.removeLayer(this.dynamicLayer);
 				this.map.removeLayer(this.basinFl);
 				this.map.graphics.clear();
+<<<<<<< HEAD
 				
+=======
+				$('.plugin-infographic .be_infoWrap').siblings('span').children().html('Next')
+>>>>>>> origin/development
 			}
 		},
 		// Called after hibernate at app startup. Calls the render function which builds the plugins elements and functions.   
@@ -43,7 +73,10 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, lang, obj,
 				$(this.printButton).hide();
 			}else{
 				this.map.addLayer(this.dynamicLayer);
+<<<<<<< HEAD
 				this.clicks.updateAccord(this);
+=======
+>>>>>>> origin/development
 				this.map.addLayer(this.basinFl);
 				// on set state it calls activate twice. on the second call render is true so it call this else. layer infos isn't done yet so if you call setNavBtns it can't use layer infos
 				if (this.obj.stateSet == "no"){	
@@ -96,7 +129,11 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, lang, obj,
 			this.clicks = new clicks();
 			// ADD HTML TO APP
 			// Define Content Pane as HTML parent		
+<<<<<<< HEAD
 			this.appDiv = new ContentPane({style:'padding:0; color:#000; flex:1; display:flex; flex-direction:column;}'});
+=======
+			this.appDiv = new ContentPane({style:'padding:0px 8px 8px 8px; position:relative;'});
+>>>>>>> origin/development
 			this.id = this.appDiv.id
 			$(dom.byId(this.container)).addClass('sty_flexColumn')
 			dom.byId(this.container).appendChild(this.appDiv.domNode);					
