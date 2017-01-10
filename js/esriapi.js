@@ -72,7 +72,8 @@ function ( 	ArcGISDynamicMapServiceLayer, Extent, SpatialReference, Query, Query
 						$('#' + t.id + 'graphWrap').slideDown();
 					}else{
 						if (index > -1) {
-							t.obj.visibleLayers.splice(index, 1);						
+							t.obj.visibleLayers.splice(index, 1);
+							t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);							
 						}
 						$('#' + t.id + 'hydroHeader').html('Click map to select a HydroBASIN');
 						$('#' + t.id + 'graphWrap').slideUp();
@@ -80,10 +81,12 @@ function ( 	ArcGISDynamicMapServiceLayer, Extent, SpatialReference, Query, Query
 					}	
 				}));	
 				t.map.on("click", lang.hitch(t, function(evt) {
-					var pnt = evt.mapPoint;
-					var q = new Query();
-					q.geometry = pnt;
-					t.basinFl.selectFeatures(q,esri.layers.FeatureLayer.SELECTION_NEW);
+					if (t.open == "yes"){
+						var pnt = evt.mapPoint;
+						var q = new Query();
+						q.geometry = pnt;
+						t.basinFl.selectFeatures(q,esri.layers.FeatureLayer.SELECTION_NEW);
+					}	
 				}));
 				t.map.on("zoom-end", lang.hitch(t,function(e){
 					t.map.setMapCursor("pointer");

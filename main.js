@@ -27,6 +27,7 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, lang, obj,
 			if (this.appDiv != undefined){
 				this.map.removeLayer(this.dynamicLayer);
 			}
+			this.open = "no";
 		},
 		// Called after hibernate at app startup. Calls the render function which builds the plugins elements and functions.   
 		activate: function () {
@@ -37,19 +38,22 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, lang, obj,
 				$(this.printButton).hide();
 			}else{
 				this.map.addLayer(this.dynamicLayer);
+				this.dynamicLayer.setVisibleLayers(this.obj.visibleLayers);
 				// on set state it calls activate twice. on the second call render is true so it call this else. layer infos isn't done yet so if you call setNavBtns it can't use layer infos
 				if (this.obj.stateSet == "no"){	
 					//this.navigation.setNavBtns(this);	
 				}else{
 					this.obj.stateSet = "no";
 				}	
-			}		
+			}
+			this.open = "yes";			
 		},
 		// Called when user hits the minimize '_' icon on the pluging. Also called before hibernate when users closes app by clicking 'X'.
 		deactivate: function () {
 			if (this.appDiv != undefined){
 				this.map.removeLayer(this.dynamicLayer);
-			}	
+			}
+			this.open = "no";			
 		},	
 		// Called when user hits 'Save and Share' button. This creates the url that builds the app at a given state using JSON. 
 		// Write anything to you varObject.json file you have tracked during user activity.		
@@ -69,17 +73,6 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, lang, obj,
 		beforePrint: function(printDeferred, $printArea, mapObject) {
 			printDeferred.resolve();
 		},	
-		// Resizes the plugin after a manual or programmatic plugin resize so the button pane on the bottom stays on the bottom.
-		// Tweak the numbers subtracted in the if and else statements to alter the size if it's not looking good.
-		resize1: function(w, h) {
-			cdg = domGeom.position(this.container);
-			if (cdg.h == 0) { this.sph = this.height - 40; }
-			else { this.sph = cdg.h - 32; }
-			// test
-			/*if (cdg.h == 0) { this.sph = this.height - 80; }
-			else { this.sph = cdg.h - 62; }*/
-			domStyle.set(this.appDiv.domNode, "height", this.sph + "px"); 
-		},
 		// Called by activate and builds the plugins elements and functions
 		render: function() {
 			//$('.basemap-selector').trigger('change', 3);
@@ -103,8 +96,6 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, lang, obj,
 			this.esriapi.esriApiFunctions(this);
 			
 			this.rendered = true;	
-			// resize the container in the render function after the container is built.
-			this.resize1();
 		}
 	});
 });
