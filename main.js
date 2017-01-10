@@ -17,9 +17,6 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, lang, obj,
 		initialize: function (frameworkParameters) {
 			// Access framework parameters
 			declare.safeMixin(this, frameworkParameters);
-			// Set initial app size based on split screen state
-			this.con = dom.byId('plugins/benefits_explorer_prototype-0');
-			this.con1 = dom.byId('plugins/benefits_explorer_prototype-1');
 			// Define object to access global variables from JSON object. Only add variables to varObject.json that are needed by Save and Share. 
 			this.obj = dojo.eval("[" + obj + "]")[0];	
 			this.url = "http://dev.services2.coastalresilience.org:6080/arcgis/rest/services/Water_Blueprint/BenefitsExplorer_proto/MapServer";
