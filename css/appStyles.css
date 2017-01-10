@@ -202,4 +202,8 @@ abbr.search-choice-close {
 }
 .sty_anchor{
 	color:blue !important; margin:0 !important;
+}
+
+.plugin-minimize{
+	.display:none;
 }	
