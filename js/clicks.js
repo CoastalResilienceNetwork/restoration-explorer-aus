@@ -200,6 +200,7 @@ function ( Query, QueryTask, declare, FeatureLayer, lang, on, $, ui, esriapi, do
 				});
 			},
 			updateAccord: function(t){
+				console.log("benefits prod")
 				var ma = $( "#" + t.id + "mainAccord" ).accordion( "option", "active" );
 				var ia = $( "#" + t.id + "infoAccord" ).accordion( "option", "active" );
 				$( "#" + t.id + "mainAccord" ).accordion('destroy');	
