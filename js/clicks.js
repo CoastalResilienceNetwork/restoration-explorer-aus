@@ -1,38 +1,47 @@
 define([
-	"esri/tasks/query", "esri/tasks/QueryTask", "dojo/_base/declare", "esri/layers/FeatureLayer", "dojo/_base/lang", "dojo/on", "jquery", './jquery-ui-1.11.2/jquery-ui', './esriapi'
+	"esri/tasks/query", "esri/tasks/QueryTask", "dojo/_base/declare", "esri/layers/FeatureLayer", "dojo/_base/lang", "dojo/on", "jquery", './jquery-ui-1.11.2/jquery-ui', './esriapi', "dojo/dom",
 ],
-function ( Query, QueryTask, declare, FeatureLayer, lang, on, $, ui, esriapi ) {
+function ( Query, QueryTask, declare, FeatureLayer, lang, on, $, ui, esriapi, dom ) {
         "use strict";
 
         return declare(null, {
 			clickListener: function(t){
-				// Infographic section clicks
-				$('.plugin-infographic .be_accordHeader').on('click',lang.hitch(t,function(c){
-					if ( $(c.currentTarget).next().is(":hidden") ){
-						$('.plugin-infographic .be_exWrap').slideUp();
-						$(c.currentTarget).next().slideDown();
-					}	
+				//make accrodians
+				$( function() {
+					$( "#" + t.id + "mainAccord" ).accordion({heightStyle: "fill"}); 
+					$( "#" + t.id + "infoAccord" ).accordion({heightStyle: "fill"});
+				});
+				// update accordians on window resize - map resize is much cleaner than window resize
+				t.map.on('resize',lang.hitch(t,function(){
+					t.clicks.updateAccord(t);
+				}))								
+				// leave the get help section
+				$('#' + t.id + 'getHelpBtn').on('click',lang.hitch(t,function(c){
+					if ( $('#' + t.id + 'mainAccord').is(":visible") ){
+						$('#' + t.id + 'infoAccord').show();
+						$('#' + t.id + 'mainAccord').hide();
+						$('#' + t.id + 'getHelpBtn').html('Back to Benefits Explorer');
+						t.clicks.updateAccord(t);
+						$('#' + t.id + 'infoAccord .infoDoc').trigger('click');
+					}else{
+						$('#' + t.id + 'infoAccord').hide();
+						$('#' + t.id + 'mainAccord').show();
+						$('#' + t.id + 'getHelpBtn').html('Back to Documentation');
+						t.clicks.updateAccord(t);
+					}					
 				}));
-				$('#' + t.id + ' .be_minfo').on('click',lang.hitch(t,function(c){
+				// info icon clicks
+				$('#' + t.id + ' .sty_infoIcon').on('click',lang.hitch(t,function(c){
+					$('#' + t.id + 'mainAccord').hide();
+					$('#' + t.id + 'infoAccord').show();
+					$('#' + t.id + 'getHelpBtnWrap').show();
 					var ben = c.target.id.split("-").pop();
-					$('.plugin-help').trigger('click');
-					$('.plugin-infographic .' + ben).trigger('click');
-					$('.plugin-infographic .be_infoWrap').siblings('span').children().html('Back');
-				}));	
-				// Hide/show benefit sections
-				$('#' + t.id + ' .be_hs').on('click',lang.hitch(t,function(c){
-					if ( $(c.currentTarget).next().is(":hidden") ){
-						$('#' + t.id + ' .be_sectionWrap').slideUp();
-						$(c.currentTarget).next().slideDown();
-					}	
-				}));
-				// Explain benefits click
-				$('#' + t.id + 'moreInfo').on('click',lang.hitch(t,function(c){
-					$('#' + t.id + 'moreInfo span').toggle();
-					$('#' + t.id + ' .explanations').slideToggle();
-				}));	
+					t.clicks.updateAccord(t);	
+					$('#' + t.id + 'infoAccord .' + ben).trigger('click');
+					$('#' + t.id + 'getHelpBtn').html('Back to Benefits Explorer');
+				}));		
 				// Benefit CB Clicks
-				$('#' + t.id + 'cbListener .be_cbBenWrap').on('click',lang.hitch(t,function(c){
+				$('#' + t.id + 'basinByBensWrap .sty_cbWrap').on('click',lang.hitch(t,function(c){
 					var ben = "";
 					// if they click a label toggle the checkbox
 					if (c.target.checked == undefined){
@@ -42,16 +51,47 @@ function ( Query, QueryTask, declare, FeatureLayer, lang, on, $, ui, esriapi ) {
 						ben = c.target.value;
 					}	
 					if ($(c.currentTarget.children[0].children[0]).prop('checked') === true){
-						$(c.currentTarget).parent().find('.be_rangeWrap').slideDown();
+						$(c.currentTarget).parent().find('.sty_rangeWrap').slideDown();
 						var values = $('#' + t.id + '-' + ben).slider("option", "values");
 						$('#' + t.id + '-' + ben).slider('values', values); 
 					}else{
-						$(c.currentTarget).parent().find('.be_rangeWrap').slideUp();
+						$(c.currentTarget).parent().find('.sty_rangeWrap').slideUp();
 						t[ben] = "";
 						t.clicks.layerDefsUpdate(t);
 						$('#' + t.id + ben + '-range').html("")
 						$('#' + t.id + ben + '-unit').hide();
 					}	
+				}));	
+				// Sup data CB Clicks
+				$('#' + t.id + 'supDataWrap .sty_cbStackedWrap').on('click',lang.hitch(t,function(c){
+					var val = "";
+					// if they click a label toggle the checkbox
+					if (c.target.checked == undefined){
+						$(c.currentTarget.children[0].children[0]).prop("checked", !$(c.currentTarget.children[0].children[0]).prop("checked") )	
+						val = $(c.currentTarget.children[0].children[0]).val()
+					}else{
+						val = c.target.value;
+					}	
+					var lyr = Number( val.split("-").pop() )
+					$('#' + t.id + 'supDataWrap .sty_cb').each(lang.hitch(t,function(i,v){
+						if ( v.value != val ){
+							$(v).prop('checked', false)
+							var rl = Number( v.value.split("-").pop() )
+							var index = t.obj.visibleLayers.indexOf(rl);
+							if (index > -1) {
+								t.obj.visibleLayers.splice(index, 1);
+							}
+						}
+					}));
+					if ($(c.currentTarget.children[0].children[0]).prop('checked') === true){
+						t.obj.visibleLayers.push(lyr);
+					}else{
+						var index = t.obj.visibleLayers.indexOf(lyr);
+						if (index > -1) {
+							t.obj.visibleLayers.splice(index, 1);
+						}
+					}	
+					t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
 				}));	
 				// Standing Carbon range slider
 				$('#' + t.id + '-standingc').slider({range:true, min:0, max:6600, values:[0,6600], change:function(event,ui){t.clicks.sliderChange(event,ui,t)}});
@@ -88,7 +128,7 @@ function ( Query, QueryTask, declare, FeatureLayer, lang, on, $, ui, esriapi ) {
 				}else{
 					$('#' + t.id + ben + '-range').html("(" + low + " - " + high);
 				}
-				$('#' + t.id + ben + '-unit').show();
+				$('#' + t.id + ben + '-unit').css('display', 'inline-block');
 			},	
 			layerDefsUpdate: function(t){
 				t.exp = [t.standingc, t.forloss, t.refor, t.freshbiot, t.terrsp, t.vita, t.agloss, t.nitrogen]
@@ -107,48 +147,61 @@ function ( Query, QueryTask, declare, FeatureLayer, lang, on, $, ui, esriapi ) {
 					}	
 				}));
 				if (cnt == 1){
-					$('#' + t.id + 'cbListener input').each(function(i,v){
+					$('#' + t.id + 'basinByBensWrap input').each(function(i,v){
 						if ($(v).prop('checked')){
 							t.exp1 = $(v).val() + " = -99";
 						}	
 					});
 					var q = new Query();
-					var qt = new QueryTask(t.url + '/0');
+					var qt = new QueryTask(t.url + '/' + t.hbNoData);
 					q.where = t.exp1;
 					qt.executeForCount(q,function(count){
-						var layerDefinitions = [];
-						layerDefinitions[1] = exp;
+						t.layerDefinitions = [];
+						t.layerDefinitions[t.hbFil] = exp;
+						t.layerDefinitions[t.selHb] = t.selHbDef;
 						if (count > 0){
-							layerDefinitions[0] = t.exp1;	
-							t.obj.visibleLayers = [0,1,2];
+							t.layerDefinitions[t.hbNoData] = t.exp1;	
+							t.obj.visibleLayers = [t.hbNoData, t.hbFil, t.hbSwh];
 						}else{
-							t.obj.visibleLayers = [1,2];
+							t.obj.visibleLayers = [t.hbFil, t.hbSwh];
 						}
-						t.dynamicLayer.setLayerDefinitions(layerDefinitions);
+						if (t.selHbDef.length > 0){
+							t.obj.visibleLayers.push(t.selHb)
+						}
+						t.dynamicLayer.setLayerDefinitions(t.layerDefinitions);
 						t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);						
-					});
+					}); 
 				}else{	
 					if (exp.length == 0){
 						exp = "OBJECTID < 0";
-						t.obj.visibleLayers = [2];
+						t.obj.visibleLayers = [t.hbSwh];
 					}else{
-						t.obj.visibleLayers = [1,2];
+						t.obj.visibleLayers = [t.hbFil, t.hbSwh];
 					}		
-					var layerDefinitions = [];		
-					layerDefinitions[1] = exp;	
-					t.dynamicLayer.setLayerDefinitions(layerDefinitions);
+					if (t.selHbDef.length > 0){
+						t.obj.visibleLayers.push(t.selHb)
+					}
+					t.layerDefinitions = [];		
+					t.layerDefinitions[t.hbFil] = exp;
+					t.layerDefinitions[t.selHb] = t.selHbDef;					
+					t.dynamicLayer.setLayerDefinitions(t.layerDefinitions);
 					t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
 				}
 				var query = new Query();
-				var queryTask = new QueryTask(t.url + '/0');
+				var queryTask = new QueryTask(t.url + '/' + t.hbNoData);
 				query.where = exp;
 				queryTask.executeForCount(query,function(count){
-					$('#' + t.id + 'basinCnt').html(count); 
+					var cnt = t.clicks.numberWithCommas(count)
+					$('#' + t.id + 'basinCnt').html(cnt); 
 				});
+			},
+			updateAccord: function(t){
+				$( "#" + t.id + "mainAccord" ).accordion('refresh');	
+				$( "#" + t.id +  "infoAccord" ).accordion('refresh');				
 			},
 			numberWithCommas: function(x){
 				return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 			}			
         });
     }
-);
+)

@@ -1,0 +1,31 @@
+/* accordian styles */
+.ui-accordion .ui-accordion-content{
+	padding:0.5em;	
+}
+.ac_sectionWrap{
+	padding:0em;
+}	
+.ui-accordion .ui-accordion-header .ui-accordion-header-icon {
+	left:0em;	
+}	
+.ui-accordion .ui-accordion-icons {
+	padding-left:1.2em;
+}
+.ui-accordion .ui-accordion-header {
+	color:#000; margin:0; padding:.8em .5em .8em .7em; font-size:1.4rem; text-align:left;
+}
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover{
+	background:#dce6f0;
+}
+.ui-accordion-header-active  {
+	font-weight:bold; box-shadow:0 2px 4px rgba(0, 0, 0, 0.25); border:solid 1px #999;
+}	
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+    border: 1px solid #aaa; color: #555555;
+}	
+.ui-widget-content {
+    border-left: 1px solid #aaaaaa;
+	border-right: 1px solid #aaaaaa;
+	border-bottom-width:0;
+	box-shadow:inset 0 -2px 4px rgba(0, 0, 0, 0.25);
+}	
