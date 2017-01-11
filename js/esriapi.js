@@ -47,6 +47,9 @@ function ( 	ArcGISDynamicMapServiceLayer, Extent, SpatialReference, Query, Query
 				t.basinFl.on('selection-complete', lang.hitch(t,function(evt){
 					var index = t.obj.visibleLayers.indexOf(t.selHb);
 					if (evt.features.length > 0){
+						if ( $('#' + t.id + 'mainAccord').is(':hidden') ){
+							$('#' + t.id + 'getHelpBtn').trigger('click');
+						}
 						$('#' + t.id + 'hydroHeader').html('Selected HydroBASIN Attributes');
 						var atts = evt.features[0].attributes;
 						t.selHbDef = "OBJECTID = " + atts.OBJECTID;
