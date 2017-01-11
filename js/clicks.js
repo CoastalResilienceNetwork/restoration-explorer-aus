@@ -11,10 +11,14 @@ function ( Query, QueryTask, declare, FeatureLayer, lang, on, $, ui, esriapi, do
 					$( "#" + t.id + "mainAccord" ).accordion({heightStyle: "fill"}); 
 					$( "#" + t.id + "infoAccord" ).accordion({heightStyle: "fill"});
 				});
-				// update accordians on window resize - map resize is much cleaner than window resize
-				t.map.on('resize',lang.hitch(t,function(){
-					t.clicks.updateAccord(t);
-				}))								
+				// update accordians on window resize
+				var doit;
+				$(window).resize(function(){
+					clearTimeout(doit);
+					doit = setTimeout(function() {
+						t.clicks.updateAccord(t);
+					}, 100);
+				});
 				// leave the get help section
 				$('#' + t.id + 'getHelpBtn').on('click',lang.hitch(t,function(c){
 					if ( $('#' + t.id + 'mainAccord').is(":visible") ){
@@ -196,8 +200,14 @@ function ( Query, QueryTask, declare, FeatureLayer, lang, on, $, ui, esriapi, do
 				});
 			},
 			updateAccord: function(t){
-				$( "#" + t.id + "mainAccord" ).accordion('refresh');	
-				$( "#" + t.id +  "infoAccord" ).accordion('refresh');				
+				var ma = $( "#" + t.id + "mainAccord" ).accordion( "option", "active" );
+				var ia = $( "#" + t.id + "infoAccord" ).accordion( "option", "active" );
+				$( "#" + t.id + "mainAccord" ).accordion('destroy');	
+				$( "#" + t.id +  "infoAccord" ).accordion('destroy');	
+				$( "#" + t.id + "mainAccord" ).accordion({heightStyle: "fill"}); 
+				$( "#" + t.id + "infoAccord" ).accordion({heightStyle: "fill"});	
+				$( "#" + t.id + "mainAccord" ).accordion( "option", "active", ma );		
+				$( "#" + t.id + "infoAccord" ).accordion( "option", "active", ia );				
 			},
 			numberWithCommas: function(x){
 				return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
