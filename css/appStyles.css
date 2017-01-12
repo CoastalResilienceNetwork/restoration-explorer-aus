@@ -221,3 +221,6 @@ abbr.search-choice-close {
 	flex-direction:row-reverse; margin-left: -2px; border-right:none !important; width:500px !important; 
 }
 */
+#help-overlay-start{
+	display:none !important;
+}
