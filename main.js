@@ -94,7 +94,6 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, lang, obj,
 			this.clicks.clickListener(this);
 			// CREATE ESRI OBJECTS AND EVENT LISTENERS	
 			this.esriapi.esriApiFunctions(this);
-			
 			this.rendered = true;	
 		}
 	});
