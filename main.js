@@ -21,7 +21,6 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, lang, obj,
 			this.obj = dojo.eval("[" + obj + "]")[0];	
 			this.url = "http://dev.services2.coastalresilience.org:6080/arcgis/rest/services/Water_Blueprint/BenefitsExplorer_proto/MapServer";
 			this.layerDefs = [];
-			console.log("prod")
 		},
 		// Called after initialize at plugin startup (why all the tests for undefined). Also called after deactivate when user closes app by clicking X. 
 		hibernate: function () {
@@ -95,7 +94,7 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, lang, obj,
 			this.clicks.clickListener(this);
 			// CREATE ESRI OBJECTS AND EVENT LISTENERS	
 			this.esriapi.esriApiFunctions(this);
-			
+			console.log("prod")
 			this.rendered = true;	
 		}
 	});
