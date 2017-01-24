@@ -76,7 +76,7 @@ function ( Query, QueryTask, declare, FeatureLayer, lang, on, $, ui, esriapi, do
 					}else{
 						val = c.target.value;
 					}	
-					var lyr = Number( val.split("-").pop() )
+					t.obj.addDatalyr = Number( val.split("-").pop() )
 					$('#' + t.id + 'supDataWrap .sty_cb').each(lang.hitch(t,function(i,v){
 						if ( v.value != val ){
 							$(v).prop('checked', false)
@@ -88,12 +88,13 @@ function ( Query, QueryTask, declare, FeatureLayer, lang, on, $, ui, esriapi, do
 						}
 					}));
 					if ($(c.currentTarget.children[0].children[0]).prop('checked') === true){
-						t.obj.visibleLayers.push(lyr);
+						t.obj.visibleLayers.push(t.obj.addDatalyr);
 					}else{
-						var index = t.obj.visibleLayers.indexOf(lyr);
+						var index = t.obj.visibleLayers.indexOf(t.obj.addDatalyr);
 						if (index > -1) {
 							t.obj.visibleLayers.splice(index, 1);
 						}
+						t.obj.addDatalyr = -1;
 					}	
 					t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
 				}));	
@@ -174,6 +175,9 @@ function ( Query, QueryTask, declare, FeatureLayer, lang, on, $, ui, esriapi, do
 						if (t.obj.selHbDef.length > 0){
 							t.obj.visibleLayers.push(t.selHb)
 						}
+						if (t.obj.addDatalyr > -1){
+							t.obj.visibleLayers.push(t.obj.addDatalyr)
+						}	
 						t.dynamicLayer.setLayerDefinitions(t.layerDefinitions);
 						t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);						
 					}); 
@@ -186,6 +190,9 @@ function ( Query, QueryTask, declare, FeatureLayer, lang, on, $, ui, esriapi, do
 					}		
 					if (t.obj.selHbDef.length > 0){
 						t.obj.visibleLayers.push(t.selHb)
+					}
+					if (t.obj.addDatalyr > -1){
+						t.obj.visibleLayers.push(t.obj.addDatalyr)
 					}
 					t.layerDefinitions = [];		
 					t.layerDefinitions[t.hbFil] = exp;

@@ -72,7 +72,7 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, lang, obj,
 					var values = $('#' + this.id + "-" + benefit ).slider("option", "values") ;
 					this.obj.checkedBenefits.push([benefit, values])
 				}	
-			}));	
+			}));				
 			this.obj.extent = this.map.geographicExtent;
 			this.obj.stateSet = "yes";	
 			console.log(this.obj)

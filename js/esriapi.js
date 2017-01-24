@@ -50,7 +50,7 @@ function ( 	ArcGISDynamicMapServiceLayer, Extent, SpatialReference, Query, Query
 							q.where = t.obj.selHbDef;
 							t.basinFl.selectFeatures(q,esri.layers.FeatureLayer.SELECTION_NEW);
 						}
-						// checkboxes and sliders
+						// benefit checkboxes and sliders
 						$.each(t.obj.checkedBenefits,lang.hitch(t,function(i,v){
 							$('#' + t.id + 'basinByBensWrap input').each(lang.hitch(t,function(j,w){
 								if ( v[0] == $(w).val() ){
@@ -59,6 +59,14 @@ function ( 	ArcGISDynamicMapServiceLayer, Extent, SpatialReference, Query, Query
 								}
 							}))	
 						}))
+						// additional data checkboxes
+						if (t.obj.addDatalyr > -1){
+							$('#' + this.id + 'supDataWrap input').each(lang.hitch(this,function(i,v){
+								if( $(v).val() == "lyr-" + t.obj.addDatalyr ){
+									$(v).prop('checked', true)
+								}
+							}));
+						}
 						t.obj.stateSet = "no";
 					}else{
 						t.clicks.layerDefsUpdate(t);
