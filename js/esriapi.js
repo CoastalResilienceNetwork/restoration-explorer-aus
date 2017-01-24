@@ -38,6 +38,9 @@ function ( 	ArcGISDynamicMapServiceLayer, Extent, SpatialReference, Query, Query
 					t.map.setMapCursor("pointer");
 					// Save and Share 
 					if (t.obj.stateSet == "yes"){
+						//extent
+						var extent = new Extent(t.obj.extent.xmin, t.obj.extent.ymin, t.obj.extent.xmax, t.obj.extent.ymax, new SpatialReference({ wkid:4326 }))
+						t.map.setExtent(extent, true);
 						// accordion visibility
 						$('#' + t.id + t.obj.accordVisible).show();
 						$('#' + t.id + t.obj.accordHidden).hide();

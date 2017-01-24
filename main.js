@@ -73,9 +73,9 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, lang, obj,
 					this.obj.checkedBenefits.push([benefit, values])
 				}	
 			}));				
+			// get extent
 			this.obj.extent = this.map.geographicExtent;
 			this.obj.stateSet = "yes";	
-			console.log(this.obj)
 			var state = new Object();
 			state = this.obj;
 			return state;	
