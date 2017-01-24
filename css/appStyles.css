@@ -203,16 +203,18 @@ abbr.search-choice-close {
 .sty_anchor{
 	color:blue !important; margin:0 !important;
 }
-
+/*
 .plugin-minimize{
 	display:none;
-}	
+}
+
 .nav-apps-button.active {
     background-color: #333333 !important;
 }
 .nav-apps-button.active.app-displayed {
     background-color: #0096D6 !important;
 }
+*/	
 /*
 .nav-main-title{
 	border-left: 1px solid hsla(0, 0%, 100%, .2) !important; height:57px; line-height:58px; margin-left:13px; padding-left:10px;
@@ -221,6 +223,8 @@ abbr.search-choice-close {
 	flex-direction:row-reverse; margin-left: -2px; border-right:none !important; width:500px !important; 
 }
 */
+/*
 #help-overlay-start{
 	display:none !important;
 }
+*/
