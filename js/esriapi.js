@@ -47,7 +47,8 @@ function ( 	ArcGISDynamicMapServiceLayer, Extent, SpatialReference, Query, Query
 						$('#' + t.id + t.obj.accordVisible).accordion( "option", "active", t.obj.accordActive );
 						$.each(t.obj.checkedBenefits,lang.hitch(t,function(i,v){
 							$('#' + t.id + 'basinByBensWrap input').each(lang.hitch(t,function(j,w){
-								if ( v == $(w).val() ){
+								if ( v[0] == $(w).val() ){
+									$('#' + t.id + '-' + v[0]).slider('values', v[1]);
 									$(w).trigger('click')
 								}
 							}))	

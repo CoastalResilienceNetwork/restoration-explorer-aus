@@ -62,9 +62,12 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, lang, obj,
 			}	
 			this.obj.accordActive = $('#' + this.id + this.obj.accordVisible).accordion( "option", "active" );
 			this.obj.buttonText = $('#' + this.id + 'getHelpBtn').html();
+			this.obj.checkedBenefits = [];
 			$('#' + this.id + 'basinByBensWrap input').each(lang.hitch(this,function(i,v){
 				if ($(v).prop('checked')){
-					this.obj.checkedBenefits.push($(v).val())
+					var benefit = $(v).val();
+					var values = $('#' + this.id + "-" + benefit ).slider("option", "values") ;
+					this.obj.checkedBenefits.push([benefit, values])
 				}	
 			}));	
 			this.obj.extent = this.map.geographicExtent;
