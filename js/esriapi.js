@@ -35,16 +35,22 @@ function ( 	ArcGISDynamicMapServiceLayer, Extent, SpatialReference, Query, Query
 					t.vita = "";
 					t.agloss = "";
 					t.nitrogen = "";
-					t.selHbDef = "";
 					t.map.setMapCursor("pointer");
 					// Save and Share 
 					if (t.obj.stateSet == "yes"){
-						console.log("save and share")
+						// accordion visibility
 						$('#' + t.id + t.obj.accordVisible).show();
 						$('#' + t.id + t.obj.accordHidden).hide();
 						$('#' + t.id + 'getHelpBtn').html(t.obj.buttonText);
 						t.clicks.updateAccord(t);
 						$('#' + t.id + t.obj.accordVisible).accordion( "option", "active", t.obj.accordActive );
+						// hydrobasin click
+						if (t.obj.selHbDef.length > 0){
+							var q = new Query();
+							q.where = t.obj.selHbDef;
+							t.basinFl.selectFeatures(q,esri.layers.FeatureLayer.SELECTION_NEW);
+						}
+						// checkboxes and sliders
 						$.each(t.obj.checkedBenefits,lang.hitch(t,function(i,v){
 							$('#' + t.id + 'basinByBensWrap input').each(lang.hitch(t,function(j,w){
 								if ( v[0] == $(w).val() ){
@@ -71,8 +77,8 @@ function ( 	ArcGISDynamicMapServiceLayer, Extent, SpatialReference, Query, Query
 						}
 						$('#' + t.id + 'hydroHeader').html('Selected HydroBASIN Attributes');
 						var atts = evt.features[0].attributes;
-						t.selHbDef = "OBJECTID = " + atts.OBJECTID;
-						t.layerDefinitions[t.selHb] = t.selHbDef;
+						t.obj.selHbDef = "OBJECTID = " + atts.OBJECTID;
+						t.layerDefinitions[t.selHb] = t.obj.selHbDef;
 						t.dynamicLayer.setLayerDefinitions(t.layerDefinitions);
 						if (index == -1) {
 							t.obj.visibleLayers.push(t.selHb);
@@ -99,14 +105,14 @@ function ( 	ArcGISDynamicMapServiceLayer, Extent, SpatialReference, Query, Query
 						}
 						$('#' + t.id + 'hydroHeader').html('Click map to select a HydroBASIN');
 						$('#' + t.id + 'graphWrap').slideUp();
-						t.selHbDef = "";	
+						t.obj.selHbDef = "";	
 					}	
 				}));	
 				t.map.on("click", lang.hitch(t, function(evt) {
 					if (t.open == "yes"){
-						var pnt = evt.mapPoint;
+						t.obj.pnt = evt.mapPoint;
 						var q = new Query();
-						q.geometry = pnt;
+						q.geometry = t.obj.pnt;
 						t.basinFl.selectFeatures(q,esri.layers.FeatureLayer.SELECTION_NEW);
 					}	
 				}));

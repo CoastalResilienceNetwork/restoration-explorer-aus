@@ -53,6 +53,7 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, lang, obj,
 		// Called when user hits 'Save and Share' button. This creates the url that builds the app at a given state using JSON. 
 		// Write anything to you varObject.json file you have tracked during user activity.		
 		getState: function () {
+			//accrodions
 			if ( $('#' + this.id + 'mainAccord').is(":visible") ){
 				this.obj.accordVisible = 'mainAccord';
 				this.obj.accordHidden = 'infoAccord';
@@ -61,7 +62,9 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, lang, obj,
 				this.obj.accordHidden = 'mainAccord';
 			}	
 			this.obj.accordActive = $('#' + this.id + this.obj.accordVisible).accordion( "option", "active" );
+			// main button text
 			this.obj.buttonText = $('#' + this.id + 'getHelpBtn').html();
+			// checkbox and sliders
 			this.obj.checkedBenefits = [];
 			$('#' + this.id + 'basinByBensWrap input').each(lang.hitch(this,function(i,v){
 				if ($(v).prop('checked')){

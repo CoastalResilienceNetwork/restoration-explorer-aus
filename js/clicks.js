@@ -164,14 +164,14 @@ function ( Query, QueryTask, declare, FeatureLayer, lang, on, $, ui, esriapi, do
 					qt.executeForCount(q,function(count){
 						t.layerDefinitions = [];
 						t.layerDefinitions[t.hbFil] = exp;
-						t.layerDefinitions[t.selHb] = t.selHbDef;
+						t.layerDefinitions[t.selHb] = t.obj.selHbDef;
 						if (count > 0){
 							t.layerDefinitions[t.hbNoData] = t.exp1;	
 							t.obj.visibleLayers = [t.hbNoData, t.hbFil, t.hbSwh];
 						}else{
 							t.obj.visibleLayers = [t.hbFil, t.hbSwh];
 						}
-						if (t.selHbDef.length > 0){
+						if (t.obj.selHbDef.length > 0){
 							t.obj.visibleLayers.push(t.selHb)
 						}
 						t.dynamicLayer.setLayerDefinitions(t.layerDefinitions);
@@ -184,12 +184,12 @@ function ( Query, QueryTask, declare, FeatureLayer, lang, on, $, ui, esriapi, do
 					}else{
 						t.obj.visibleLayers = [t.hbFil, t.hbSwh];
 					}		
-					if (t.selHbDef.length > 0){
+					if (t.obj.selHbDef.length > 0){
 						t.obj.visibleLayers.push(t.selHb)
 					}
 					t.layerDefinitions = [];		
 					t.layerDefinitions[t.hbFil] = exp;
-					t.layerDefinitions[t.selHb] = t.selHbDef;					
+					t.layerDefinitions[t.selHb] = t.obj.selHbDef;					
 					t.dynamicLayer.setLayerDefinitions(t.layerDefinitions);
 					t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
 				}
