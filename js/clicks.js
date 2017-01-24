@@ -135,11 +135,13 @@ function ( Query, QueryTask, declare, FeatureLayer, lang, on, $, ui, esriapi, do
 				$('#' + t.id + ben + '-unit').css('display', 'inline-block');
 			},	
 			layerDefsUpdate: function(t){
-				t.exp = [t.standingc, t.forloss, t.refor, t.freshbiot, t.terrsp, t.vita, t.agloss, t.nitrogen]
+				if (t.obj.stateSet == "no"){
+					t.obj.exp = [t.standingc, t.forloss, t.refor, t.freshbiot, t.terrsp, t.vita, t.agloss, t.nitrogen]
+				}
 				var exp = "";
 				var cnt = 0;
 				var nd = "f";
-				$.each(t.exp, lang.hitch(t,function(i, v){
+				$.each(t.obj.exp, lang.hitch(t,function(i, v){
 					if (v.length > 0){
 						if (exp.length == 0){
 							exp = v;

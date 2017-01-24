@@ -1,3 +1,11 @@
 {
-	"visibleLayers": [5,6]
+	"visibleLayers": [5,6],
+	"accordVisible": "",
+	"accordHidden": "",
+	"accordActive": 0,
+	"buttonText": "",
+	"exp": "",
+	"checkedBenefits": [],
+	"extent": "",
+	"stateSet": "no"
 }

@@ -36,8 +36,26 @@ function ( 	ArcGISDynamicMapServiceLayer, Extent, SpatialReference, Query, Query
 					t.agloss = "";
 					t.nitrogen = "";
 					t.selHbDef = "";
-					t.clicks.layerDefsUpdate(t);
 					t.map.setMapCursor("pointer");
+					// Save and Share 
+					if (t.obj.stateSet == "yes"){
+						console.log("save and share")
+						$('#' + t.id + t.obj.accordVisible).show();
+						$('#' + t.id + t.obj.accordHidden).hide();
+						$('#' + t.id + 'getHelpBtn').html(t.obj.buttonText);
+						t.clicks.updateAccord(t);
+						$('#' + t.id + t.obj.accordVisible).accordion( "option", "active", t.obj.accordActive );
+						$.each(t.obj.checkedBenefits,lang.hitch(t,function(i,v){
+							$('#' + t.id + 'basinByBensWrap input').each(lang.hitch(t,function(j,w){
+								if ( v == $(w).val() ){
+									$(w).trigger('click')
+								}
+							}))	
+						}))
+						t.obj.stateSet = "no";
+					}else{
+						t.clicks.layerDefsUpdate(t);
+					}
 				}));	
 				var sym = new SimpleFillSymbol( SimpleFillSymbol.STYLE_SOLID, new SimpleLineSymbol(
 					SimpleLineSymbol.STYLE_SOLID, new Color([0,0,255]), 2 ), new Color([0,0,0,0.1])

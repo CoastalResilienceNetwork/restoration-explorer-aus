@@ -39,12 +39,7 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, lang, obj,
 			}else{
 				this.map.addLayer(this.dynamicLayer);
 				this.dynamicLayer.setVisibleLayers(this.obj.visibleLayers);
-				// on set state it calls activate twice. on the second call render is true so it call this else. layer infos isn't done yet so if you call setNavBtns it can't use layer infos
-				if (this.obj.stateSet == "no"){	
-					//this.navigation.setNavBtns(this);	
-				}else{
-					this.obj.stateSet = "no";
-				}	
+				// on set state it calls activate twice 
 			}
 			this.open = "yes";			
 		},
@@ -58,14 +53,29 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, lang, obj,
 		// Called when user hits 'Save and Share' button. This creates the url that builds the app at a given state using JSON. 
 		// Write anything to you varObject.json file you have tracked during user activity.		
 		getState: function () {
+			if ( $('#' + this.id + 'mainAccord').is(":visible") ){
+				this.obj.accordVisible = 'mainAccord';
+				this.obj.accordHidden = 'infoAccord';
+			}else{
+				this.obj.accordVisible = 'infoAccord';
+				this.obj.accordHidden = 'mainAccord';
+			}	
+			this.obj.accordActive = $('#' + this.id + this.obj.accordVisible).accordion( "option", "active" );
+			this.obj.buttonText = $('#' + this.id + 'getHelpBtn').html();
+			$('#' + this.id + 'basinByBensWrap input').each(lang.hitch(this,function(i,v){
+				if ($(v).prop('checked')){
+					this.obj.checkedBenefits.push($(v).val())
+				}	
+			}));	
 			this.obj.extent = this.map.geographicExtent;
 			this.obj.stateSet = "yes";	
+			console.log(this.obj)
 			var state = new Object();
 			state = this.obj;
 			return state;	
 		},
 		// Called before activate only when plugin is started from a getState url. 
-		//It's overwrites the default JSON definfed in initialize with the saved stae JSON.
+		//It overwrites the default JSON definfed in initialize with the saved stae JSON.
 		setState: function (state) {
 			this.obj = state;
 		},
@@ -89,12 +99,11 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, lang, obj,
 			dom.byId(this.container).appendChild(this.appDiv.domNode);					
 			// Get html from content.html, prepend appDiv.id to html element id's, and add to appDiv
 			var idUpdate = content.replace(/id='/g, "id='" + this.id);	
-			$('#' + this.id).html(idUpdate);
+			$('#' + this.id).html(idUpdate);		
 			// Click listeners
 			this.clicks.clickListener(this);
 			// CREATE ESRI OBJECTS AND EVENT LISTENERS	
 			this.esriapi.esriApiFunctions(this);
-			console.log("dev")
 			this.rendered = true;	
 		}
 	});
