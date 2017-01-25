@@ -39,6 +39,8 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, lang, obj,
 			}else{
 				this.map.addLayer(this.dynamicLayer);
 				this.dynamicLayer.setVisibleLayers(this.obj.visibleLayers);
+				$('#' + this.id).parent().parent().css('display', 'flex');
+				this.clicks.updateAccord(this);
 				// on set state it calls activate twice 
 			}
 			this.open = "yes";			
@@ -53,32 +55,35 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, lang, obj,
 		// Called when user hits 'Save and Share' button. This creates the url that builds the app at a given state using JSON. 
 		// Write anything to you varObject.json file you have tracked during user activity.		
 		getState: function () {
-			//accrodions
-			if ( $('#' + this.id + 'mainAccord').is(":visible") ){
-				this.obj.accordVisible = 'mainAccord';
-				this.obj.accordHidden = 'infoAccord';
-			}else{
-				this.obj.accordVisible = 'infoAccord';
-				this.obj.accordHidden = 'mainAccord';
-			}	
-			this.obj.accordActive = $('#' + this.id + this.obj.accordVisible).accordion( "option", "active" );
-			// main button text
-			this.obj.buttonText = $('#' + this.id + 'getHelpBtn').html();
-			// checkbox and sliders
-			this.obj.checkedBenefits = [];
-			$('#' + this.id + 'basinByBensWrap input').each(lang.hitch(this,function(i,v){
-				if ($(v).prop('checked')){
-					var benefit = $(v).val();
-					var values = $('#' + this.id + "-" + benefit ).slider("option", "values") ;
-					this.obj.checkedBenefits.push([benefit, values])
+			// remove this conditional statement when minimize is added
+			if ( $('#' + this.id ).is(":visible") ){
+				//accrodions
+				if ( $('#' + this.id + 'mainAccord').is(":visible") ){
+					this.obj.accordVisible = 'mainAccord';
+					this.obj.accordHidden = 'infoAccord';
+				}else{
+					this.obj.accordVisible = 'infoAccord';
+					this.obj.accordHidden = 'mainAccord';
 				}	
-			}));				
-			// get extent
-			this.obj.extent = this.map.geographicExtent;
-			this.obj.stateSet = "yes";	
-			var state = new Object();
-			state = this.obj;
-			return state;	
+				this.obj.accordActive = $('#' + this.id + this.obj.accordVisible).accordion( "option", "active" );
+				// main button text
+				this.obj.buttonText = $('#' + this.id + 'getHelpBtn').html();
+				// checkbox and sliders
+				this.obj.checkedBenefits = [];
+				$('#' + this.id + 'basinByBensWrap input').each(lang.hitch(this,function(i,v){
+					if ($(v).prop('checked')){
+						var benefit = $(v).val();
+						var values = $('#' + this.id + "-" + benefit ).slider("option", "values") ;
+						this.obj.checkedBenefits.push([benefit, values])
+					}	
+				}));				
+				// get extent
+				this.obj.extent = this.map.geographicExtent;
+				this.obj.stateSet = "yes";	
+				var state = new Object();
+				state = this.obj;
+				return state;	
+			}
 		},
 		// Called before activate only when plugin is started from a getState url. 
 		//It overwrites the default JSON definfed in initialize with the saved stae JSON.
@@ -101,8 +106,11 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, lang, obj,
 			// Define Content Pane as HTML parent		
 			this.appDiv = new ContentPane({style:'padding:0; color:#000; flex:1; display:flex; flex-direction:column;}'});
 			this.id = this.appDiv.id
-			$(dom.byId(this.container)).addClass('sty_flexColumn')
 			dom.byId(this.container).appendChild(this.appDiv.domNode);					
+			$('#' + this.id).parent().addClass('sty_flexColumn')
+			if (this.obj.stateSet == "no"){
+				$('#' + this.id).parent().parent().css('display', 'flex')
+			}
 			// Get html from content.html, prepend appDiv.id to html element id's, and add to appDiv
 			var idUpdate = content.replace(/id='/g, "id='" + this.id);	
 			$('#' + this.id).html(idUpdate);		

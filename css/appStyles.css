@@ -193,10 +193,14 @@ abbr.search-choice-close {
 .sty_getHelpBtnWrap{
     background-color:#dce6f0; padding:10px 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.25); z-index:500;
 }	
-.sty_getHelpBtn{
+.sty_getHelpBtn1{
 	background-color:#5e94b6; font-size:1.5rem; line-height:1.5; padding:.6rem 1.4rem; text-shadow:1px 1px 1px rgba(30,30,30,0.7);
     text-align:center; cursor:pointer; color:#FFF; border-radius:3px; box-shadow: 0 1px 2px rgba(0,0,0,1); font-weight:bold;
 }	
+.sty_getHelpBtn{
+	background-color:#fff; font-size:1.5rem; line-height:1.5; padding:.6rem 1.4rem;	text-shadow:1px 1px 1px rgba(210, 210, 210, 0.5); text-align:center; 
+	cursor:pointer; color:#316483; border-radius:3px; box-shadow:0 1px 2px rgba(0, 0, 0, 1); border-top:1px solid #888; font-weight:bold;
+}
 .sty_explainWrap p{
 	font-size:1.4rem; margin-top:5px; margin-bottom:5px; text-align:left; color:#21658c;	
 }
@@ -226,4 +230,9 @@ abbr.search-choice-close {
 
 #sidebar-help-area{
 	display:none !important;
+}
+
+/* fix the accordion height issue in Safari */
+.sidebar-content{
+	height:auto !important;
 }
