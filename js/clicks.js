@@ -76,7 +76,7 @@ function ( Query, QueryTask, declare, FeatureLayer, lang, on, $, ui, esriapi, do
 					}else{
 						val = c.target.value;
 					}	
-					var lyr = Number( val.split("-").pop() )
+					t.obj.addDatalyr = Number( val.split("-").pop() )
 					$('#' + t.id + 'supDataWrap .sty_cb').each(lang.hitch(t,function(i,v){
 						if ( v.value != val ){
 							$(v).prop('checked', false)
@@ -88,12 +88,13 @@ function ( Query, QueryTask, declare, FeatureLayer, lang, on, $, ui, esriapi, do
 						}
 					}));
 					if ($(c.currentTarget.children[0].children[0]).prop('checked') === true){
-						t.obj.visibleLayers.push(lyr);
+						t.obj.visibleLayers.push(t.obj.addDatalyr);
 					}else{
-						var index = t.obj.visibleLayers.indexOf(lyr);
+						var index = t.obj.visibleLayers.indexOf(t.obj.addDatalyr);
 						if (index > -1) {
 							t.obj.visibleLayers.splice(index, 1);
 						}
+						t.obj.addDatalyr = -1;
 					}	
 					t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
 				}));	
@@ -135,11 +136,13 @@ function ( Query, QueryTask, declare, FeatureLayer, lang, on, $, ui, esriapi, do
 				$('#' + t.id + ben + '-unit').css('display', 'inline-block');
 			},	
 			layerDefsUpdate: function(t){
-				t.exp = [t.standingc, t.forloss, t.refor, t.freshbiot, t.terrsp, t.vita, t.agloss, t.nitrogen]
+				if (t.obj.stateSet == "no"){
+					t.obj.exp = [t.standingc, t.forloss, t.refor, t.freshbiot, t.terrsp, t.vita, t.agloss, t.nitrogen]
+				}
 				var exp = "";
 				var cnt = 0;
 				var nd = "f";
-				$.each(t.exp, lang.hitch(t,function(i, v){
+				$.each(t.obj.exp, lang.hitch(t,function(i, v){
 					if (v.length > 0){
 						if (exp.length == 0){
 							exp = v;
@@ -162,16 +165,19 @@ function ( Query, QueryTask, declare, FeatureLayer, lang, on, $, ui, esriapi, do
 					qt.executeForCount(q,function(count){
 						t.layerDefinitions = [];
 						t.layerDefinitions[t.hbFil] = exp;
-						t.layerDefinitions[t.selHb] = t.selHbDef;
+						t.layerDefinitions[t.selHb] = t.obj.selHbDef;
 						if (count > 0){
 							t.layerDefinitions[t.hbNoData] = t.exp1;	
 							t.obj.visibleLayers = [t.hbNoData, t.hbFil, t.hbSwh];
 						}else{
 							t.obj.visibleLayers = [t.hbFil, t.hbSwh];
 						}
-						if (t.selHbDef.length > 0){
+						if (t.obj.selHbDef.length > 0){
 							t.obj.visibleLayers.push(t.selHb)
 						}
+						if (t.obj.addDatalyr > -1){
+							t.obj.visibleLayers.push(t.obj.addDatalyr)
+						}	
 						t.dynamicLayer.setLayerDefinitions(t.layerDefinitions);
 						t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);						
 					}); 
@@ -182,12 +188,15 @@ function ( Query, QueryTask, declare, FeatureLayer, lang, on, $, ui, esriapi, do
 					}else{
 						t.obj.visibleLayers = [t.hbFil, t.hbSwh];
 					}		
-					if (t.selHbDef.length > 0){
+					if (t.obj.selHbDef.length > 0){
 						t.obj.visibleLayers.push(t.selHb)
+					}
+					if (t.obj.addDatalyr > -1){
+						t.obj.visibleLayers.push(t.obj.addDatalyr)
 					}
 					t.layerDefinitions = [];		
 					t.layerDefinitions[t.hbFil] = exp;
-					t.layerDefinitions[t.selHb] = t.selHbDef;					
+					t.layerDefinitions[t.selHb] = t.obj.selHbDef;					
 					t.dynamicLayer.setLayerDefinitions(t.layerDefinitions);
 					t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
 				}
@@ -200,7 +209,6 @@ function ( Query, QueryTask, declare, FeatureLayer, lang, on, $, ui, esriapi, do
 				});
 			},
 			updateAccord: function(t){
-				console.log("benefits prod")
 				var ma = $( "#" + t.id + "mainAccord" ).accordion( "option", "active" );
 				var ia = $( "#" + t.id + "infoAccord" ).accordion( "option", "active" );
 				$( "#" + t.id + "mainAccord" ).accordion('destroy');	

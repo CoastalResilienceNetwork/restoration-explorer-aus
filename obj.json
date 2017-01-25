@@ -1,3 +1,13 @@
 {
-	"visibleLayers": [5,6]
+	"visibleLayers": [5,6],
+	"accordVisible": "",
+	"accordHidden": "",
+	"accordActive": 0,
+	"buttonText": "",
+	"exp": "",
+	"checkedBenefits": [],
+	"selHbDef": "",
+	"addDatalyr": -1,
+	"extent": "",
+	"stateSet": "no"
 }
