@@ -5,10 +5,10 @@ require({
 // Bring in dojo and javascript api classes as well as varObject.json, js files, and content.html
 define([
 	"dojo/_base/declare", "framework/PluginBase", "dijit/layout/ContentPane", "dojo/dom", "dojo/dom-style", "dojo/dom-geometry", "dojo/_base/lang", "dojo/text!./obj.json", 
-	"jquery", "dojo/text!./html/content.html", './js/jquery-ui-1.11.2/jquery-ui', './js/esriapi', './js/clicks', './js/barChart', './js/horizontalBar'
+	"jquery", "dojo/text!./html/content.html", './js/jquery-ui-1.11.2/jquery-ui', './js/esriapi', './js/clicks', './js/horizontalBar'
 ],
 function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, lang, obj, 
-			$, content, ui, esriapi, clicks, barChart, hbar ) {
+			$, content, ui, esriapi, clicks, hbar ) {
 	return declare(PluginBase, {
 		// The height and width are set here when an infographic is defined. When the user click Continue it rebuilds the app window with whatever you put in.
 		toolbarName: "Benefits Explorer", showServiceLayersInLegend: true, allowIdentifyWhenActive: false, rendered: false, resizable: false,
@@ -25,7 +25,8 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, lang, obj,
 		// Called after initialize at plugin startup (why all the tests for undefined). Also called after deactivate when user closes app by clicking X. 
 		hibernate: function () {
 			if (this.appDiv != undefined){
-				this.map.removeLayer(this.dynamicLayer);
+				//this.map.removeLayer(this.dynamicLayer);
+				this.dynamicLayer.setVisibleLayers([-1])
 			}
 			this.open = "no";
 		},
@@ -34,13 +35,13 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, lang, obj,
 			if (this.rendered == false) {
 				this.rendered = true;							
 				this.render();
-				// Hide the print button until a hex has been selected
 				$(this.printButton).hide();
 			}else{
-				this.map.addLayer(this.dynamicLayer);
+				//this.map.addLayer(this.dynamicLayer);
 				this.dynamicLayer.setVisibleLayers(this.obj.visibleLayers);
 				$('#' + this.id).parent().parent().css('display', 'flex');
 				this.clicks.updateAccord(this);
+				this.map.resize();
 				// on set state it calls activate twice 
 			}
 			this.open = "yes";			
@@ -48,7 +49,8 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, lang, obj,
 		// Called when user hits the minimize '_' icon on the pluging. Also called before hibernate when users closes app by clicking 'X'.
 		deactivate: function () {
 			if (this.appDiv != undefined){
-				this.map.removeLayer(this.dynamicLayer);
+				this.dynamicLayer.setVisibleLayers([-1])
+				//this.map.removeLayer(this.dynamicLayer);
 			}
 			this.open = "no";			
 		},	
@@ -98,7 +100,6 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, lang, obj,
 		render: function() {
 			//$('.basemap-selector').trigger('change', 3);
 			// BRING IN OTHER JS FILES
-			this.barChart = new barChart();
 			this.hbar = new hbar();
 			this.esriapi = new esriapi();
 			this.clicks = new clicks();
