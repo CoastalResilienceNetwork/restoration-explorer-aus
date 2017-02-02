@@ -153,10 +153,10 @@ abbr.search-choice-close {
 	font-size:1.4rem; text-align:center; margin-top:10px; color:#21658c; font-weight:bold;
 }
 .sty_underlineHeader{
-	font-size:1.4rem; text-decoration:underline; text-align:left; margin:10px 4px 0px 5px; 
+	font-size:1em; text-decoration:underline; text-align:left; margin:10px 4px 0px 5px; 
 }
 .sty_underlineInfoHeader{
-	font-size:1.4rem; text-decoration:underline; text-align:left; margin:10px 0px -2px 0px; 
+	font-size:1em; text-decoration:underline; text-align:left; margin:10px 0px -2px 0px; 
 }
 .sty_firstIndentHeader{
 	margin-bottom:0px; margin-left:9px; margin-top:5px; font-size:1.4rem;
