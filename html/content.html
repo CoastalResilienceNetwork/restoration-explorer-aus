@@ -10,95 +10,128 @@ The unique ContentPane id makes all the element ids unique and prevents duplicat
 <div id='mainAccord' class='sty_flex1 sty_hide'>
 	<h3 id='hbbHeader'>View HydroBASINS By Benefits</h3>  
 	<div id='basinByBensWrap'>
-		<div class='sty_blueHeader'><span id='basinCnt' style='font-weight:bold;'></span> of 1,761 HydroBASINS selected</div>
-		<div class='sty_underlineHeader'>Climate Change Mitigation/Carbon<img src='plugins/benefits_explorer/images/info.png' alt='show climate info' class='sty_infoIcon' id='-infoCarbon'></div> 
-		<div class='sty_sectionWrap sty_wrap'>
-			<!-- Standing Carbon -->
-			<div class='sty_cbRangeWrap'>
-				<div class='sty_cbWrap'><div class='sty_cbLabel'><input type='checkbox' class='sty_cb' value='standingc'>Standing Carbon <span id='standingc-range'></span> <span id='standingc-unit' class='sty_hide'> million tonnes)</span></div></div>
-				<div class='sty_rangeWrap sty_hide'>
-					<div class='sty_leftSlider'><img class='sty_goodBadPics' src='plugins/benefits_explorer/images/red.png' alt='red circle'>0</div>	
-					<div id='-standingc' class='be_rslide'></div>
-					<div class='sty_rightSlider'>6,600 Mt<img class='sty_goodBadPics' src='plugins/benefits_explorer/images/green.png' alt='green circle'></div>	
-				</div>	
-			</div>
-			<!-- Forest Loss -->
-			<div class='sty_cbRangeWrap'>
-				<div class='sty_cbWrap'><div class='sty_cbLabel'><input type='checkbox' class='sty_cb' value='forloss'>Forest Loss <span id='forloss-range'></span> <span id='forloss-unit' class='sty_hide'>km<sup>2</sup>)</span></div></div>
-				<div class='sty_rangeWrap sty_hide'>
-					<div class='sty_leftSlider'><img class='sty_goodBadPics' src='plugins/benefits_explorer/images/green.png' alt='green circle'>0</div>	
-					<div id='-forloss' class='be_rslide'></div>
-					<div class='sty_rightSlider'>20K km<sup>2</sup><img class='sty_goodBadPics' src='plugins/benefits_explorer/images/red.png' alt='red circle'></div>	
-				</div>	
-			</div>
-			<!-- Reforestation Potential -->
-			<div class='sty_cbRangeWrap'>
-				<div class='sty_cbWrap'><div class='sty_cbLabel'><input type='checkbox' class='sty_cb' value='refor'>Reforestation Potential <span id='refor-range'></span><span id='refor-unit' class='sty_hide'> km<sup>2</sup>)</span></div></div>
-				<div class='sty_rangeWrap sty_hide'>
-					<div class='sty_leftSlider'><img class='sty_goodBadPics' src='plugins/benefits_explorer/images/red.png' alt='red circle'>0</div>	
-					<div id='-refor' class='be_rslide'></div>
-					<div class='sty_rightSlider'>65,100 km<sup>2</sup><img class='sty_goodBadPics' src='plugins/benefits_explorer/images/green.png' alt='green circle'></div>	
+		<section>
+			<div class='sty_blueHeader'><span id='basinCnt' style='font-weight:bold;'></span> of 1,761 HydroBASINS selected</div>
+		</section>
+		<section>
+			<h3>Climate Change Mitigation/Carbon<img src='plugins/benefits_explorer/images/info.png' alt='show climate info' class='sty_infoIcon' id='-infoCarbon'></h3> 
+			<div>
+				<!-- Standing Carbon -->
+				<div class='sty_cbRangeWrap'>
+					<label class="form-component">
+						<input type="checkbox" value="standingc"><div class="check"></div>
+						<span class="form-text">Standing Carbon <span id='standingc-range'></span> <span id='standingc-unit' class='sty_hide'> million tonnes)</span></span>
+					</label>
+					<div class='sty_rangeWrap sty_hide'>
+						<div class='sty_leftSlider'><img class='sty_goodBadPics' src='plugins/benefits_explorer/images/red.png' alt='red circle'>0</div>	
+						<div id='-standingc' class='be_rslide'></div>
+						<div class='sty_rightSlider'>6,600 Mt<img class='sty_goodBadPics' src='plugins/benefits_explorer/images/green.png' alt='green circle'></div>	
+					</div>	
+				</div>
+				<!-- Forest Loss -->
+				<div class='sty_cbRangeWrap'>
+					<label class="form-component">
+						<input type="checkbox" value="forloss"><div class="check"></div>
+						<span class="form-text">Forest Loss <span id='forloss-range'></span> <span id='forloss-unit' class='sty_hide'>km<sup>2</sup>)</span></span>
+					</label>
+					<div class='sty_rangeWrap sty_hide'>
+						<div class='sty_leftSlider'><img class='sty_goodBadPics' src='plugins/benefits_explorer/images/green.png' alt='green circle'>0</div>	
+						<div id='-forloss' class='be_rslide'></div>
+						<div class='sty_rightSlider'>20K km<sup>2</sup><img class='sty_goodBadPics' src='plugins/benefits_explorer/images/red.png' alt='red circle'></div>	
+					</div>	
+				</div>
+				<!-- Reforestation Potential -->
+				<div class='sty_cbRangeWrap'>
+					<label class="form-component">
+						<input type="checkbox" value="refor"><div class="check"></div>
+						<span class="form-text">Reforestation Potential <span id='refor-range'></span><span id='refor-unit' class='sty_hide'> km<sup>2</sup>)</span></span>
+					</label>
+					<div class='sty_rangeWrap sty_hide'>
+						<div class='sty_leftSlider'><img class='sty_goodBadPics' src='plugins/benefits_explorer/images/red.png' alt='red circle'>0</div>	
+						<div id='-refor' class='be_rslide'></div>
+						<div class='sty_rightSlider'>65,100 km<sup>2</sup><img class='sty_goodBadPics' src='plugins/benefits_explorer/images/green.png' alt='green circle'></div>	
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class='sty_underlineHeader'>Biodiversity<img src='plugins/benefits_explorer/images/info.png' alt='show biodiversity info' class='sty_infoIcon' id='-infoBio'></div>
-		<div class='sty_sectionWrap'>
-			<!-- Freshwater Biodiversity Threats -->
-			<div class='sty_cbRangeWrap'>
-				<div class='sty_cbWrap'><div class='sty_cbLabel'><input type='checkbox' class='sty_cb' value='freshbiot'>Freshwater Biodiversity Threat Index <span id='freshbiot-range'></span><span id='freshbiot-unit' class='sty_hide'>)</span></div></div>
-				<div class='sty_rangeWrap sty_hide'>	
-					<div class='sty_leftSlider'><img class='sty_goodBadPics' src='plugins/benefits_explorer/images/green.png' alt='green circle'>0</div>	
-					<div id='-freshbiot' class='be_rslide'></div>
-					<div class='sty_rightSlider'>1<img class='sty_goodBadPics' src='plugins/benefits_explorer/images/red.png' alt='red circle'></div>	
-				</div>	
+		</section>
+		<section>
+			<h3>Biodiversity<img src='plugins/benefits_explorer/images/info.png' alt='show biodiversity info' class='sty_infoIcon' id='-infoBio'></h3>
+			<div>
+				<!-- Freshwater Biodiversity Threats -->
+				<div class='sty_cbRangeWrap'>
+					<label class="form-component">
+						<input type="checkbox" value="freshbiot"><div class="check"></div>
+						<span class="form-text">Freshwater Biodiversity Threat Index <span id='freshbiot-range'></span><span id='freshbiot-unit' class='sty_hide'>)</span></span>
+					</label>
+					<div class='sty_rangeWrap sty_hide'>	
+						<div class='sty_leftSlider'><img class='sty_goodBadPics' src='plugins/benefits_explorer/images/green.png' alt='green circle'>0</div>	
+						<div id='-freshbiot' class='be_rslide'></div>
+						<div class='sty_rightSlider'>1<img class='sty_goodBadPics' src='plugins/benefits_explorer/images/red.png' alt='red circle'></div>	
+					</div>	
+				</div>
+				<!-- Imperiled terrestrial Species - count -->
+				<div class='sty_cbRangeWrap'>
+					<label class="form-component">
+						<input type="checkbox" value="terrsp"><div class="check"></div>
+						<span class="form-text">Imperiled Terrestrial Species - count <span id='terrsp-range'></span><span id='terrsp-unit' class='sty_hide'>)</span></span>
+					</label>
+					<div class='sty_rangeWrap sty_hide'>	
+						<div class='sty_leftSlider'><img class='sty_goodBadPics' src='plugins/benefits_explorer/images/green.png' alt='green circle'>0</div>	
+						<div id='-terrsp' class='be_rslide'></div>
+						<div class='sty_rightSlider'>220<img class='sty_goodBadPics' src='plugins/benefits_explorer/images/red.png' alt='red circle'></div>	
+					</div>	
+				</div>
 			</div>
-			<!-- Imperiled terrestrial Species - count -->
-			<div class='sty_cbRangeWrap'>
-				<div class='sty_cbWrap'><div class='sty_cbLabel'><input type='checkbox' class='sty_cb' value='terrsp'>Imperiled Terrestrial Species - count <span id='terrsp-range'></span><span id='terrsp-unit' class='sty_hide'>)</span></div></div>
-				<div class='sty_rangeWrap sty_hide'>	
-					<div class='sty_leftSlider'><img class='sty_goodBadPics' src='plugins/benefits_explorer/images/green.png' alt='green circle'>0</div>	
-					<div id='-terrsp' class='be_rslide'></div>
-					<div class='sty_rightSlider'>220<img class='sty_goodBadPics' src='plugins/benefits_explorer/images/red.png' alt='red circle'></div>	
-				</div>	
+		</section>
+		<section>
+			<h3>Human Health &#38; Well Being<img src='plugins/benefits_explorer/images/info.png' alt='show biodiversity info' class='sty_infoIcon' id='-infoHealth'></h3>
+			<div>
+				<!-- Habitat for Pollinators &#38; Impacts on Vitamin A -->
+				<div class='sty_cbRangeWrap'>
+					<label class="form-component">
+						<input type="checkbox" value="vita"><div class="check"></div>
+						<span class="form-text">Drop in Vitamin A Production w/o Pollination <span id='vita-range'></span><span id='vita-unit' class='sty_hide'>%)</span></span>
+					</label>
+					<div class='sty_rangeWrap sty_hide'>		
+						<div class='sty_leftSlider'><img class='sty_goodBadPics' src='plugins/benefits_explorer/images/green.png' alt='green circle'>0</div>	
+						<div id='-vita' class='be_rslide'></div>
+						<div class='sty_rightSlider'>85%<img class='sty_goodBadPics' src='plugins/benefits_explorer/images/red.png' alt='red circle'></div>	
+					</div>	
+				</div>
+				<!-- Habitat for Pollinators and Impacts on Crop Yield Economic Output -->
+				<div class='sty_cbRangeWrap'>
+					<label class="form-component">
+						<input type="checkbox" value="agloss"><div class="check"></div>
+						<span class="form-text">Agricultural Economic Value Lost w/o Pollination <span id='agloss-range'></span><span id='agloss-unit' class='sty_hide'>%)</span></span>
+					</label>
+					<div class='sty_rangeWrap sty_hide'>
+						<div class='sty_leftSlider'><img class='sty_goodBadPics' src='plugins/benefits_explorer/images/green.png' alt='green circle'>0</div>	
+						<div id='-agloss' class='be_rslide'></div>
+						<div class='sty_rightSlider'>70%<img class='sty_goodBadPics' src='plugins/benefits_explorer/images/red.png' alt='red circle'></div>	
+					</div>	
+				</div>
+				<!-- Excess nitrogen -->
+				<div class='sty_cbRangeWrap'>
+					<label class="form-component">
+						<input type="checkbox" value="nitrogen"><div class="check"></div>
+						<span class="form-text">Total Annual Excess Nitrogen Application <span id='nitrogen-range'></span><span id='nitrogen-unit' class='sty_hide'> thousand tonnes)</span></span>
+					</label>
+					<div class='sty_rangeWrap sty_hide'>
+						<div class='sty_leftSlider'><img class='sty_goodBadPics' src='plugins/benefits_explorer/images/green.png' alt='green circle'>0</div>	
+						<div id='-nitrogen' class='be_rslide'></div>
+						<div class='sty_rightSlider'>615 kt<img class='sty_goodBadPics' src='plugins/benefits_explorer/images/red.png' alt='red circle'></div>	
+					</div>	
+				</div>
 			</div>
-		</div>
-		<div class='sty_underlineHeader'>Human Health &#38; Well Being<img src='plugins/benefits_explorer/images/info.png' alt='show biodiversity info' class='sty_infoIcon' id='-infoHealth'></div>
-		<div class='sty_sectionWrap'>
-			<!-- Habitat for Pollinators &#38; Impacts on Vitamin A -->
-			<div class='sty_cbRangeWrap'>
-				<div class='sty_cbWrap'><div class='sty_cbLabel'><input type='checkbox' class='sty_cb' value='vita'>Drop in Vitamin A Production w/o Pollination <span id='vita-range'></span><span id='vita-unit' class='sty_hide'>%)</span></div></div>
-				<div class='sty_rangeWrap sty_hide'>		
-					<div class='sty_leftSlider'><img class='sty_goodBadPics' src='plugins/benefits_explorer/images/green.png' alt='green circle'>0</div>	
-					<div id='-vita' class='be_rslide'></div>
-					<div class='sty_rightSlider'>85%<img class='sty_goodBadPics' src='plugins/benefits_explorer/images/red.png' alt='red circle'></div>	
-				</div>	
-			</div>
-			<!-- Habitat for Pollinators and Impacts on Crop Yield Economic Output -->
-			<div class='sty_cbRangeWrap'>
-				<div class='sty_cbWrap'><div class='sty_cbLabel'><input type='checkbox' class='sty_cb' value='agloss'>Agricultural Economic Value Lost w/o Pollination <span id='agloss-range'></span><span id='agloss-unit' class='sty_hide'>%)</span></div></div>
-				<div class='sty_rangeWrap sty_hide'>
-					<div class='sty_leftSlider'><img class='sty_goodBadPics' src='plugins/benefits_explorer/images/green.png' alt='green circle'>0</div>	
-					<div id='-agloss' class='be_rslide'></div>
-					<div class='sty_rightSlider'>70%<img class='sty_goodBadPics' src='plugins/benefits_explorer/images/red.png' alt='red circle'></div>	
-				</div>	
-			</div>
-			<!-- Excess nitrogen -->
-			<div class='sty_cbRangeWrap'>
-				<div class='sty_cbWrap'><div class='sty_cbLabel'><input type='checkbox' class='sty_cb' value='nitrogen'>Total Annual Excess Nitrogen Application <span id='nitrogen-range'></span><span id='nitrogen-unit' class='sty_hide'> thousand tonnes)</span></div></div>
-				<div class='sty_rangeWrap sty_hide'>
-					<div class='sty_leftSlider'><img class='sty_goodBadPics' src='plugins/benefits_explorer/images/green.png' alt='green circle'>0</div>	
-					<div id='-nitrogen' class='be_rslide'></div>
-					<div class='sty_rightSlider'>615 kt<img class='sty_goodBadPics' src='plugins/benefits_explorer/images/red.png' alt='red circle'></div>	
-				</div>	
-			</div>
-		</div>
+		</section>
 	</div>	
 	<h3 id='hydroSection'>View Benefits By HydroBASIN</h3>
 	<div id='hydroWrap'>
-		<div class='sty_blueHeader' id='hydroHeader' style='font-weight:bold;'>Click map to select a HydroBASIN</div>
+		<!--<div class='sty_blueHeader' id='hydroHeader' style='font-weight:bold;'>Click map to select a HydroBASIN</div>-->
+		<h3 id='hydroHeader'>Click map to select a HydroBASIN</h3>
 		<div id='graphWrap' class='sty_hide'>
 			<!-- Standing Carbon -->
-			<div class='sty_smFontHeader'>Standing Carbon:<div class='be_attWrap'> <span id='standingc-amount' class='sty_bold'></span><span id='standingc-label' class='sty_bold'> million tonnes</span></div></div>
+			<div class='sty_smFontHeader'>Standing Carbon:<div class='be_attWrap'> <span id='standingc-amount' class='sty_bold sty_blueFont'></span><span id='standingc-label' class='sty_bold sty_blueFont'> million tonnes</span></div></div>
 			<div class='be_barWrap'>
 				<div class='be_barLabel'><img class='sty_goodBadPics' src='plugins/benefits_explorer/images/red.png' alt='red circle'></div>
 				<div class='be_barWrapper'>
@@ -109,7 +142,7 @@ The unique ContentPane id makes all the element ids unique and prevents duplicat
 				<div class='be_barLabel'><img class='sty_goodBadPics' src='plugins/benefits_explorer/images/green.png' alt='green circle'></div>
 			</div>
 			<!-- Forest Loss -->
-			<div class='sty_smFontHeader'>Forest Loss:<div class='be_attWrap'> <span id='forloss-amount' class='sty_bold'></span><span id='forloss-label' class='sty_bold'> km<sup>2</sup></span></div></div>
+			<div class='sty_smFontHeader'>Forest Loss:<div class='be_attWrap'> <span id='forloss-amount' class='sty_bold sty_blueFont'></span><span id='forloss-label' class='sty_bold sty_blueFont'> km<sup>2</sup></span></div></div>
 			<div class='be_barWrap'>
 				<div class='be_barLabel'><img class='sty_goodBadPics' src='plugins/benefits_explorer/images/green.png' alt='green circle'></div>
 				<div class='be_barWrapper'>
@@ -120,7 +153,7 @@ The unique ContentPane id makes all the element ids unique and prevents duplicat
 				<div class='be_barLabel'><img class='sty_goodBadPics' src='plugins/benefits_explorer/images/red.png' alt='red circle'></div>
 			</div>
 			<!-- Reforestation Potential -->
-			<div class='sty_smFontHeader'>Reforestation Potential:<div class='be_attWrap'> <span id='refor-amount' class='sty_bold'></span><span id='refor-label' class='sty_bold'> km<sup>2</sup></span></div></div>
+			<div class='sty_smFontHeader'>Reforestation Potential:<div class='be_attWrap'> <span id='refor-amount' class='sty_bold sty_blueFont'></span><span id='refor-label' class='sty_bold sty_blueFont'> km<sup>2</sup></span></div></div>
 			<div class='be_barWrap'>
 				<div class='be_barLabel'><img class='sty_goodBadPics' src='plugins/benefits_explorer/images/red.png' alt='red circle'></div>
 				<div class='be_barWrapper'>
@@ -131,7 +164,7 @@ The unique ContentPane id makes all the element ids unique and prevents duplicat
 				<div class='be_barLabel'><img class='sty_goodBadPics' src='plugins/benefits_explorer/images/green.png' alt='green circle'></div>
 			</div>
 			<!-- Freshwater Biodiversity Threat Index -->
-			<div class='sty_smFontHeader'>Freshwater Biodiversity Threat Index:<div class='be_attWrap'> <span id='freshbiot-amount' class='sty_bold'></span><span id='freshbiot-label' class='sty_bold'></span></div></div>
+			<div class='sty_smFontHeader'>Freshwater Biodiversity Threat Index:<div class='be_attWrap'> <span id='freshbiot-amount' class='sty_bold sty_blueFont'></span><span id='freshbiot-label' class='sty_bold sty_blueFont'></span></div></div>
 			<div class='be_barWrap'>
 				<div class='be_barLabel'><img class='sty_goodBadPics' src='plugins/benefits_explorer/images/green.png' alt='green circle'></div>
 				<div class='be_barWrapper'>
@@ -142,7 +175,7 @@ The unique ContentPane id makes all the element ids unique and prevents duplicat
 				<div class='be_barLabel'><img class='sty_goodBadPics' src='plugins/benefits_explorer/images/red.png' alt='red circle'></div>
 			</div>
 			<!-- Imperiled Terrestrial Species - count -->
-			<div class='sty_smFontHeader'>Imperiled Terrestrial Species:<div class='be_attWrap'> <span id='terrsp-amount' class='sty_bold'></span><span id='terrsp-label' class='sty_bold'> species</span></div></div>
+			<div class='sty_smFontHeader'>Imperiled Terrestrial Species:<div class='be_attWrap'> <span id='terrsp-amount' class='sty_bold sty_blueFont'></span><span id='terrsp-label' class='sty_bold sty_blueFont'> species</span></div></div>
 			<div class='be_barWrap'>
 				<div class='be_barLabel'><img class='sty_goodBadPics' src='plugins/benefits_explorer/images/green.png' alt='green circle'></div>
 				<div class='be_barWrapper'>
@@ -153,7 +186,7 @@ The unique ContentPane id makes all the element ids unique and prevents duplicat
 				<div class='be_barLabel'><img class='sty_goodBadPics' src='plugins/benefits_explorer/images/red.png' alt='red circle'></div>
 			</div>
 			<!-- Percent Reduction in Vitamin A Production in Absence of Pollination Services -->
-			<div class='sty_smFontHeader'>Drop in Vitamin A Production w/o Pollination:<div class='be_attWrap'> <span id='vita-amount' class='sty_bold'></span><span id='vita-label' class='sty_bold'>%</span></div></div>
+			<div class='sty_smFontHeader'>Drop in Vitamin A Production w/o Pollination:<div class='be_attWrap'> <span id='vita-amount' class='sty_bold sty_blueFont'></span><span id='vita-label' class='sty_bold sty_blueFont'>%</span></div></div>
 			<div class='be_barWrap'>
 				<div class='be_barLabel'><img class='sty_goodBadPics' src='plugins/benefits_explorer/images/green.png' alt='green circle'></div>
 				<div class='be_barWrapper'>
@@ -164,7 +197,7 @@ The unique ContentPane id makes all the element ids unique and prevents duplicat
 				<div class='be_barLabel'><img class='sty_goodBadPics' src='plugins/benefits_explorer/images/red.png' alt='red circle'></div>
 			</div>
 			<!-- The Percent of Total Agricultural Economic Value Lost in Absence of Pollination Services -->
-			<div class='sty_smFontHeader'>Agricultural Economic Value Lost w/o Pollination:<div class='be_attWrap'> <span id='agloss-amount' class='sty_bold'></span><span id='agloss-label' class='sty_bold'>%</span></div></div>
+			<div class='sty_smFontHeader'>Agricultural Economic Value Lost w/o Pollination:<div class='be_attWrap'> <span id='agloss-amount' class='sty_bold sty_blueFont'></span><span id='agloss-label' class='sty_bold sty_blueFont'>%</span></div></div>
 			<div class='be_barWrap'>
 				<div class='be_barLabel'><img class='sty_goodBadPics' src='plugins/benefits_explorer/images/green.png' alt='green circle'></div>
 				<div class='be_barWrapper'>
@@ -175,7 +208,7 @@ The unique ContentPane id makes all the element ids unique and prevents duplicat
 				<div class='be_barLabel'><img class='sty_goodBadPics' src='plugins/benefits_explorer/images/red.png' alt='red circle'></div>
 			</div>
 			<!-- Total Annual Excess Nitrogen Application -->
-			<div class='sty_smFontHeader'>Annual Excess Nitrogen Application:<div class='be_attWrap'> <span id='nitrogen-amount' class='sty_bold'></span><span id='nitrogen-label' class='sty_bold'>K tonnes</span></div></div>
+			<div class='sty_smFontHeader'>Annual Excess Nitrogen Application:<div class='be_attWrap'> <span id='nitrogen-amount' class='sty_bold sty_blueFont'></span><span id='nitrogen-label' class='sty_bold sty_blueFont'>K tonnes</span></div></div>
 			<div class='be_barWrap'>
 				<div class='be_barLabel'><img class='sty_goodBadPics' src='plugins/benefits_explorer/images/green.png' alt='green circle'></div>
 				<div class='be_barWrapper'>
@@ -188,15 +221,27 @@ The unique ContentPane id makes all the element ids unique and prevents duplicat
 		</div>	
 	</div>
 	<h3>View Additional Data</h3>
-	<div id='supDataWrap'>
-		<div class='sty_underlineHeader'>Click below to view additional data<img src='plugins/benefits_explorer/images/info.png' alt='show supporting data info' class='sty_infoIcon' id='-infoSupData'></div>
-		<div class='sty_sectionWrap'>
-			<div class='sty_cbStackedWrap'><div class='sty_cbLabel'><input type='checkbox' class='sty_cb' value='lyr-1'>Freshwater Rarity-weighted Richness</div></div>
-			<div class='sty_cbStackedWrap'><div class='sty_cbLabel'><input type='checkbox' class='sty_cb' value='lyr-2'>Terrestrial Rarity-weighted Richness</div></div>
-			<div class='sty_cbStackedWrap'><div class='sty_cbLabel'><input type='checkbox' class='sty_cb' value='lyr-3'>Avoided Regional Extinctions (Number of species)</div></div>
-			<div class='sty_cbStackedWrap'><div class='sty_cbLabel'><input type='checkbox' class='sty_cb' value='lyr-4'>Proportion of Natural Land Cover Needed to Meet Aichi Biodiversity Target 11</div></div>
-		</div>	
-	</div>
+	<section>
+		<div id='supDataWrap'>
+			<h3>Click below to view additional data<img src='plugins/benefits_explorer/images/info.png' alt='show supporting data info' class='sty_infoIcon' id='-infoSupData'></h3>
+			<label class="form-component">
+				<input type="checkbox" value="lyr-1"><div class="check"></div>
+				<span class="form-text">Freshwater Rarity-weighted Richness</span>
+			</label>
+			<label class="form-component">
+				<input type="checkbox" value="lyr-2"><div class="check"></div>
+				<span class="form-text">Terrestrial Rarity-weighted Richness</span>
+			</label>
+			<label class="form-component">
+				<input type="checkbox" value="lyr-3"><div class="check"></div>
+				<span class="form-text">Avoided Regional Extinctions (Number of species)</span>
+			</label>
+			<label class="form-component">
+				<input type="checkbox" value="lyr-4"><div class="check"></div>
+				<span class="form-text">Proportion of Natural Land Cover Needed to Meet Aichi Biodiversity Target 11</span>
+			</label>
+		</div>
+	</section>	
 </div>
 <div id='infoAccord' class='sty_flex1'>
 	<h3 class='infoDoc'>Documentation</h3>

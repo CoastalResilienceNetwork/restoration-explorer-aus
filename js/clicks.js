@@ -45,21 +45,15 @@ function ( Query, QueryTask, declare, FeatureLayer, lang, on, $, ui, esriapi, do
 					$('#' + t.id + 'getHelpBtn').html('Back to Benefits Explorer');
 				}));		
 				// Benefit CB Clicks
-				$('#' + t.id + 'basinByBensWrap .sty_cbWrap').on('click',lang.hitch(t,function(c){
-					var ben = "";
-					// if they click a label toggle the checkbox
-					if (c.target.checked == undefined){
-						$(c.currentTarget.children[0].children[0]).prop("checked", !$(c.currentTarget.children[0].children[0]).prop("checked") )	
-						ben = $(c.currentTarget.children[0].children[0]).val()
-					}else{
-						ben = c.target.value;
-					}	
-					if ($(c.currentTarget.children[0].children[0]).prop('checked') === true){
-						$(c.currentTarget).parent().find('.sty_rangeWrap').slideDown();
+				$('#' + t.id + 'basinByBensWrap input').on('click',lang.hitch(t,function(c){
+					var ben = c.target.value;
+					console.log(ben)	
+					if (c.target.checked == true){
+						$(c.currentTarget).parent().parent().find('.sty_rangeWrap').slideDown();
 						var values = $('#' + t.id + '-' + ben).slider("option", "values");
 						$('#' + t.id + '-' + ben).slider('values', values); 
 					}else{
-						$(c.currentTarget).parent().find('.sty_rangeWrap').slideUp();
+						$(c.currentTarget).parent().parent().find('.sty_rangeWrap').slideUp();
 						t[ben] = "";
 						t.clicks.layerDefsUpdate(t);
 						$('#' + t.id + ben + '-range').html("")
@@ -67,17 +61,10 @@ function ( Query, QueryTask, declare, FeatureLayer, lang, on, $, ui, esriapi, do
 					}	
 				}));	
 				// Sup data CB Clicks
-				$('#' + t.id + 'supDataWrap .sty_cbStackedWrap').on('click',lang.hitch(t,function(c){
-					var val = "";
-					// if they click a label toggle the checkbox
-					if (c.target.checked == undefined){
-						$(c.currentTarget.children[0].children[0]).prop("checked", !$(c.currentTarget.children[0].children[0]).prop("checked") )	
-						val = $(c.currentTarget.children[0].children[0]).val()
-					}else{
-						val = c.target.value;
-					}	
+				$('#' + t.id + 'supDataWrap input').on('click',lang.hitch(t,function(c){
+					var val = c.target.value;	
 					t.obj.addDatalyr = Number( val.split("-").pop() )
-					$('#' + t.id + 'supDataWrap .sty_cb').each(lang.hitch(t,function(i,v){
+					$('#' + t.id + 'supDataWrap input').each(lang.hitch(t,function(i,v){
 						if ( v.value != val ){
 							$(v).prop('checked', false)
 							var rl = Number( v.value.split("-").pop() )
@@ -87,7 +74,7 @@ function ( Query, QueryTask, declare, FeatureLayer, lang, on, $, ui, esriapi, do
 							}
 						}
 					}));
-					if ($(c.currentTarget.children[0].children[0]).prop('checked') === true){
+					if (c.target.checked == true){
 						t.obj.visibleLayers.push(t.obj.addDatalyr);
 					}else{
 						var index = t.obj.visibleLayers.indexOf(t.obj.addDatalyr);
