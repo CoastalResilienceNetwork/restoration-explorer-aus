@@ -9,10 +9,11 @@ function ( declare, domStyle, lang, on, $, ui, Query, QueryTask, Extent, Spatial
 
 			updateHbar: function(t,b){
 				$.each(b, function(i,v){
-					var x = x = Math.round(v[1]/v[2]*100);
+					var x = Math.round(v[1]/v[2]*100);
 					var n = "";
+					var fb = v[1]*10/10
 					if (v[0] == 'freshbiot'){
-						n = t.clicks.numberWithCommas(Math.round(v[1]*10)/10);
+						n = t.clicks.numberWithCommas(fb.toFixed(2));
 					}else{	
 						n = t.clicks.numberWithCommas(Math.round(v[1]))
 					}	
