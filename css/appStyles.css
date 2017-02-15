@@ -239,6 +239,6 @@ abbr.search-choice-close {
 .sidebar-content{
 	height:auto !important;
 }
-.icon-cancel{
+button.button-sidebar-plugin-close{
 	display:none !important;
 }	
