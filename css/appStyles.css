@@ -239,3 +239,6 @@ abbr.search-choice-close {
 .sidebar-content{
 	height:auto !important;
 }
+.icon-cancel{
+	display:none !important;
+}	
