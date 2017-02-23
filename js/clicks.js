@@ -49,11 +49,11 @@ function ( Query, QueryTask, declare, FeatureLayer, lang, on, $, ui, esriapi, do
 					var ben = c.target.value;
 					console.log(ben)	
 					if (c.target.checked == true){
-						$(c.currentTarget).parent().parent().find('.sty_rangeWrap').slideDown();
+						$(c.currentTarget).parent().parent().find('.slider-container').slideDown();
 						var values = $('#' + t.id + '-' + ben).slider("option", "values");
 						$('#' + t.id + '-' + ben).slider('values', values); 
 					}else{
-						$(c.currentTarget).parent().parent().find('.sty_rangeWrap').slideUp();
+						$(c.currentTarget).parent().parent().find('.slider-container').slideUp();
 						t[ben] = "";
 						t.clicks.layerDefsUpdate(t);
 						$('#' + t.id + ben + '-range').html("")

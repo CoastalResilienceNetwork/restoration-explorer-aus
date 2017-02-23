@@ -49,7 +49,7 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, lang, obj,
 		// Called when user hits the minimize '_' icon on the pluging. Also called before hibernate when users closes app by clicking 'X'.
 		deactivate: function () {
 			if (this.appDiv != undefined){
-				this.dynamicLayer.setVisibleLayers([-1])
+				//this.dynamicLayer.setVisibleLayers([-1])
 				//this.map.removeLayer(this.dynamicLayer);
 			}
 			this.open = "no";			
@@ -109,7 +109,7 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, lang, obj,
 			this.id = this.appDiv.id
 			dom.byId(this.container).appendChild(this.appDiv.domNode);					
 			$('#' + this.id).parent().addClass('sty_flexColumn')
-			$('#' + this.id).addClass('sty_wrap1')
+			$('#' + this.id).addClass('accord')
 			if (this.obj.stateSet == "no"){
 				$('#' + this.id).parent().parent().css('display', 'flex')
 			}

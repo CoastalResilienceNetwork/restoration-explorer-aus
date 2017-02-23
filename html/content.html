@@ -15,14 +15,14 @@ The unique ContentPane id makes all the element ids unique and prevents duplicat
 		</section>
 		<section>
 			<h3>Climate Change Mitigation/Carbon<img src='plugins/benefits_explorer/images/info.png' alt='show climate info' class='sty_infoIcon' id='-infoCarbon'></h3> 
-			<div>
+			<div class="rangeOverride">
 				<!-- Standing Carbon -->
 				<div class='sty_cbRangeWrap'>
 					<label class="form-component">
 						<input type="checkbox" value="standingc"><div class="check"></div>
 						<span class="form-text">Standing Carbon <span id='standingc-range'></span> <span id='standingc-unit' class='sty_hide'> million tonnes)</span></span>
 					</label>
-					<div class='sty_rangeWrap sty_hide'>
+					<div class='slider-container sty_hide'>
 						<div class='sty_leftSlider'><img class='sty_goodBadPics' src='plugins/benefits_explorer/images/red.png' alt='red circle'>0</div>	
 						<div id='-standingc' class='be_rslide'></div>
 						<div class='sty_rightSlider'>6,600 Mt<img class='sty_goodBadPics' src='plugins/benefits_explorer/images/green.png' alt='green circle'></div>	
@@ -34,7 +34,7 @@ The unique ContentPane id makes all the element ids unique and prevents duplicat
 						<input type="checkbox" value="forloss"><div class="check"></div>
 						<span class="form-text">Forest Loss <span id='forloss-range'></span> <span id='forloss-unit' class='sty_hide'>km<sup>2</sup>)</span></span>
 					</label>
-					<div class='sty_rangeWrap sty_hide'>
+					<div class='slider-container sty_hide'>
 						<div class='sty_leftSlider'><img class='sty_goodBadPics' src='plugins/benefits_explorer/images/green.png' alt='green circle'>0</div>	
 						<div id='-forloss' class='be_rslide'></div>
 						<div class='sty_rightSlider'>20K km<sup>2</sup><img class='sty_goodBadPics' src='plugins/benefits_explorer/images/red.png' alt='red circle'></div>	
@@ -46,7 +46,7 @@ The unique ContentPane id makes all the element ids unique and prevents duplicat
 						<input type="checkbox" value="refor"><div class="check"></div>
 						<span class="form-text">Reforestation Potential <span id='refor-range'></span><span id='refor-unit' class='sty_hide'> km<sup>2</sup>)</span></span>
 					</label>
-					<div class='sty_rangeWrap sty_hide'>
+					<div class='slider-container sty_hide'>
 						<div class='sty_leftSlider'><img class='sty_goodBadPics' src='plugins/benefits_explorer/images/red.png' alt='red circle'>0</div>	
 						<div id='-refor' class='be_rslide'></div>
 						<div class='sty_rightSlider'>65,100 km<sup>2</sup><img class='sty_goodBadPics' src='plugins/benefits_explorer/images/green.png' alt='green circle'></div>	
@@ -56,14 +56,14 @@ The unique ContentPane id makes all the element ids unique and prevents duplicat
 		</section>
 		<section>
 			<h3>Biodiversity<img src='plugins/benefits_explorer/images/info.png' alt='show biodiversity info' class='sty_infoIcon' id='-infoBio'></h3>
-			<div>
+			<div class="rangeOverride">
 				<!-- Freshwater Biodiversity Threats -->
 				<div class='sty_cbRangeWrap'>
 					<label class="form-component">
 						<input type="checkbox" value="freshbiot"><div class="check"></div>
 						<span class="form-text">Freshwater Biodiversity Threat Index <span id='freshbiot-range'></span><span id='freshbiot-unit' class='sty_hide'>)</span></span>
 					</label>
-					<div class='sty_rangeWrap sty_hide'>	
+					<div class='slider-container sty_hide'>	
 						<div class='sty_leftSlider'><img class='sty_goodBadPics' src='plugins/benefits_explorer/images/green.png' alt='green circle'>0</div>	
 						<div id='-freshbiot' class='be_rslide'></div>
 						<div class='sty_rightSlider'>1<img class='sty_goodBadPics' src='plugins/benefits_explorer/images/red.png' alt='red circle'></div>	
@@ -75,7 +75,7 @@ The unique ContentPane id makes all the element ids unique and prevents duplicat
 						<input type="checkbox" value="terrsp"><div class="check"></div>
 						<span class="form-text">Imperiled Terrestrial Species - count <span id='terrsp-range'></span><span id='terrsp-unit' class='sty_hide'>)</span></span>
 					</label>
-					<div class='sty_rangeWrap sty_hide'>	
+					<div class='slider-container sty_hide'>	
 						<div class='sty_leftSlider'><img class='sty_goodBadPics' src='plugins/benefits_explorer/images/green.png' alt='green circle'>0</div>	
 						<div id='-terrsp' class='be_rslide'></div>
 						<div class='sty_rightSlider'>220<img class='sty_goodBadPics' src='plugins/benefits_explorer/images/red.png' alt='red circle'></div>	
@@ -85,14 +85,14 @@ The unique ContentPane id makes all the element ids unique and prevents duplicat
 		</section>
 		<section>
 			<h3>Human Health &#38; Well Being<img src='plugins/benefits_explorer/images/info.png' alt='show biodiversity info' class='sty_infoIcon' id='-infoHealth'></h3>
-			<div>
+			<div class="rangeOverride">
 				<!-- Habitat for Pollinators &#38; Impacts on Vitamin A -->
 				<div class='sty_cbRangeWrap'>
 					<label class="form-component">
 						<input type="checkbox" value="vita"><div class="check"></div>
 						<span class="form-text">Drop in Vitamin A Production w/o Pollination <span id='vita-range'></span><span id='vita-unit' class='sty_hide'>%)</span></span>
 					</label>
-					<div class='sty_rangeWrap sty_hide'>		
+					<div class='slider-container sty_hide'>		
 						<div class='sty_leftSlider'><img class='sty_goodBadPics' src='plugins/benefits_explorer/images/green.png' alt='green circle'>0</div>	
 						<div id='-vita' class='be_rslide'></div>
 						<div class='sty_rightSlider'>85%<img class='sty_goodBadPics' src='plugins/benefits_explorer/images/red.png' alt='red circle'></div>	
@@ -104,7 +104,7 @@ The unique ContentPane id makes all the element ids unique and prevents duplicat
 						<input type="checkbox" value="agloss"><div class="check"></div>
 						<span class="form-text">Agricultural Economic Value Lost w/o Pollination <span id='agloss-range'></span><span id='agloss-unit' class='sty_hide'>%)</span></span>
 					</label>
-					<div class='sty_rangeWrap sty_hide'>
+					<div class='slider-container sty_hide'>
 						<div class='sty_leftSlider'><img class='sty_goodBadPics' src='plugins/benefits_explorer/images/green.png' alt='green circle'>0</div>	
 						<div id='-agloss' class='be_rslide'></div>
 						<div class='sty_rightSlider'>70%<img class='sty_goodBadPics' src='plugins/benefits_explorer/images/red.png' alt='red circle'></div>	
@@ -116,7 +116,7 @@ The unique ContentPane id makes all the element ids unique and prevents duplicat
 						<input type="checkbox" value="nitrogen"><div class="check"></div>
 						<span class="form-text">Total Annual Excess Nitrogen Application <span id='nitrogen-range'></span><span id='nitrogen-unit' class='sty_hide'> thousand tonnes)</span></span>
 					</label>
-					<div class='sty_rangeWrap sty_hide'>
+					<div class='slider-container sty_hide'>
 						<div class='sty_leftSlider'><img class='sty_goodBadPics' src='plugins/benefits_explorer/images/green.png' alt='green circle'>0</div>	
 						<div id='-nitrogen' class='be_rslide'></div>
 						<div class='sty_rightSlider'>615 kt<img class='sty_goodBadPics' src='plugins/benefits_explorer/images/red.png' alt='red circle'></div>	

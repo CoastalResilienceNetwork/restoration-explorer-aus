@@ -1,4 +1,5 @@
 /* accordian styles */
+/*
 .ui-accordion .ui-accordion-content{
 	padding:0.5em;	
 }
@@ -13,7 +14,6 @@
 }
 .ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover{
 	background:#f3f3f3; text-shadow:1px 1px #cdcdcd;
-	/*background:#dce6f0*/
 }
 .ui-accordion-header-active  {
 	font-weight:bold; box-shadow:0 2px 4px rgba(0, 0, 0, 0.25); border:solid 1px #999;
@@ -31,6 +31,7 @@
 .sty_wrap1 .ui-widget-content{
 	color:#222;
 }	
+*/
 /* slider styles */
 .ui-slider-horizontal {
 	height:11px; border:1px solid #ddd;
@@ -83,7 +84,7 @@
 	background-color:#e8f5fe; cursor:default; color:#000;
 }
 
-/* Chosen select menu elements */
+/* Chosen select menu elements 
 .chosen-container-single .chosen-single{
 	padding: 0px 0 0 8px; font-size:1.4rem; height:26px; text-align:left; color:#000;
 }
@@ -108,7 +109,7 @@
 abbr.search-choice-close {
   cursor: pointer;
 }
-
+*/
 /* Layout Styles */
 .sty_flexRow{
 	display:flex; flex-direction:row; align-items:center; 
@@ -201,9 +202,6 @@ abbr.search-choice-close {
 }	
 .sty_cb{
 	cursor:pointer; margin-right:5px; 
-}
-.sty_rangeWrap{
-	margin-bottom:12px; margin-left:16px; margin-top:4px; font-size:1em;
 }	
 .sty_leftSlider{
 	display:inline-block; margin-left:0px; margin-right:8px; font-size:1em;
@@ -229,7 +227,7 @@ abbr.search-choice-close {
 	    box-shadow:0 1px 2px rgba(0,0,0,0.5); border-top:1px solid rgba(136,136,136,0.5); cursor:pointer;
 }	
 .sty_explainWrap p{
-	font-size:1em; margin-top:5px; margin-bottom:5px; text-align:left;
+	margin-top:5px; margin-bottom:5px; text-align:left;
 }
 .sty_anchor{
 	color:#4b9caf !important; margin:0 !important;
@@ -237,6 +235,7 @@ abbr.search-choice-close {
 .sty_anchor:hover{
 	color:#222 !important;
 }	
+/*
 .plugin-minimize{
 	display:none;
 }
@@ -247,7 +246,7 @@ abbr.search-choice-close {
 .nav-apps-button.active.app-displayed {
     background-color: #0096D6 !important;
 }
-	
+*/	
 /*
 .nav-main-title{
 	border-left: 1px solid hsla(0, 0%, 100%, .2) !important; height:57px; line-height:58px; margin-left:13px; padding-left:10px;
@@ -264,4 +263,9 @@ abbr.search-choice-close {
 /* fix the accordion height issue in Safari */
 .sidebar-content{
 	height:auto !important;
+}
+
+.rangeOverride .ui-widget-content{
+	box-shadow: none;
+	border-bottom-width: 1px;
 }
