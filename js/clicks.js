@@ -50,6 +50,7 @@ function ( Query, QueryTask, declare, FeatureLayer, lang, on, $, ui, esriapi, do
 					console.log(ben)	
 					if (c.target.checked == true){
 						$(c.currentTarget).parent().parent().find('.slider-container').slideDown();
+						$(c.currentTarget).parent().parent().find('.slider-container').css("display","flex");
 						var values = $('#' + t.id + '-' + ben).slider("option", "values");
 						$('#' + t.id + '-' + ben).slider('values', values); 
 					}else{

@@ -109,12 +109,13 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, lang, obj,
 			this.id = this.appDiv.id
 			dom.byId(this.container).appendChild(this.appDiv.domNode);					
 			$('#' + this.id).parent().addClass('sty_flexColumn')
-			$('#' + this.id).addClass('accord')
+			$('#' + this.id).addClass('accord benefitsExplorer')
 			if (this.obj.stateSet == "no"){
 				$('#' + this.id).parent().parent().css('display', 'flex')
 			}
 			// Get html from content.html, prepend appDiv.id to html element id's, and add to appDiv
-			var idUpdate = content.replace(/id='/g, "id='" + this.id);	
+			var idUpdate0 = content.replace(/for="/g, 'for="' + this.id);	
+			var idUpdate = idUpdate0.replace(/id="/g, 'id="' + this.id);
 			$('#' + this.id).html(idUpdate);		
 			// Click listeners
 			this.clicks.clickListener(this);
