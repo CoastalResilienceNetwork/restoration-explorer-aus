@@ -33,6 +33,7 @@
 }	
 */
 /* slider styles */
+/*
 .ui-slider-horizontal {
 	height:11px; border:1px solid #ddd;
 }
@@ -44,6 +45,8 @@
 	background: linear-gradient(180deg, hsla(0, 0%, 100%, .1), hsla(0, 0%, 100%, 0)) 0 no-repeat, 50% no-repeat #4b9caf !important;
 	border-radius: 100% !important;	width: 17px !important;	height: 17px !important; box-shadow: 0 1px 1px rgba(16, 22, 26, .1)!important;
 }
+
+
 .sty_wrap1 .ui-slider-horizontal .ui-slider-handle {
 	background: linear-gradient(180deg, hsla(0, 0%, 100%, .1), hsla(0, 0%, 100%, 0)) 0 no-repeat, 50% no-repeat #5394b6 !important;
 	cursor:pointer;
@@ -63,7 +66,8 @@
 .sty_wrap .ui-corner-all, .sty_wrap1 .ui-corner-all{
 	border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; border-top-right-radius: 2px; border-top-left-radius: 2px;
 }
-/* toggle buttons */
+*/
+/* toggle buttons 
 .sty_togBtn{
 	padding:4px; text-decoration:none; -moz-border-radius:1px; -webkit-border-radius:1px; border-radius:1px; -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.5);
 	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.5); box-shadow: 0 1px 2px rgba(0,0,0,0.5); border-bottom: 1px solid rgba(0,0,0,0.25); outline:none; position:relative;
@@ -83,7 +87,7 @@
 .sty_togBtnSel:hover{
 	background-color:#e8f5fe; cursor:default; color:#000;
 }
-
+*/
 /* Chosen select menu elements 
 .chosen-container-single .chosen-single{
 	padding: 0px 0 0 8px; font-size:1.4rem; height:26px; text-align:left; color:#000;
@@ -213,8 +217,14 @@ abbr.search-choice-close {
 	margin-left:10px; 
 }
 .sty_getHelpBtnWrap{
-    background-color:#dce6f0; padding:10px 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.25); z-index:500;
+    background-color:#eef3f8; padding:10px 12px; z-index:500; text-align:center;
 }	
+.sty_getHelpBtnWrap .button{
+	font-size:15px; width:100%; color:#2F6384; 
+}	
+.sidebar-content .sty_getHelpBtnWrap .button{
+	margin-bottom:0;
+}
 .sty_getHelpBtn1{
 	background-color:#5e94b6; font-size:1.5rem; line-height:1.5; padding:.6rem 1.4rem; text-shadow:1px 1px 1px rgba(30,30,30,0.7);
     text-align:center; cursor:pointer; color:#FFF; border-radius:3px; box-shadow: 0 1px 2px rgba(0,0,0,1); font-weight:bold;

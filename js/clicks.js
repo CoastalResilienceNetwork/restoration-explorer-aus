@@ -10,6 +10,11 @@ function ( Query, QueryTask, declare, FeatureLayer, lang, on, $, ui, esriapi, do
 				$( function() {
 					$( "#" + t.id + "mainAccord" ).accordion({heightStyle: "fill"}); 
 					$( "#" + t.id + "infoAccord" ).accordion({heightStyle: "fill"});
+					$( '#' + t.id + 'mainAccord > h3' ).addClass("accord-header"); 
+					$( '#' + t.id + 'infoAccord > div' ).addClass("accord-body");
+					$( '#' + t.id + 'infoAccord > h3' ).addClass("accord-header"); 
+					$( '#' + t.id + 'mainAccord > div' ).addClass("accord-body"); 
+					 
 				});
 				// update accordians on window resize
 				var doit;
