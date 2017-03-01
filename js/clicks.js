@@ -92,26 +92,32 @@ function ( Query, QueryTask, declare, FeatureLayer, lang, on, $, ui, esriapi, do
 					t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
 				}));	
 				// Standing Carbon range slider
-				$('#' + t.id + '-standingc').slider({range:true, min:0, max:6600, values:[0,6600], change:function(event,ui){t.clicks.sliderChange(event,ui,t)}});
+				$('#' + t.id + '-standingc').slider({range:true, min:0, max:6600, values:[0,6600], 
+					change:function(event,ui){t.clicks.sliderChange(event,ui,t)}, slide:function(event,ui){t.clicks.sliderSlide(event,ui,t)} });
 				// Forest Loss range slider
-				$('#' + t.id + '-forloss').slider({range:true, min:0, max:20000, values:[0,20000], change:function(event,ui){t.clicks.sliderChange(event,ui,t)}});
+				$('#' + t.id + '-forloss').slider({range:true, min:0, max:20000, values:[0,20000], 
+					change:function(event,ui){t.clicks.sliderChange(event,ui,t)}, slide:function(event,ui){t.clicks.sliderSlide(event,ui,t)} });
 				// Reforestation Potential range slider
-				$('#' + t.id + '-refor').slider({range:true, min:0, max:65100, values:[0,65100], change:function(event,ui){t.clicks.sliderChange(event,ui,t)}});	
+				$('#' + t.id + '-refor').slider({range:true, min:0, max:65100, values:[0,65100], 
+					change:function(event,ui){t.clicks.sliderChange(event,ui,t)}, slide:function(event,ui){t.clicks.sliderSlide(event,ui,t)} });	
 				// Freshwater Biodiversity Threats range slider
-				$('#' + t.id + '-freshbiot').slider({range:true, min:0, max:10, values:[0,10], change:function(event,ui){t.clicks.sliderChange(event,ui,t)}});	
+				$('#' + t.id + '-freshbiot').slider({range:true, min:0, max:10, values:[0,10], 
+					change:function(event,ui){t.clicks.sliderChange(event,ui,t)}, slide:function(event,ui){t.clicks.sliderSlide(event,ui,t)} });	
 				// IUCN Listed Terrestrial Species range slider
-				$('#' + t.id + '-terrsp').slider({range:true, min:0, max:220, values:[0,220], change:function(event,ui){t.clicks.sliderChange(event,ui,t)}});
+				$('#' + t.id + '-terrsp').slider({range:true, min:0, max:220, values:[0,220], 
+					change:function(event,ui){t.clicks.sliderChange(event,ui,t)}, slide:function(event,ui){t.clicks.sliderSlide(event,ui,t)} });
 				// Habitat for Pollinators and Impacts on Vitamin A range slider
-				$('#' + t.id + '-vita' ).slider({ range: true, min: 0, max: 85, values: [ 0, 85 ], change:function(event,ui){t.clicks.sliderChange(event,ui,t)}});
+				$('#' + t.id + '-vita' ).slider({ range: true, min: 0, max: 85, values: [ 0, 85 ], 
+					change:function(event,ui){t.clicks.sliderChange(event,ui,t)}, slide:function(event,ui){t.clicks.sliderSlide(event,ui,t)} });
 				// Habitat for Pollinators and Impacts on Crop Yield Economic Output range slider
-				$('#' + t.id + '-agloss' ).slider({ range: true, min: 0, max: 70, values: [ 0, 70 ], change:function(event,ui){t.clicks.sliderChange(event,ui,t)}});
+				$('#' + t.id + '-agloss' ).slider({ range: true, min: 0, max: 70, values: [ 0, 70 ], 
+					change:function(event,ui){t.clicks.sliderChange(event,ui,t)}, slide:function(event,ui){t.clicks.sliderSlide(event,ui,t)} });
 				// Excess Nitrogen range slider
-				$('#' + t.id + '-nitrogen' ).slider({ range: true, min: 0, max: 615, values: [ 0, 615 ], change:function(event,ui){t.clicks.sliderChange(event,ui,t)}});	
+				$('#' + t.id + '-nitrogen' ).slider({ range: true, min: 0, max: 615, values: [ 0, 615 ], 
+					change:function(event,ui){t.clicks.sliderChange(event,ui,t)}, slide:function(event,ui){t.clicks.sliderSlide(event,ui,t)} });	
 			},
-			sliderChange: function( event, ui, t ){
+			sliderSlide: function( event, ui, t ){
 				var ben  = event.target.id.split("-").pop()
-				t[ben] = "(" + ben + " >= " + ui.values[0] + " AND " + ben + " <= " + ui.values[1] + ")";	
-				t.clicks.layerDefsUpdate(t);
 				var low = 0;
 				var high = 0;
 				if (ben == 'freshbiot'){
@@ -127,6 +133,11 @@ function ( Query, QueryTask, declare, FeatureLayer, lang, on, $, ui, esriapi, do
 					$('#' + t.id + ben + '-range').html("(" + low + " - " + high);
 				}
 				$('#' + t.id + ben + '-unit').css('display', 'inline-block');
+			},
+			sliderChange: function( event, ui, t ){
+				var ben  = event.target.id.split("-").pop()
+				t[ben] = "(" + ben + " >= " + ui.values[0] + " AND " + ben + " <= " + ui.values[1] + ")";	
+				t.clicks.layerDefsUpdate(t);
 			},	
 			layerDefsUpdate: function(t){
 				if (t.obj.stateSet == "no"){
