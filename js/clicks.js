@@ -26,18 +26,10 @@ function ( Query, QueryTask, declare, FeatureLayer, lang, on, $, ui, esriapi, do
 				});
 				// leave the get help section
 				$('#' + t.id + 'getHelpBtn').on('click',lang.hitch(t,function(c){
-					if ( $('#' + t.id + 'mainAccord').is(":visible") ){
-						$('#' + t.id + 'infoAccord').show();
-						$('#' + t.id + 'mainAccord').hide();
-						$('#' + t.id + 'getHelpBtn').html('Back to Benefits Explorer');
-						t.clicks.updateAccord(t);
-						$('#' + t.id + 'infoAccord .infoDoc').trigger('click');
-					}else{
-						$('#' + t.id + 'infoAccord').hide();
-						$('#' + t.id + 'mainAccord').show();
-						$('#' + t.id + 'getHelpBtn').html('Back to Documentation');
-						t.clicks.updateAccord(t);
-					}					
+					$('#' + t.id + 'infoAccord').hide();
+					$('#' + t.id + 'mainAccord').show();
+					$('#' + t.id + 'getHelpBtnWrap').hide();
+					t.clicks.updateAccord(t);					
 				}));
 				// info icon clicks
 				$('#' + t.id + ' .sty_infoIcon').on('click',lang.hitch(t,function(c){
@@ -52,14 +44,14 @@ function ( Query, QueryTask, declare, FeatureLayer, lang, on, $, ui, esriapi, do
 				// Benefit CB Clicks
 				$('#' + t.id + 'basinByBensWrap input').on('click',lang.hitch(t,function(c){
 					var ben = c.target.value;
-					console.log(ben)	
 					if (c.target.checked == true){
 						$(c.currentTarget).parent().parent().find('.slider-container').slideDown();
+
 						$(c.currentTarget).parent().parent().find('.slider-container').css("display","flex");
 						var values = $('#' + t.id + '-' + ben).slider("option", "values");
 						$('#' + t.id + '-' + ben).slider('values', values); 
 					}else{
-						$(c.currentTarget).parent().parent().find('.slider-container').slideUp();
+						$(c.currentTarget).parent().parent().find('.slider-container').slideUp()
 						t[ben] = "";
 						t.clicks.layerDefsUpdate(t);
 						$('#' + t.id + ben + '-range').html("")

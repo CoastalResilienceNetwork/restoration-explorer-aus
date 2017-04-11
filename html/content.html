@@ -4,11 +4,10 @@ takes the ContentPane id and prepends it to every element with a declared id in 
 The unique ContentPane id makes all the element ids unique and prevents duplicate id errors in split screen mode.-->
 
 <!--Opening view of the app. Give a little background and instructions to get started-->
-<div id="getHelpBtnWrap" class="sty_getHelpBtnWrap">
+<div id="getHelpBtnWrap" class="sty_getHelpBtnWrap sty_hide">
 	<button id="getHelpBtn" class="button button-default">Start Using Benefits Explorer</button>
-	<!-- <div id="getHelpBtn" class="sty_getHelpBtn">Start Using Benefits Explorer</div> -->
 </div>
-<div id="mainAccord" class="sty_flex1 sty_hide">
+<div id="mainAccord" class="sty_flex1">
 	<h3 id="hbbHeader">View HydroBASINS By Benefits</h3>  
 	<div id="basinByBensWrap">
 		<section>
@@ -18,39 +17,39 @@ The unique ContentPane id makes all the element ids unique and prevents duplicat
 			<h3>Climate Change Mitigation/Carbon<img src="plugins/benefits_explorer/images/info.png" alt="show climate info" class="sty_infoIcon" id="-infoCarbon"></h3> 
 			<div>
 				<!-- Standing Carbon -->
-				<div class="sty_cbRangeWrap">
+				<div class="sty_cbRangeWrap sty_greenRamp">
 					<label class="form-component">
 						<input type="checkbox" value="standingc"><div class="check"></div>
 						<span class="form-text">Standing Carbon <span id="standingc-range"></span> <span id="standingc-unit" class="sty_hide"> million tonnes)</span></span>
 					</label>
 					<div class="slider-container range-slider sty_flexRow sty_hide">
-						<div class="sty_leftSlider"><img class="sty_goodBadPics" src="plugins/benefits_explorer/images/red.png" alt="red circle">0</div>	
+						<div class="sty_leftSlider">0</div>	
 						<div id="-standingc" class="be_rslide slider"></div>
-						<div class="sty_rightSlider">6,600 Mt<img class="sty_goodBadPics" src="plugins/benefits_explorer/images/green.png" alt="green circle"></div>	
+						<div class="sty_rightSlider">6,600 Mt</div>	
 					</div>	
 				</div>
 				<!-- Forest Loss -->
-				<div class="sty_cbRangeWrap">
+				<div class="sty_cbRangeWrap sty_redRamp">
 					<label class="form-component">
 						<input type="checkbox" value="forloss"><div class="check"></div>
 						<span class="form-text">Forest Loss <span id="forloss-range"></span> <span id="forloss-unit" class="sty_hide">km<sup>2</sup>)</span></span>
 					</label>
 					<div class="slider-container range-slider sty_flexRow sty_hide">
-						<div class="sty_leftSlider"><img class="sty_goodBadPics" src="plugins/benefits_explorer/images/green.png" alt="green circle">0</div>	
+						<div class="sty_leftSlider">0</div>	
 						<div id="-forloss" class="be_rslide slider"></div>
-						<div class="sty_rightSlider">20K km<sup>2</sup><img class="sty_goodBadPics" src="plugins/benefits_explorer/images/red.png" alt="red circle"></div>	
+						<div class="sty_rightSlider">20K km<sup>2</sup></div>	
 					</div>	
 				</div>
 				<!-- Reforestation Potential -->
-				<div class="sty_cbRangeWrap">
+				<div class="sty_cbRangeWrap sty_greenRamp">
 					<label class="form-component">
 						<input type="checkbox" value="refor"><div class="check"></div>
 						<span class="form-text">Reforestation Potential <span id="refor-range"></span><span id="refor-unit" class="sty_hide"> km<sup>2</sup>)</span></span>
 					</label>
 					<div class="slider-container range-slider sty_flexRow sty_hide">
-						<div class="sty_leftSlider"><img class="sty_goodBadPics" src="plugins/benefits_explorer/images/red.png" alt="red circle">0</div>	
+						<div class="sty_leftSlider">0</div>	
 						<div id="-refor" class="be_rslide slider"></div>
-						<div class="sty_rightSlider">65,100 km<sup>2</sup><img class="sty_goodBadPics" src="plugins/benefits_explorer/images/green.png" alt="green circle"></div>	
+						<div class="sty_rightSlider">65,100 km<sup>2</sup></div>	
 					</div>
 				</div>
 			</div>
@@ -59,27 +58,27 @@ The unique ContentPane id makes all the element ids unique and prevents duplicat
 			<h3>Biodiversity<img src="plugins/benefits_explorer/images/info.png" alt="show biodiversity info" class="sty_infoIcon" id="-infoBio"></h3>
 			<div>
 				<!-- Freshwater Biodiversity Threats -->
-				<div class="sty_cbRangeWrap">
+				<div class="sty_cbRangeWrap sty_redRamp">
 					<label class="form-component">
 						<input type="checkbox" value="freshbiot"><div class="check"></div>
 						<span class="form-text">Freshwater Biodiversity Threat Index <span id="freshbiot-range"></span><span id="freshbiot-unit" class="sty_hide">)</span></span>
 					</label>
 					<div class="slider-container range-slider sty_flexRow sty_hide">	
-						<div class="sty_leftSlider"><img class="sty_goodBadPics" src="plugins/benefits_explorer/images/green.png" alt="green circle">0</div>	
+						<div class="sty_leftSlider">0</div>	
 						<div id="-freshbiot" class="be_rslide slider"></div>
-						<div class="sty_rightSlider">1<img class="sty_goodBadPics" src="plugins/benefits_explorer/images/red.png" alt="red circle"></div>	
+						<div class="sty_rightSlider">1</div>	
 					</div>	
 				</div>
 				<!-- Imperiled terrestrial Species - count -->
-				<div class="sty_cbRangeWrap">
+				<div class="sty_cbRangeWrap sty_redRamp">
 					<label class="form-component">
 						<input type="checkbox" value="terrsp"><div class="check"></div>
 						<span class="form-text">Imperiled Terrestrial Species - count <span id="terrsp-range"></span><span id="terrsp-unit" class="sty_hide">)</span></span>
 					</label>
 					<div class="slider-container range-slider sty_flexRow sty_hide">	
-						<div class="sty_leftSlider"><img class="sty_goodBadPics" src="plugins/benefits_explorer/images/green.png" alt="green circle">0</div>	
+						<div class="sty_leftSlider">0</div>	
 						<div id="-terrsp" class="be_rslide slider"></div>
-						<div class="sty_rightSlider">220<img class="sty_goodBadPics" src="plugins/benefits_explorer/images/red.png" alt="red circle"></div>	
+						<div class="sty_rightSlider">220</div>	
 					</div>	
 				</div>
 			</div>
@@ -88,39 +87,39 @@ The unique ContentPane id makes all the element ids unique and prevents duplicat
 			<h3>Human Health &#38; Well Being<img src="plugins/benefits_explorer/images/info.png" alt="show biodiversity info" class="sty_infoIcon" id="-infoHealth"></h3>
 			<div>
 				<!-- Habitat for Pollinators &#38; Impacts on Vitamin A -->
-				<div class="sty_cbRangeWrap">
+				<div class="sty_cbRangeWrap sty_redRamp">
 					<label class="form-component">
 						<input type="checkbox" value="vita"><div class="check"></div>
 						<span class="form-text">Drop in Vitamin A Production w/o Pollination <span id="vita-range"></span><span id="vita-unit" class="sty_hide">%)</span></span>
 					</label>
 					<div class="slider-container range-slider sty_flexRow sty_hide">		
-						<div class="sty_leftSlider"><img class="sty_goodBadPics" src="plugins/benefits_explorer/images/green.png" alt="green circle">0</div>	
+						<div class="sty_leftSlider">0</div>	
 						<div id="-vita" class="be_rslide slider"></div>
-						<div class="sty_rightSlider">85%<img class="sty_goodBadPics" src="plugins/benefits_explorer/images/red.png" alt="red circle"></div>	
+						<div class="sty_rightSlider">85%</div>	
 					</div>	
 				</div>
 				<!-- Habitat for Pollinators and Impacts on Crop Yield Economic Output -->
-				<div class="sty_cbRangeWrap">
+				<div class="sty_cbRangeWrap sty_redRamp">
 					<label class="form-component">
 						<input type="checkbox" value="agloss"><div class="check"></div>
 						<span class="form-text">Agricultural Economic Value Lost w/o Pollination <span id="agloss-range"></span><span id="agloss-unit" class="sty_hide">%)</span></span>
 					</label>
 					<div class="slider-container range-slider sty_flexRow sty_hide">
-						<div class="sty_leftSlider"><img class="sty_goodBadPics" src="plugins/benefits_explorer/images/green.png" alt="green circle">0</div>	
+						<div class="sty_leftSlider">0</div>	
 						<div id="-agloss" class="be_rslide slider"></div>
-						<div class="sty_rightSlider">70%<img class="sty_goodBadPics" src="plugins/benefits_explorer/images/red.png" alt="red circle"></div>	
+						<div class="sty_rightSlider">70%</div>	
 					</div>	
 				</div>
 				<!-- Excess nitrogen -->
-				<div class="sty_cbRangeWrap">
+				<div class="sty_cbRangeWrap sty_redRamp">
 					<label class="form-component">
 						<input type="checkbox" value="nitrogen"><div class="check"></div>
 						<span class="form-text">Total Annual Excess Nitrogen Application <span id="nitrogen-range"></span><span id="nitrogen-unit" class="sty_hide"> thousand tonnes)</span></span>
 					</label>
 					<div class="slider-container range-slider sty_flexRow sty_hide">
-						<div class="sty_leftSlider"><img class="sty_goodBadPics" src="plugins/benefits_explorer/images/green.png" alt="green circle">0</div>	
+						<div class="sty_leftSlider">0</div>	
 						<div id="-nitrogen" class="be_rslide slider"></div>
-						<div class="sty_rightSlider">615 kt<img class="sty_goodBadPics" src="plugins/benefits_explorer/images/red.png" alt="red circle"></div>	
+						<div class="sty_rightSlider">615 kt</div>	
 					</div>	
 				</div>
 			</div>
@@ -130,94 +129,86 @@ The unique ContentPane id makes all the element ids unique and prevents duplicat
 	<div id="hydroWrap">
 		<!--<div class="sty_blueHeader" id="hydroHeader" style="font-weight:bold;">Click map to select a HydroBASIN</div>-->
 		<h3 id="hydroHeader">Click map to select a HydroBASIN</h3>
-		<div id="graphWrap" class="sty_hide">
+		<div id="graphWrap" class="sty_hide graphWrap">
 			<!-- Standing Carbon -->
-			<div class="sty_smFontHeader">Standing Carbon:<div class="be_attWrap"> <span id="standingc-amount" class="sty_bold sty_blueFont"></span><span id="standingc-label" class="sty_bold sty_blueFont"> million tonnes</span></div></div>
+			<h4>Standing Carbon</h4>
 			<div class="be_barWrap">
-				<div class="be_barLabel"><img class="sty_goodBadPics" src="plugins/benefits_explorer/images/red.png" alt="red circle"></div>
 				<div class="be_barWrapper">
-					<span class="be_bars be_spanBar be_backgroundBar">
-						<span class="be_bars be_emBar be_valBar1" id="standingc-bar"></span>
-					</span>
+					<span class="be_bars be_spanBar be_backgroundBar"><span class="be_bars be_emBar be_barGreen" id="standingc-bar"></span></span>
 				</div>
-				<div class="be_barLabel"><img class="sty_goodBadPics" src="plugins/benefits_explorer/images/green.png" alt="green circle"></div>
+				<div class="be_attWrap">
+					<span id="standingc-amount"></span><span id="standingc-label"> million tonnes</span>
+				</div>
 			</div>
 			<!-- Forest Loss -->
-			<div class="sty_smFontHeader">Forest Loss:<div class="be_attWrap"> <span id="forloss-amount" class="sty_bold sty_blueFont"></span><span id="forloss-label" class="sty_bold sty_blueFont"> km<sup>2</sup></span></div></div>
+			<h4>Forest Loss</h4>
 			<div class="be_barWrap">
-				<div class="be_barLabel"><img class="sty_goodBadPics" src="plugins/benefits_explorer/images/green.png" alt="green circle"></div>
 				<div class="be_barWrapper">
-					<span class="be_bars be_spanBar be_backgroundBar">
-						<span class="be_bars be_emBar be_valBar2" id="forloss-bar"></span>
-					</span>
+					<span class="be_bars be_spanBar be_backgroundBar"><span class="be_bars be_emBar be_barRed" id="forloss-bar"></span></span>
 				</div>
-				<div class="be_barLabel"><img class="sty_goodBadPics" src="plugins/benefits_explorer/images/red.png" alt="red circle"></div>
+				<div class="be_attWrap">
+					<span id="forloss-amount"></span><span id="forloss-label"> km<sup>2</sup></span>
+				</div>
 			</div>
 			<!-- Reforestation Potential -->
-			<div class="sty_smFontHeader">Reforestation Potential:<div class="be_attWrap"> <span id="refor-amount" class="sty_bold sty_blueFont"></span><span id="refor-label" class="sty_bold sty_blueFont"> km<sup>2</sup></span></div></div>
+			<h4>Reforestation Potential</h4>
 			<div class="be_barWrap">
-				<div class="be_barLabel"><img class="sty_goodBadPics" src="plugins/benefits_explorer/images/red.png" alt="red circle"></div>
 				<div class="be_barWrapper">
-					<span class="be_bars be_spanBar be_backgroundBar">
-						<span class="be_bars be_emBar be_valBar3" id="refor-bar"></span>
-					</span>
+					<span class="be_bars be_spanBar be_backgroundBar"><span class="be_bars be_emBar be_barGreen" id="refor-bar"></span></span>
 				</div>
-				<div class="be_barLabel"><img class="sty_goodBadPics" src="plugins/benefits_explorer/images/green.png" alt="green circle"></div>
+				<div class="be_attWrap">
+					<span id="refor-amount"></span><span id="refor-label"> km<sup>2</sup></span>
+				</div>		
 			</div>
 			<!-- Freshwater Biodiversity Threat Index -->
-			<div class="sty_smFontHeader">Freshwater Biodiversity Threat Index:<div class="be_attWrap"> <span id="freshbiot-amount" class="sty_bold sty_blueFont"></span><span id="freshbiot-label" class="sty_bold sty_blueFont"></span></div></div>
+			<h4>Freshwater Biodiversity Threat Index</h4>
 			<div class="be_barWrap">
-				<div class="be_barLabel"><img class="sty_goodBadPics" src="plugins/benefits_explorer/images/green.png" alt="green circle"></div>
 				<div class="be_barWrapper">
-					<span class="be_bars be_spanBar be_backgroundBar">
-						<span class="be_bars be_emBar be_valBar4" id="freshbiot-bar"></span>
-					</span>
+					<span class="be_bars be_spanBar be_backgroundBar"><span class="be_bars be_emBar be_barRed" id="freshbiot-bar"></span></span>
 				</div>
-				<div class="be_barLabel"><img class="sty_goodBadPics" src="plugins/benefits_explorer/images/red.png" alt="red circle"></div>
+				<div class="be_attWrap">
+					<span id="freshbiot-amount"></span><span id="freshbiot-label"></span>
+				</div>
 			</div>
 			<!-- Imperiled Terrestrial Species - count -->
-			<div class="sty_smFontHeader">Imperiled Terrestrial Species:<div class="be_attWrap"> <span id="terrsp-amount" class="sty_bold sty_blueFont"></span><span id="terrsp-label" class="sty_bold sty_blueFont"> species</span></div></div>
+			<h4>Imperiled Terrestrial Species</h4>
 			<div class="be_barWrap">
-				<div class="be_barLabel"><img class="sty_goodBadPics" src="plugins/benefits_explorer/images/green.png" alt="green circle"></div>
 				<div class="be_barWrapper">
-					<span class="be_bars be_spanBar be_backgroundBar">
-						<span class="be_bars be_emBar be_valBar5" id="terrsp-bar"></span>
-					</span>
+					<span class="be_bars be_spanBar be_backgroundBar"><span class="be_bars be_emBar be_barRed" id="terrsp-bar"></span></span>
 				</div>
-				<div class="be_barLabel"><img class="sty_goodBadPics" src="plugins/benefits_explorer/images/red.png" alt="red circle"></div>
+				<div class="be_attWrap">
+					<span id="terrsp-amount"></span><span id="terrsp-label"> species</span>
+				</div>
 			</div>
 			<!-- Percent Reduction in Vitamin A Production in Absence of Pollination Services -->
-			<div class="sty_smFontHeader">Drop in Vitamin A Production w/o Pollination:<div class="be_attWrap"> <span id="vita-amount" class="sty_bold sty_blueFont"></span><span id="vita-label" class="sty_bold sty_blueFont">%</span></div></div>
+			<h4>Drop in Vitamin A Production w/o Pollination</h4>
 			<div class="be_barWrap">
-				<div class="be_barLabel"><img class="sty_goodBadPics" src="plugins/benefits_explorer/images/green.png" alt="green circle"></div>
 				<div class="be_barWrapper">
-					<span class="be_bars be_spanBar be_backgroundBar">
-						<span class="be_bars be_emBar be_valBar6" id="vita-bar"></span>
-					</span>
+					<span class="be_bars be_spanBar be_backgroundBar"><span class="be_bars be_emBar be_barRed" id="vita-bar"></span></span>
 				</div>
-				<div class="be_barLabel"><img class="sty_goodBadPics" src="plugins/benefits_explorer/images/red.png" alt="red circle"></div>
+				<div class="be_attWrap">
+					<span id="vita-amount"></span><span id="vita-label">%</span>
+				</div>
 			</div>
 			<!-- The Percent of Total Agricultural Economic Value Lost in Absence of Pollination Services -->
-			<div class="sty_smFontHeader">Agricultural Economic Value Lost w/o Pollination:<div class="be_attWrap"> <span id="agloss-amount" class="sty_bold sty_blueFont"></span><span id="agloss-label" class="sty_bold sty_blueFont">%</span></div></div>
+			<h4>Agricultural Economic Value Lost w/o Pollination</h4>
 			<div class="be_barWrap">
-				<div class="be_barLabel"><img class="sty_goodBadPics" src="plugins/benefits_explorer/images/green.png" alt="green circle"></div>
 				<div class="be_barWrapper">
-					<span class="be_bars be_spanBar be_backgroundBar">
-						<span class="be_bars be_emBar be_valBar7" id="agloss-bar"></span>
-					</span>
+					<span class="be_bars be_spanBar be_backgroundBar"><span class="be_bars be_emBar be_barRed" id="agloss-bar"></span></span>
 				</div>
-				<div class="be_barLabel"><img class="sty_goodBadPics" src="plugins/benefits_explorer/images/red.png" alt="red circle"></div>
+				<div class="be_attWrap">
+					<span id="agloss-amount"></span><span id="agloss-label">%</span>
+				</div>
 			</div>
 			<!-- Total Annual Excess Nitrogen Application -->
-			<div class="sty_smFontHeader">Annual Excess Nitrogen Application:<div class="be_attWrap"> <span id="nitrogen-amount" class="sty_bold sty_blueFont"></span><span id="nitrogen-label" class="sty_bold sty_blueFont">K tonnes</span></div></div>
+			<h4>Annual Excess Nitrogen Application</h4>
 			<div class="be_barWrap">
-				<div class="be_barLabel"><img class="sty_goodBadPics" src="plugins/benefits_explorer/images/green.png" alt="green circle"></div>
 				<div class="be_barWrapper">
-					<span class="be_bars be_spanBar be_backgroundBar">
-						<span class="be_bars be_emBar be_valBar8" id="nitrogen-bar"></span>
-					</span>
+					<span class="be_bars be_spanBar be_backgroundBar"><span class="be_bars be_emBar be_barRed" id="nitrogen-bar"></span></span>
 				</div>
-				<div class="be_barLabel"><img class="sty_goodBadPics" src="plugins/benefits_explorer/images/red.png" alt="red circle"></div>
+				<div class="be_attWrap">
+					<span id="nitrogen-amount"></span><span id="nitrogen-label">K tonnes</span>
+				</div>
 			</div>
 		</div>	
 	</div>
@@ -244,7 +235,7 @@ The unique ContentPane id makes all the element ids unique and prevents duplicat
 		</div>
 	</section>	
 </div>
-<div id="infoAccord" class="sty_flex1">
+<div id="infoAccord" class="sty_flex1 sty_hide">
 	<h3 class="infoDoc">Documentation</h3>
 	<div class="sty_explainWrap">
 		<p>

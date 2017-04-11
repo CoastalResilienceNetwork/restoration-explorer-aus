@@ -129,7 +129,15 @@
 .sty_anchor:hover{
 	color:#222 !important;
 }	
-
+.sty_greenRamp .range-slider .ui-widget-header, .sty_redRamp .range-slider .ui-widget-header{
+	border: 1pt solid #2F6384 !important; background:none;
+}
+.sty_greenRamp .slider-container .slider.ui-widget-content {
+    background: linear-gradient(to right, #fff, #4FA84A) !important;
+}
+.sty_redRamp .slider-container .slider.ui-widget-content {
+	background: linear-gradient(to right, #fff, #e60000) !important; 
+}
 
 #sidebar-help-area{
 	display:none !important;
