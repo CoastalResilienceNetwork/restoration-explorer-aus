@@ -1,58 +1,115 @@
-.be_rslide{
-	width:160px; display:inline-block; margin-bottom:2px;
+/*  Main CSS Styling for WI apps //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+.infoIcon{
+	margin-bottom:-2px; margin-left:3px; cursor:pointer;
+}
+.flex-center{
+	display:flex; align-items:center;
+}
+.flex1{
+	flex:1;
+}
+.flexColumn{
+	display:flex; flex-direction:column;
+}
+.hide{
+	display:none;
+}
+.explainWrap p{
+	margin-top:5px; margin-bottom:5px;
+}
+.getHelpBtnWrap{
+    background-color:#eef3f8; padding:10px 12px; z-index:500; text-align:center;
 }	
-.be_attWrap{
-	text-decoration:none; display:inline-block; white-space:pre;	
+.getHelpBtnWrap .button{
+	font-size:15px; width:100%; color:#2F6384; font-weight:bold;
 }	
-.be_barWrapper {
-	width: 240px; height: 16px; position: relative; top:4px; left:0px; background-color:#333; display:inline-block;	
-	-moz-box-shadow: 3px 3px 5px #999; -webkit-box-shadow: 3px 3px 5px #999; box-shadow: 1px 1px 2px #999;
-} 
-.be_barLabel{
-	display:inline-block; margin:6px 0px 0px 0px;	
-}	
-.be_bars{
-	position: absolute; display: block; width:236px; height:12px; border: 0; left: 0px; bottom: 0%; float:left; color:black; 
-	-moz-box-shadow: inset 1px 2px 2px rgba(255, 255, 255, .4), inset -1px -1px 2px rgba(0, 0, 0, .4);
-	-webkit-box-shadow: inset 1px 2px 2px rgba(255, 255, 255, .4), inset -1px -1px 2px rgba(0, 0, 0, .4);
-	box-shadow: inset 1px 2px 2px rgba(255, 255, 255, .4), inset -1px -1px 2px rgba(0, 0, 0, .4);
+.sidebar-content .getHelpBtnWrap .button{
+	margin-bottom:0;
 }
-.be_spanBar{
-	top:2px; left:2px; overflow:hidden; text-indent:-30px;
+.aus-wrap .slider{
+	margin-left:30px;
 }
-.be_emBar{
-	 border-right:1px solid #424542;
-} 
-.be_backgroundBar{
-	background:repeating-linear-gradient(45deg,#dedede,#dedede 5px,#eee 5px,#eee 10px);
+.aus-wrap{
+	display: none;
 }
-.be_valBar{
-	background-color:#4fa84a;
+.aus-sections{
+	position: relative; top: 100px; padding: 10px;
 }
-.be_barWrap{
-	margin-left:10px; height:26px; 	
-}	
-.be_valBar1{
-	background-color:#603A14;
+.aus-mainContentWrap{
+	padding-left: 7px;
 }
-.be_valBar2{
-	background-color:#A14612;
+.aus-first-section .toggle-btn{
+	margin-top:-10px;	
 }
-.be_valBar3{
-	background-color:#C8841D;
+.under{
+	text-decoration:underline;
 }
-.be_valBar4{
-	background-color:#CEA33A;
+/* fix the accordion height issue in Safari //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+.sidebar-content{
+	height:auto !important;
 }
-.be_valBar5{
-	background-color:#CEC83A;
+.aus-count-font{
+	color:#2f6384; text-align:center; margin-top:-5px; margin-bottom:-10px;
 }
-.be_valBar6{
-	background-color:#8fb440;
+.slider-container .ui-state-disabled {
+    cursor: not-allowed !important;
 }
-.be_valBar7{
-	background-color:#408CB4;
+.aus-slider-label{
+	display:none; margin-left:-8px;
 }
-.be_valBar8{
-	background-color:#6840B4;
+.aus-radio-indent{
+	margin-left:22px;
+}
+.aus-grth{
+	display:none; color: #2f6384; font-weight: 700;
+}
+.aus-shosu{
+	position:absolute; top:94px; right:3px;
+}
+/* HUC dropdown styling area ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+.aus-huc8Chosen, .aus-huc10Chosen, .aus-huc12Chosen{
+	display: none;
+}
+/*.aus-huc6Text, .aus-huc8Text, .aus-huc10Text, .aus-huc12Text{
+	display: none;
+}*/
+.aus-hucSelText{
+	margin: 10px;
+}
+.aus-backBtn{
+	cursor: pointer; color: #2F6384;
+}
+/* Attribute wrap styling for select a site /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+.aus-fas_AttributeWrap{
+	margin-top: 20px; display: flex; flex-wrap: wrap; padding-bottom: 20px;
+}
+.aus-fas_AttributeWrap div{
+	padding: 3px;
+}
+.aus-sum-wrap {
+    width: 300px; margin: 3px; border: 1pt solid #cdd5d5; padding: 5px; box-shadow: 0 1px 1px rgba(16,22,26,.2); position: relative;
+}
+.aus-huc-wrap{
+	width: 300px; margin: 3px; border: 1pt solid #cdd5d5; padding: 5px; box-shadow: 0 1px 1px rgba(16,22,26,.2); position: relative;
+
+}
+.aus-attZoom{
+	position: absolute; top:3px; right: 3px;
+}
+.tabBtns{
+	margin-right:-6px; margin-bottom:0 !important; background:#f3f3f3; border-bottom: 1px solid #cdd5d5 !important; border-top: 1px solid #cdd5d5 !important;
+}
+.aus-funcWrapper{
+	margin-top: 20px;
+}
+.aus-app{
+	background: #fff; position: absolute; z-index: 1000; width: 420;
+}
+.aus-mainContentWrap{
+	position: relative; top: 125px;
+}
+
+.aus-dlwrap a {
+	color: blue !important; cursor: pointer !important;
 }
