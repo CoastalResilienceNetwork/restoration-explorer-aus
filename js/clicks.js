@@ -7,7 +7,10 @@ function ( declare, Query, QueryTask,FeatureLayer, Search, SimpleLineSymbol, Sim
         return declare(null, {
 			eventListeners: function(t){
 				// layer ids
-				t.techLyr = 1;
+				
+				//t.techLyr = 1;
+				
+
 				// leave help button
 				// $('#' + t.id + 'getHelpBtn').on('click', function(c){
 				// 	$('#' + t.id + ' .aus-wrap').show()
@@ -36,11 +39,13 @@ function ( declare, Query, QueryTask,FeatureLayer, Search, SimpleLineSymbol, Sim
 					if (val == 'all'){
 						t.obj.visibleLayers = [0]
 						t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
+						console.log('all');
 						$('#' + t.id + 'aus-enhanceFuncWrap').slideUp()
 					}
 					if (val == 'ind'){
 						t.obj.visibleLayers = [t.techLyr]
 						t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
+						console.log('ind');
 						$('#' + t.id + 'aus-enhanceFuncWrap').slideDown()
 					}
 				})
@@ -74,21 +79,24 @@ function ( declare, Query, QueryTask,FeatureLayer, Search, SimpleLineSymbol, Sim
 					});
 				});
 // feature layer init ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// 				t.attributeData = new FeatureLayer(t.url + "/5", { mode: FeatureLayer.MODE_SELECTION, outFields: ["*"] });
-// 				// Map click ////////////////////////////////////////
-// 				t.map.on("click", function(evt) {
-// 					console.log(evt);
-// 					t.obj.pnt = evt.mapPoint;
-// 					var q = new Query();
-// 					q.geometry = t.obj.pnt;
-// 					t.attributeData.selectFeatures(q,esri.layers.FeatureLayer.SELECTION_NEW);
-				
-// 				});
-// // On selection complete ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// 				t.attributeData.on('selection-complete', function(evt){
-// 					console.log(evt);
+				t.attributeData = new FeatureLayer(t.url + "/5", { mode: FeatureLayer.MODE_SELECTION, outFields: ["*"] });
+				// Map click ////////////////////////////////////////
+				t.map.on("click", function(evt) {
+					console.log(evt);
+					if(t.open == 'yes'){
+						t.obj.pnt = evt.mapPoint;
+						var q = new Query();
+						q.geometry = t.obj.pnt;
+						t.attributeData.selectFeatures(q,esri.layers.FeatureLayer.SELECTION_NEW);
+					}
 					
-// 				});
+				
+				});
+// // On selection complete ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+				t.attributeData.on('selection-complete', function(evt){
+					console.log(evt);
+					
+				});
 			},
 			
 			commaSeparateNumber: function(val){

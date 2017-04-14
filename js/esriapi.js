@@ -46,7 +46,6 @@ function ( 	ArcGISDynamicMapServiceLayer, Extent, SpatialReference, Query, Query
 
 					var extent = new Extent(144.1, -38.6, 145.7, -37.6, new SpatialReference({ wkid:4326 }))
 					if (t.obj.stateSet == "no"){
-						console.log('look here for set extent');
 						// t.map.setExtent(t.dynamicLayer.fullExtent.expand(1.2), true)
 						t.map.setExtent(extent, true)
 					}
