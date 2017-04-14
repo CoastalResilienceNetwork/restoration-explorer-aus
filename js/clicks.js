@@ -8,28 +8,27 @@ function ( declare, Query, QueryTask,FeatureLayer, Search, SimpleLineSymbol, Sim
 			eventListeners: function(t){
 				// layer ids
 				t.techLyr = 1;
-				t.Numberofshorelineedgetechniquesthatareapplicable 
 				// leave help button
-				$('#' + t.id + 'getHelpBtn').on('click', function(c){
-					$('#' + t.id + ' .aus-wrap').show()
-					$('#' + t.id + ' .aus-help').hide()
-				})
+				// $('#' + t.id + 'getHelpBtn').on('click', function(c){
+				// 	$('#' + t.id + ' .aus-wrap').show()
+				// 	$('#' + t.id + ' .aus-help').hide()
+				// })
 				// info icon clicks
-				$('#' + t.id + ' .infoIcon').on('click',function(c){
-					t.showHelp();
-					var ben = c.target.id.split("-").pop();
-					$('#' + t.id + 'getHelpBtn').html('Back to aus Floodplain Explorer');
-					t.clicks.updateAccord(t);	
-					$('#' + t.id + 'infoAccord .' + ben).trigger('click');
-				});
+				// $('#' + t.id + ' .infoIcon').on('click',function(c){
+				// 	t.showHelp();
+				// 	var ben = c.target.id.split("-").pop();
+				// 	$('#' + t.id + 'getHelpBtn').html('Back to aus Floodplain Explorer');
+				// 	t.clicks.updateAccord(t);	
+				// 	$('#' + t.id + 'infoAccord .' + ben).trigger('click');
+				// });
 				// suppress help on startup click
-				$('#' + t.id + '-shosu').on('click',function(c){
-					if (c.clicked == true){
-						t.app.suppressHelpOnStartup(true);
-					}else{
-						t.app.suppressHelpOnStartup(false);
-					}
-				})
+				// $('#' + t.id + '-shosu').on('click',function(c){
+				// 	if (c.clicked == true){
+				// 		t.app.suppressHelpOnStartup(true);
+				// 	}else{
+				// 		t.app.suppressHelpOnStartup(false);
+				// 	}
+				// })
 
 // work with Radio buttons (how would you like to view shoreline data) ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 				$('#' + t.id + 'aus-viewRadioWrap input').on('click',function(c){

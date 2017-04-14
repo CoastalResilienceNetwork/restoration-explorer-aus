@@ -38,7 +38,7 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, obj, conte
 			}else{
 				this.dynamicLayer.setVisibleLayers(this.obj.visibleLayers);
 				$('#' + this.id).parent().parent().css('display', 'flex');
-				this.clicks.updateAccord(this);
+				// this.clicks.updateAccord(this);
 			}
 			if (showHelpOnStart) {
 				this.showHelp();
