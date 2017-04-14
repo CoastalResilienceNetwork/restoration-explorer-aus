@@ -1,8 +1,6 @@
 {
     "css": [
-		"plugins/benefits_explorer/css/appStyles.css",
-		"plugins/benefits_explorer/css/barChart.css",
-		"plugins/benefits_explorer/css/main.css"
+		"plugins/wiApp/css/main.css"
     ],
     "use": {
         "underscore": { "attach": "_" },

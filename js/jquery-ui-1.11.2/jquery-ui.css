@@ -177,18 +177,25 @@
 	display: block;
 	cursor: pointer;
 	position: relative;
+	margin: 2px 0 0 0;
+	padding: .5em .5em .5em .7em;
 	min-height: 0; /* support: IE7 */
+	font-size: 100%;
+}
+.ui-accordion .ui-accordion-icons {
+	padding-left: 2.2em;
 }
 .ui-accordion .ui-accordion-icons .ui-accordion-icons {
 	padding-left: 2.2em;
 }
 .ui-accordion .ui-accordion-header .ui-accordion-header-icon {
 	position: absolute;
-	left: 0em;
+	left: .5em;
 	top: 50%;
 	margin-top: -8px;
 }
 .ui-accordion .ui-accordion-content {
+	padding: 1em 2.2em;
 	border-top: 0;
 	overflow: auto;
 }
@@ -843,10 +850,7 @@ body .ui-tooltip {
 	font-size: 1em;
 }
 .ui-widget-content {
-	border-left: 1px solid #aaaaaa;
-	border-right: 1px solid #aaaaaa;
-	border-bottom-width:0;
-	box-shadow:inset 0 -2px 4px rgba(0, 0, 0, 0.25);
+	border: 1px solid #aaaaaa;
 	background: #ffffff url("images/ui-bg_flat_75_ffffff_40x100.png") 50% 50% repeat-x;
 	color: #222222;
 }
@@ -855,7 +859,7 @@ body .ui-tooltip {
 }
 .ui-widget-header {
 	border: 1px solid #aaaaaa;
-	background: #e8f5fe;
+	background: #ffffff url("images/ui-bg_highlight-soft_75_ffffff_1x100.png") 50% 50% repeat-x;
 	color: #222222;
 	font-weight: bold;
 }
@@ -885,13 +889,10 @@ body .ui-tooltip {
 .ui-state-focus,
 .ui-widget-content .ui-state-focus,
 .ui-widget-header .ui-state-focus {
-
+	border: 1px solid #4052b4;
 	background: #ecefde url("images/ui-bg_glass_55_fbf9ee_1x400.png") 50% 50% repeat-x;
 	font-weight: normal;
 	color: #212121;
-}
-.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover{
-	background:#dce6f0;
 }
 .ui-state-hover a,
 .ui-state-hover a:hover,
@@ -907,7 +908,7 @@ body .ui-tooltip {
 .ui-state-active,
 .ui-widget-content .ui-state-active,
 .ui-widget-header .ui-state-active {
-	border:solid 1px #999;
+	border: 1px solid #147340;
 	background: #ffffff url("images/ui-bg_glass_65_ffffff_1x400.png") 50% 50% repeat-x;
 	font-weight: normal;
 	color: #212121;
@@ -1229,7 +1230,4 @@ body .ui-tooltip {
 	opacity: .3;
 	filter: Alpha(Opacity=30); /* support: IE8 */
 	border-radius: 8px;
-}
-.ui-accordion-header-active  {
-	font-weight:bold; box-shadow:0 2px 4px rgba(0, 0, 0, 0.25); 
 }
