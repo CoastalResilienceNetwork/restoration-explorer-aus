@@ -21,7 +21,6 @@ function ( declare, Query, QueryTask,FeatureLayer, Search, SimpleLineSymbol, Sim
 							t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
 							t.obj.indInit == 'no'
 						}else{
-							console.log('not init');
 							t.obj.visibleLayers = [t.techLyr]
 							t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
 						}
@@ -65,7 +64,6 @@ function ( declare, Query, QueryTask,FeatureLayer, Search, SimpleLineSymbol, Sim
 									
 								}
 							});
-							
 						}
 					});
 				});

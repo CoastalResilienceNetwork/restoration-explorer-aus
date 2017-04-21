@@ -109,7 +109,6 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, obj, conte
 				this.obj.stateSet = "yes";	
 				var state = new Object();
 				state = this.obj;
-				console.log(this.obj)
 				return state;	
 			}
 		},
