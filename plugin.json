@@ -1,6 +1,6 @@
 {
     "css": [
-		"plugins/wiApp/css/main.css"
+		"plugins/restoration-explorer-aus/css/main.css"
     ],
     "use": {
         "underscore": { "attach": "_" },

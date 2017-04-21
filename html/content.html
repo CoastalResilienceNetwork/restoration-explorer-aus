@@ -5,89 +5,138 @@ The unique ContentPane id makes all the element ids unique and prevents duplicat
 
 <!-- Main Content Wrapper -->
 <div class="aus-mainContentWrap" style="padding-left: 7px;">
-	<h2>Port Phillip Bay Living Shoreline</h2>
-	<p style="color: #21658c; margin-top: 5px; width: 360px; margin: auto;">
-		The Restoration Explorer allows users to identify which nature-based technique(s) could work best in reducing coastal erosion, while promoting the multiple benefits of healthy coastal habitats. It currently provides guidance on four specific living shoreline techniques: Marsh and Mangrove Enhancement, Marsh and Mangrove Enhancement with Structures, Beach Enhancement, and Living Breakwaters.  Definitions are provided within the Restoration Explorer.
-	</p>
+	<section>
+		<h2>Port Phillip and Western Port Living Shorelines </h2>
+		<p style="color: #21658c; margin-top: 5px; width: 360px; margin: auto;">
+			The Restoration Explorer allows users to identify which nature-based technique(s) could work best in reducing coastal erosion, while promoting the multiple benefits of healthy coastal habitats. It currently provides guidance on four specific living shoreline techniques: Marsh and Mangrove Enhancement, Marsh and Mangrove Enhancement with Structures, Beach Enhancement, and Living Breakwaters. Definitions are provided within the Restoration Explorer. This beta version of the Restoration Explorer was created as a demonstration of the potential for decision support tool development in the Greater Melbourne region and has not been vetted by partners.  Full documentation of the development of the beta version can be found here.
+		</p>
+	</section>
+	
 
 	<!--  -->
-	<div class="aus-viewRadioWrap" id="aus-viewRadioWrap" >
-		<h3>How would you like to view the living shoreline information?</h3>
-		<label class="form-component aus-viewRadio" for="all-option">
-			<input type="radio" id="all-option" name="tech" value="all">
-			<div class="check"></div>
-			<span class="form-text">Show All Techniques in One Map</span>
-		</label>
-		<br>
-		<label class="form-component aus-viewRadio" for="ind-option">
-			<input type="radio" id="ind-option" name="tech" value="ind">
-			<div class="check"></div>
-			<span class="form-text">Show Information on Individual Techniques</span>
-		</label>
-	</div>
+	<section>
+		<div class="aus-viewRadioWrap" id="aus-viewRadioWrap" >
+			<h3>How would you like to view the results?</h3>
+			<label class="form-component aus-viewRadio" for="all-option">
+				<input type="radio" id="all-option" name="tech" value="all">
+				<div class="check"></div>
+				<span class="form-text">Show All Techniques in One Map</span>
+			</label>
+			<br>
+			<label class="form-component aus-viewRadio" for="ind-option">
+				<input type="radio" id="ind-option" name="tech" value="ind">
+				<div class="check"></div>
+				<span class="form-text">Show Information on Individual Techniques</span>
+			</label>
+		</div>
+	</section>
+	
 
 	<!-- Function of Interest find/eval wrapper ///////////////////////////////////////////////////////////////////////////////////////// -->
-	<div class="aus-enhanceFuncWrap hide" id="aus-enhanceFuncWrap">
-		<h3 style="margin-top: 15px;">Select shoreline enhancement technique:</h3>
-		<div id="funcWrapper" class="aus-funcWrapper aus-radio-indent">
-			<label class="form-component" for="func1">
-				<input type="radio" id="func1" name="func" class="rb_cb" value="Marsh and Mangrove Enhancement">
-				<div class="check"></div>
-				<span class="form-text">Marsh and Mangrove Enhancement</span>
-			</label>
-			<br>
-			<label class="form-component" for="func2">
-				<input type="radio" id="func2" name="func" class="rb_cb" value="Marsh and Mangrove Enhancement with Structures">
-				<div class="check"></div>
-				<span class="form-text">Marsh and Mangrove Enhancement with Structures</span>
-			</label>
-			<br>
-			<label class="form-component" for="func3">
-				<input  type="radio" id="func3" name="func" class="rb_cb" value="Beach Enhancement">
-				<div class="check"></div>
-				<span class="form-text">Beach Enhancement</span>
-			</label>
-			<br>
-			<label class="form-component" for="func4">
-				<input  type="radio" id="func4" name="func" class="rb_cb" value="Living Breakwaters">
-				<div class="check"></div>
-				<span class="form-text">Living Breakwaters</span>
-			</label>
-	 	</div>
-	</div>
+	<section class="aus-enhanceFuncWrap hide" id="aus-enhanceFuncWrap">
+		<div >
+			<h3 style="margin-top: 15px;">Select shoreline enhancement technique:</h3>
+			<div id="funcWrapper" class="aus-funcWrapper aus-radio-indent">
+				<label class="form-component" for="func1">
+					<input type="radio" id="func1" name="func" class="rb_cb" value="Marsh and Mangrove Enhancement">
+					<div class="check"></div>
+					<span class="form-text">Marsh and Mangrove Enhancement</span>
+				</label>
+				<br>
+				<label class="form-component" for="func2">
+					<input type="radio" id="func2" name="func" class="rb_cb" value="Marsh and Mangrove Enhancement with Structures">
+					<div class="check"></div>
+					<span class="form-text">Marsh and Mangrove Enhancement with Structures</span>
+				</label>
+				<br>
+				<label class="form-component" for="func3">
+					<input  type="radio" id="func3" name="func" class="rb_cb" value="Beach Enhancement">
+					<div class="check"></div>
+					<span class="form-text">Beach Enhancement</span>
+				</label>
+				<br>
+				<label class="form-component" for="func4">
+					<input  type="radio" id="func4" name="func" class="rb_cb" value="Living Breakwaters">
+					<div class="check"></div>
+					<span class="form-text">Living Breakwaters</span>
+				</label>
+		 	</div>
+		</div>
+	</section>
+	
+
+<!--  attribute display area ///////////////////////////////////////////////////////////////////// -->
+	<section>
+		<h3>View Attributes:</h3>
+		<p id="clickInst" style="color: #21658c; font-size: 15px;">Click data on map to select cells</p>
+		<div id="aus-attWrap" class="hide">
+			<div class="aus-attWrap">
+				<div class="aus-sum-wrap">
+					<div id="attExp" class="elm-title">High</div>
+					<div class="elm-results">
+						Exposure
+					</div>
+				</div>
+				<div class="aus-sum-wrap">
+					<div id="attSlope" class="elm-title">Low</div>
+					<div class="elm-results">
+						Slope
+					</div>
+				</div>
+				<br>
+				<div class="aus-sum-wrap">
+					<div id="attMM" class="elm-title">Present</div>
+					<div class="elm-results">
+						Marsh and/or Mangrove Presence
+					</div>
+				</div>
+				<div class="aus-sum-wrap">
+					<div id="attBP" class="elm-title">Not Present</div>
+					<div class="elm-results">
+						Beach Presence
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</section>
+	
 	<!-- Supporting data wrapper ///////////////////////////////////////////////////////////////////////////////////////// -->
-	<h3 style="margin-top: 15px;">Supporting Data:</h3>
-	<div class="aus-supDataWrap" id="aus-supDataWrap">
-		<label class="form-component" for="sup1">
-			<input type="radio" id="sup1" name="sup" class="rb_cb" value="None">
-			<div class="check"></div>
-			<span class="form-text">None</span>
-		</label>
-		<br>
-		<label class="form-component" for="sup2">
-			<input type="radio" id="sup2" name="sup" class="rb_cb" value="Exposure">
-			<div class="check"></div>
-			<span class="form-text">Exposure</span>
-		</label>
-		<br>
-		<label class="form-component" for="sup3">
-			<input  type="radio" id="sup3" name="sup" class="rb_cb" value="Slope">
-			<div class="check"></div>
-			<span class="form-text">Slope</span>
-		</label>
-		<br>
-		<label class="form-component aus-supLabel" for="sup4">
-			<input  type="radio" id="sup4" name="sup" class="rb_cb" value="Marsh and/or Mangrove">
-			<div class="check"></div>
-			<span class="form-text">Marsh and/or Mangrove</span>
-		</label>
-		<br>
-		<label class="form-component aus-supLabel" for="sup5">
-			<input  type="radio" id="sup5" name="sup" class="rb_cb" value="Beach">
-			<div class="check"></div>
-			<span class="form-text">Beach</span>
-		</label>
-	</div>
+	<section>
+		<h3 style="margin-top: 15px;">Supporting Data:</h3>
+		<div class="aus-supDataWrap" id="aus-supDataWrap">
+			<label class="form-component" for="sup2">
+				<input type="radio" id="sup2" name="sup" class="rb_cb" value="Exposure">
+				<div class="check"></div>
+				<span class="form-text">Exposure</span>
+			</label>
+			<br>
+			<label class="form-component" for="sup3">
+				<input  type="radio" id="sup3" name="sup" class="rb_cb" value="Slope">
+				<div class="check"></div>
+				<span class="form-text">Slope</span>
+			</label>
+			<br>
+			<label class="form-component aus-supLabel" for="sup4">
+				<input  type="radio" id="sup4" name="sup" class="rb_cb" value="Marsh and/or Mangrove Presence">
+				<div class="check"></div>
+				<span class="form-text">Marsh and/or Mangrove Presence</span>
+			</label>
+			<br>
+			<label class="form-component aus-supLabel" for="sup5">
+				<input  type="radio" id="sup5" name="sup" class="rb_cb" value="Beach Presence">
+				<div class="check"></div>
+				<span class="form-text">Beach Presence</span>
+			</label>
+			<br>
+			<label class="form-component" for="sup1">
+				<input type="radio" id="sup1" name="sup" class="rb_cb" value="None">
+				<div class="check"></div>
+				<span class="form-text">None</span>
+			</label>
+		</div>
+	</section>
+	
 </div>
 
 <!-- Download data Wrapper //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->

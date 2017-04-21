@@ -6,46 +6,25 @@ function ( declare, Query, QueryTask,FeatureLayer, Search, SimpleLineSymbol, Sim
 
         return declare(null, {
 			eventListeners: function(t){
-				// layer ids
-				
-				//t.techLyr = 1;
-				
-
-				// leave help button
-				// $('#' + t.id + 'getHelpBtn').on('click', function(c){
-				// 	$('#' + t.id + ' .aus-wrap').show()
-				// 	$('#' + t.id + ' .aus-help').hide()
-				// })
-				// info icon clicks
-				// $('#' + t.id + ' .infoIcon').on('click',function(c){
-				// 	t.showHelp();
-				// 	var ben = c.target.id.split("-").pop();
-				// 	$('#' + t.id + 'getHelpBtn').html('Back to aus Floodplain Explorer');
-				// 	t.clicks.updateAccord(t);	
-				// 	$('#' + t.id + 'infoAccord .' + ben).trigger('click');
-				// });
-				// suppress help on startup click
-				// $('#' + t.id + '-shosu').on('click',function(c){
-				// 	if (c.clicked == true){
-				// 		t.app.suppressHelpOnStartup(true);
-				// 	}else{
-				// 		t.app.suppressHelpOnStartup(false);
-				// 	}
-				// })
-
 // work with Radio buttons (how would you like to view shoreline data) ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 				$('#' + t.id + 'aus-viewRadioWrap input').on('click',function(c){
 					var val = c.target.value
 					if (val == 'all'){
-						t.obj.visibleLayers = [0]
+						t.techLyr = 1;
+						t.obj.visibleLayers = [1]
 						t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
-						console.log('all');
 						$('#' + t.id + 'aus-enhanceFuncWrap').slideUp()
 					}
 					if (val == 'ind'){
-						t.obj.visibleLayers = [t.techLyr]
-						t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
-						console.log('ind');
+						if(t.obj.indInit == 'yes'){
+							t.obj.visibleLayers = [2]
+							t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
+							t.obj.indInit == 'no'
+						}else{
+							console.log('not init');
+							t.obj.visibleLayers = [t.techLyr]
+							t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
+						}
 						$('#' + t.id + 'aus-enhanceFuncWrap').slideDown()
 					}
 				})
@@ -56,7 +35,6 @@ function ( declare, Query, QueryTask,FeatureLayer, Search, SimpleLineSymbol, Sim
 						var lyrName = v.name;
 						if(val == lyrName){
 							t.techLyr = v.id
-							console.log(t.techLyr);
 							t.obj.visibleLayers = [v.id];
 					 		t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
 						}
@@ -68,34 +46,96 @@ function ( declare, Query, QueryTask,FeatureLayer, Search, SimpleLineSymbol, Sim
 					$.each($(t.layersArray),function(i,v){
 						var lyrName = v.name;
 						if(val == lyrName){
+							t.techLyr = v.id
 							t.obj.visibleLayers = [v.id];
 					 		t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
 						}
 						if(val == 'None'){
-							console.log('none', t.techLyr);
-							t.obj.visibleLayers = [t.techLyr];
-					 		t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
+							$.each($( '#' + t.id +'aus-viewRadioWrap input'),function(i,v){
+								if (v.checked == true){
+									if(v.value == 'all'){
+										$( '#' + v.id).trigger('click');
+									}else{
+										$.each($( '#' + t.id +'aus-enhanceFuncWrap input'),function(i,v){
+											if(v.checked == true){
+												$( '#' + v.id).trigger('click');
+											}
+										});
+									}
+									
+								}
+							});
+							
 						}
 					});
 				});
 // feature layer init ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-				t.attributeData = new FeatureLayer(t.url + "/5", { mode: FeatureLayer.MODE_SELECTION, outFields: ["*"] });
+				t.attributeData = new FeatureLayer(t.url + "/6", { mode: FeatureLayer.MODE_SELECTION, outFields: ["*"] });
 				// Map click ////////////////////////////////////////
 				t.map.on("click", function(evt) {
-					console.log(evt);
 					if(t.open == 'yes'){
 						t.obj.pnt = evt.mapPoint;
 						var q = new Query();
 						q.geometry = t.obj.pnt;
 						t.attributeData.selectFeatures(q,esri.layers.FeatureLayer.SELECTION_NEW);
 					}
-					
-				
 				});
 // // On selection complete ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 				t.attributeData.on('selection-complete', function(evt){
-					console.log(evt);
-					
+					if(evt.features.length > 0){
+						t.layerDefs = []
+						var OID = evt.features[0].attributes.OBJECTID;
+						var beach = evt.features[0].attributes.beach
+						var exposure = evt.features[0].attributes.exposure
+						var mm = evt.features[0].attributes.mm
+						var slope = evt.features[0].attributes.slope
+						// Handle converting attributes to html text
+						if(beach == 1){
+							beach = 'Present'
+						}else{
+							beach = 'Not Present'
+						}
+						if(mm == 1){
+							mm = 'Present'
+						}else{
+							mm = 'Not Present'
+						}
+						if(exposure == 10){
+							exposure = 'Low'
+						}else if(exposure == 7){
+							exposure = 'Medium'
+						}else{
+							exposure = 'High'
+						}
+
+						if(slope == 10){
+							slope = 'Flat'
+						}else if(slope == 7){
+							slope = 'Moderate'
+						}else{
+							slope = 'Steep'
+						}
+						$('#' + t.id + 'aus-attWrap').slideDown()
+						$('#' + t.id + 'clickInst').slideUp()
+						t.layerDefs[0] = 'OBJECTID = ' + OID;
+						t.dynamicLayer.setLayerDefinitions(t.layerDefs);
+						t.obj.visibleLayers = [0,t.techLyr];
+						$('#' + t.id + 'attExp').html(exposure);
+						$('#' + t.id + 'attSlope').html(slope);
+						$('#' + t.id + 'attBP').html(beach);
+						$('#' + t.id + 'attMM').html(mm);
+						
+					}else{
+						$('#' + t.id + 'clickInst').slideDown()
+						$('#' + t.id + 'aus-attWrap').slideUp()
+						t.obj.visibleLayers = [t.techLyr];
+					}
+					t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
+				});
+				// use this area to colapse attributes and check sup data to none.
+				$('#' + t.id + 'aus-viewRadioWrap input ,#' + t.id + 'funcWrapper input').on('click',function(c){
+					//$('#' + t.id + 'sup1').trigger('click');
+					$('#' + t.id + 'aus-attWrap').slideUp();
 				});
 			},
 			
