@@ -10,17 +10,31 @@ function ( declare, Query, QueryTask,FeatureLayer, Search, SimpleLineSymbol, Sim
 				$('#' + t.id + 'aus-viewRadioWrap input').on('click',function(c){
 					var val = c.target.value
 					if (val == 'all'){
-						t.techLyr = 1;
-						t.obj.visibleLayers = [1]
+						t.techLyr = 1
+						t.obj.visibleLayers = [t.techLyr]
 						t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
 						$('#' + t.id + 'aus-enhanceFuncWrap').slideUp()
+						$('#' + t.id + 'sup1').prop('checked', true);
 					}
 					if (val == 'ind'){
+						$('#' + t.id + 'sup1').prop('checked', true);
 						if(t.obj.indInit == 'yes'){
-							t.obj.visibleLayers = [2]
+							t.techLyr = 2;
+							t.obj.visibleLayers = [t.techLyr]
 							t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
-							t.obj.indInit == 'no'
+							t.obj.indInit = 'no'
 						}else{
+							$.each($( '#' + t.id +'funcWrapper input'),function(i,v){
+								if(v.checked == true){
+									var val = v.value;
+									$.each($(t.layersArray),function(i,v){
+										var lyrName = v.name;
+										if(val == lyrName){
+											t.techLyr = v.id
+										}
+									});
+								}
+							});
 							t.obj.visibleLayers = [t.techLyr]
 							t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
 						}
@@ -61,7 +75,6 @@ function ( declare, Query, QueryTask,FeatureLayer, Search, SimpleLineSymbol, Sim
 											}
 										});
 									}
-									
 								}
 							});
 						}
@@ -80,6 +93,7 @@ function ( declare, Query, QueryTask,FeatureLayer, Search, SimpleLineSymbol, Sim
 				});
 // // On selection complete ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 				t.attributeData.on('selection-complete', function(evt){
+					console.log('look here')
 					if(evt.features.length > 0){
 						t.layerDefs = []
 						var OID = evt.features[0].attributes.OBJECTID;
@@ -117,6 +131,7 @@ function ( declare, Query, QueryTask,FeatureLayer, Search, SimpleLineSymbol, Sim
 						$('#' + t.id + 'clickInst').slideUp()
 						t.layerDefs[0] = 'OBJECTID = ' + OID;
 						t.dynamicLayer.setLayerDefinitions(t.layerDefs);
+						console.log(t.techLyr);
 						t.obj.visibleLayers = [0,t.techLyr];
 						$('#' + t.id + 'attExp').html(exposure);
 						$('#' + t.id + 'attSlope').html(slope);
@@ -131,9 +146,10 @@ function ( declare, Query, QueryTask,FeatureLayer, Search, SimpleLineSymbol, Sim
 					t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
 				});
 				// use this area to colapse attributes and check sup data to none.
-				$('#' + t.id + 'aus-viewRadioWrap input ,#' + t.id + 'funcWrapper input').on('click',function(c){
+				$('#' + t.id + 'aus-viewRadioWrap input ,#' + t.id + 'funcWrapper input, #' + t.id + 'aus-supDataWrap').on('click',function(c){
 					//$('#' + t.id + 'sup1').trigger('click');
 					$('#' + t.id + 'aus-attWrap').slideUp();
+					$('#' + t.id + 'clickInst').slideDown();
 				});
 			},
 			
