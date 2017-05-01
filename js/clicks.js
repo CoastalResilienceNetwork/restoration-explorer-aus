@@ -93,7 +93,6 @@ function ( declare, Query, QueryTask,FeatureLayer, Search, SimpleLineSymbol, Sim
 				});
 // // On selection complete ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 				t.attributeData.on('selection-complete', function(evt){
-					console.log('look here')
 					if(evt.features.length > 0){
 						t.layerDefs = []
 						var OID = evt.features[0].attributes.OBJECTID;
@@ -131,7 +130,6 @@ function ( declare, Query, QueryTask,FeatureLayer, Search, SimpleLineSymbol, Sim
 						$('#' + t.id + 'clickInst').slideUp()
 						t.layerDefs[0] = 'OBJECTID = ' + OID;
 						t.dynamicLayer.setLayerDefinitions(t.layerDefs);
-						console.log(t.techLyr);
 						t.obj.visibleLayers = [0,t.techLyr];
 						$('#' + t.id + 'attExp').html(exposure);
 						$('#' + t.id + 'attSlope').html(slope);
