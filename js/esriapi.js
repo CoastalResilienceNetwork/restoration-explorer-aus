@@ -14,39 +14,36 @@ function ( 	ArcGISDynamicMapServiceLayer, Extent, SpatialReference, Query, Query
 				if (t.obj.visibleLayers.length > 0){	
 					t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
 				}
-		
+				t.map.setMapCursor("pointer");
+				t.map.on("zoom-end", function(evt){
+					t.map.setMapCursor("pointer");
+				});
 
 // Dynamic layer on load ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 				t.dynamicLayer.on("load", function () { 			
 					t.layersArray = t.dynamicLayer.layerInfos;
-					// trigger initial top control clicks
-					$.each($('#' + t.id + 'aus-viewRadioWrap input'),function(i,v){
-						if (t.obj.viewRadCBCh == v.value){
-							console.log('look here');
-							console.log(t.obj.viewRadCBCh, v.value, v.id);
-							$('#' + v.id).trigger('click');	
-						}	
-					});
+					
 					// trigger clicks on techniques
 					$.each($('#' + t.id + 'funcWrapper input'),function(i,v){
 						if (t.obj.enhanceTech == v.value){
-							console.log('look here');
-							console.log(t.obj.enhanceTech, v.value, v.id);
 							$('#' + v.id).trigger('click');	
 						}	
 					});
 					// trigger clicks on sup data radio buttons
 					$.each($('#' + t.id + 'aus-supDataWrap input'),function(i,v){
 						if (t.obj.supData == v.value){
-							console.log('look here');
-							console.log(t.obj.enhanceTech, v.value, v.id);
+							$('#' + v.id).trigger('click');	
+						}	
+					});
+					// trigger initial top control clicks
+					$.each($('#' + t.id + 'aus-viewRadioWrap input'),function(i,v){
+						if (t.obj.viewRadCBCh == v.value){
 							$('#' + v.id).trigger('click');	
 						}	
 					});
 
 					var extent = new Extent(144.1, -38.6, 145.7, -37.6, new SpatialReference({ wkid:4326 }))
 					if (t.obj.stateSet == "no"){
-						console.log('look here for set extent');
 						// t.map.setExtent(t.dynamicLayer.fullExtent.expand(1.2), true)
 						t.map.setExtent(extent, true)
 					}

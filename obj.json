@@ -1,5 +1,5 @@
 {
-	"visibleLayers": [0],
+	"visibleLayers": [1],
 	"viewRadCBCh":'all',
 	"enhanceTech":'Marsh and Mangrove Enhancement',
 	"supData":'None',
@@ -14,5 +14,6 @@
 	"rbIds": [],
 	"rbCbIds": [],
 	"extent": "",
-	"stateSet": "no"
+	"stateSet": "no",
+	"indInit": "yes"
 }

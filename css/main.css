@@ -37,7 +37,7 @@
 	position: relative; top: 100px; padding: 10px;
 }
 .aus-mainContentWrap{
-	padding-left: 7px;
+	padding-left: 7px; 
 }
 .aus-first-section .toggle-btn{
 	margin-top:-10px;	
@@ -88,7 +88,7 @@
 	padding: 3px;
 }
 .aus-sum-wrap {
-    width: 300px; margin: 3px; border: 1pt solid #cdd5d5; padding: 5px; box-shadow: 0 1px 1px rgba(16,22,26,.2); position: relative;
+    width: 150px; margin: 3px; border: 1pt solid #cdd5d5; padding: 5px; box-shadow: 0 1px 1px rgba(16,22,26,.2); position: relative;
 }
 .aus-huc-wrap{
 	width: 300px; margin: 3px; border: 1pt solid #cdd5d5; padding: 5px; box-shadow: 0 1px 1px rgba(16,22,26,.2); position: relative;
@@ -107,9 +107,16 @@
 	background: #fff; position: absolute; z-index: 1000; width: 420;
 }
 .aus-mainContentWrap{
-	position: relative; top: 125px;
+	position: relative;
 }
 
 .aus-dlwrap a {
 	color: blue !important; cursor: pointer !important;
 }
+.elm-title{
+ 	color:#5E94B6; font-size: 21px;
+}
+.aus-attWrap{
+   display: flex; flex-wrap: wrap; text-align: center; margin-left: 45px;
+}
+
