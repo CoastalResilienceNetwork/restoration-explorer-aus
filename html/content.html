@@ -3,169 +3,126 @@ Dijit ContentPane to hold all the elements. The ContentPane is assigned a dynami
 takes the ContentPane id and prepends it to every element with a declared id in this HTML before the elements are created.
 The unique ContentPane id makes all the element ids unique and prevents duplicate id errors across other apps.-->
 
-<!-- Main Content Wrapper -->
-<div class="aus-mainContentWrap" style="padding-left: 7px;">
-	<section>
-		<h2>Port Phillip and Western Port Living Shorelines </h2>
-		<p style="color: #21658c; margin-top: 5px; width: 360px; margin: auto;">
-			The Restoration Explorer allows users to identify which nature-based technique(s) could work best in reducing coastal erosion, while promoting the multiple benefits of healthy coastal habitats. It currently provides guidance on four specific living shoreline techniques: Marsh and Mangrove Enhancement, Marsh and Mangrove Enhancement with Structures, Beach Enhancement, and Living Breakwaters. Definitions are provided within the Restoration Explorer. This beta version of the Restoration Explorer was created as a demonstration of the potential for decision support tool development in the Greater Melbourne region and has not been vetted by partners.  Full documentation of the development of the beta version can be found here.
-		</p>
-	</section>
-	
 
-	<!--  -->
-	<section>
-		<div class="aus-viewRadioWrap" id="aus-viewRadioWrap" >
-			<h3>How would you like to view the results?</h3>
-			<label class="form-component aus-viewRadio" for="all-option">
-				<input type="radio" id="all-option" name="tech" value="all">
-				<div class="check"></div>
-				<span class="form-text">Show All Techniques in One Map</span>
-			</label>
-			<br>
-			<label class="form-component aus-viewRadio" for="ind-option">
-				<input type="radio" id="ind-option" name="tech" value="ind">
-				<div class="check"></div>
-				<span class="form-text">Show Information on Individual Techniques</span>
-			</label>
-		</div>
-	</section>
-	
+<!-- Main content Wrapper -->
+<div class="rest-mainContentWrap" style="padding-left: 7px; margin-top: 10px;">
 
-	<!-- Function of Interest find/eval wrapper ///////////////////////////////////////////////////////////////////////////////////////// -->
-	<section class="aus-enhanceFuncWrap hide" id="aus-enhanceFuncWrap">
-		<div >
-			<h3 style="margin-top: 15px;">Select shoreline enhancement technique:</h3>
-			<div id="funcWrapper" class="aus-funcWrapper aus-radio-indent">
-				<label class="form-component" for="func1">
-					<input type="radio" id="func1" name="func" class="rb_cb" value="Marsh and Mangrove Enhancement">
-					<div class="check"></div>
-					<span class="form-text">Marsh and Mangrove Enhancement</span>
-				</label>
-				<br>
-				<label class="form-component" for="func2">
-					<input type="radio" id="func2" name="func" class="rb_cb" value="Marsh and Mangrove Enhancement with Structures">
-					<div class="check"></div>
-					<span class="form-text">Marsh and Mangrove Enhancement with Structures</span>
-				</label>
-				<br>
-				<label class="form-component" for="func3">
-					<input  type="radio" id="func3" name="func" class="rb_cb" value="Beach Enhancement">
-					<div class="check"></div>
-					<span class="form-text">Beach Enhancement</span>
-				</label>
-				<br>
-				<label class="form-component" for="func4">
-					<input  type="radio" id="func4" name="func" class="rb_cb" value="Living Breakwaters">
-					<div class="check"></div>
-					<span class="form-text">Living Breakwaters</span>
-				</label>
-		 	</div>
-		</div>
-	</section>
-	
+	<div class="blueFont">
+		app description area Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+	</div>
 
-<!--  attribute display area ///////////////////////////////////////////////////////////////////// -->
-	<section>
-		<h3>View Attributes:</h3>
-		<p id="clickInst" style="color: #21658c; font-size: 15px;">Click data on map to select cells</p>
-		<div id="aus-attWrap" class="hide">
-			<div class="aus-attWrap">
-				<div class="aus-sum-wrap">
-					<div id="attExp" class="elm-title">High</div>
-					<div class="elm-results">
-						Exposure
-					</div>
-				</div>
-				<div class="aus-sum-wrap">
-					<div id="attSlope" class="elm-title">Low</div>
-					<div class="elm-results">
-						Slope
-					</div>
-				</div>
-				<br>
-				<div class="aus-sum-wrap">
-					<div id="attMM" class="elm-title">Present</div>
-					<div class="elm-results">
-						Marsh and/or Mangrove Presence
-					</div>
-				</div>
-				<div class="aus-sum-wrap">
-					<div id="attBP" class="elm-title">Not Present</div>
-					<div class="elm-results">
-						Beach Presence
-					</div>
-				</div>
-			</div>
+	<div id="selectAHabitatWrapper" class="rest-selectAHabitatWrapper">
+		<!-- For Chosen options visit https://harvesthq.github.io/chosen/ -->
+		<!-- Add class chos  to select's parent -->
+		<div class="chosen-wrap">
+			<select data-placeholder="Select a habitat" id="habitatDropdown" class="chosen">
+				<option></option>
+				<option value="one">Wetlands</option>
+				<option value="two">Mussels - Coming Soon</option>
+			</select>
+		</div>
+	</div>
 
-		</div>
-	</section>
-	
-	<!-- Supporting data wrapper ///////////////////////////////////////////////////////////////////////////////////////// -->
-	<section>
-		<h3 style="margin-top: 15px;">Supporting Data:</h3>
-		<div class="aus-supDataWrap" id="aus-supDataWrap">
-			<label class="form-component" for="sup2">
-				<input type="radio" id="sup2" name="sup" class="rb_cb" value="Exposure">
-				<div class="check"></div>
-				<span class="form-text">Exposure</span>
-			</label>
-			<br>
-			<label class="form-component" for="sup3">
-				<input  type="radio" id="sup3" name="sup" class="rb_cb" value="Slope">
-				<div class="check"></div>
-				<span class="form-text">Slope</span>
-			</label>
-			<br>
-			<label class="form-component aus-supLabel" for="sup4">
-				<input  type="radio" id="sup4" name="sup" class="rb_cb" value="Marsh and/or Mangrove Presence">
-				<div class="check"></div>
-				<span class="form-text">Marsh and/or Mangrove Presence</span>
-			</label>
-			<br>
-			<label class="form-component aus-supLabel" for="sup5">
-				<input  type="radio" id="sup5" name="sup" class="rb_cb" value="Beach Presence">
-				<div class="check"></div>
-				<span class="form-text">Beach Presence</span>
-			</label>
-			<br>
-			<label class="form-component" for="sup1">
-				<input type="radio" id="sup1" name="sup" class="rb_cb" value="None">
-				<div class="check"></div>
-				<span class="form-text">None</span>
-			</label>
-		</div>
-	</section>
-	
+	<div id="legendWrapper" class="rest-legendWrapper">
+		<div class="rest-legendItem" style="background-color: rgb(47,85,151);">High</div>
+		<div class="rest-legendItem" style="background-color: rgb(180,199,231);"></div>
+		<div class="rest-legendItem" style="background-color: rgb(250,247,110);"></div>
+		<div class="rest-legendItem" style="background-color: rgb(235,115,33);"></div>
+		<div class="rest-legendItem" style="background-color: rgb(192,0,1);">Low</div>
+	</div>
+
+	<h4 class="rest-resultsLabel">How would you like to view the results?</h4>
+
+	<div class="rest-resultsRadBtns">
+		<label class="form-component" for="a-option">
+			<input checked value="final" type="radio" id="a-option" name="rest-results">
+			<div class="check"></div>
+			<span class="form-text">Show final suitability map</span>
+		</label>
+		<br>
+		<label class="form-component" for="b-option">
+			<input type="radio" value="individual" id="b-option" name="rest-results">
+			<div class="check"></div>
+			<span class="form-text">Show information on individual suitability variables</span>
+		</label>
+	</div>
+
+	<h4 class="rest-resultsLabel">Select a suitability variable to view.</h4>
+	<div id="viewRankingText" class="rest-viewRankingText">View Ranking Thresholds</div>
+
+	<div id="wetlandsSuitWrapper" class="rest-wetlandsSuitWrapper">
+		<label class="form-component" for="suitWet1-option">
+			<input checked value="suitWet1" type="radio" id="suitWet1-option" name="rest-wetlandSuit">
+			<div class="check"></div>
+			<span class="form-text">Soil waterlog potential</span>
+		</label>
+		<div class="rest-rankingThresholdText">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+		<br>
+		<label class="form-component" for="suitWet2-option">
+			<input type="radio" value="suitWet2" id="suitWet2-option" name="rest-wetlandSuit">
+			<div class="check"></div>
+			<span class="form-text">Proximity to existing wetlands</span>
+		</label>
+		<div class="rest-rankingThresholdText">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+		<br>
+		<label class="form-component" for="suitWet3-option">
+			<input checked value="suitWet3" type="radio" id="suitWet3-option" name="rest-wetlandSuit">
+			<div class="check"></div>
+			<span class="form-text">Proximity to protected lands</span>
+		</label>
+		<div class="rest-rankingThresholdText">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+		<br>
+		<label class="form-component" for="suitWet4-option">
+			<input type="radio" value="suitWet4" id="suitWet4-option" name="rest-wetlandSuit">
+			<div class="check"></div>
+			<span class="form-text">Potential to reduce runoff</span>
+		</label>
+		<div class="rest-rankingThresholdText">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+		<br>
+		<label class="form-component" for="suitWet5-option">
+			<input type="radio" value="suitWet5" id="suitWet5-option" name="rest-wetlandSuit">
+			<div class="check"></div>
+			<span class="form-text">Potential to accommodate coastal flooding</span>
+		</label>
+		<div class="rest-rankingThresholdText">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+	</div>
+
+	<div id="musselsSuitWrapper" class="rest-musselsSuitWrapper">
+		<label class="form-component" for="suitMus1-option">
+			<input checked value="suitMus1" type="radio" id="suitMus1-option" name="rest-musSuit">
+			<div class="check"></div>
+			<span class="form-text">Ammonium</span>
+		</label>
+		<div class="rest-rankingThresholdText">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+		<br>
+		<label class="form-component" for="suitMus2-option">
+			<input type="radio" value="suitMus2" id="suitMus2-option" name="rest-musSuit">
+			<div class="check"></div>
+			<span class="form-text">Oxygen</span>
+		</label>
+		<div class="rest-rankingThresholdText">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+		<br>
+		<label class="form-component" for="suitMus3-option">
+			<input checked value="suitMus3" type="radio" id="suitMus3-option" name="rest-musSuit">
+			<div class="check"></div>
+			<span class="form-text">Salinity</span>
+		</label>
+		<div class="rest-rankingThresholdText">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+		<br>
+		<label class="form-component" for="suitMus4-option">
+			<input type="radio" value="suitMus4" id="suitMus4-option" name="rest-musSuit">
+			<div class="check"></div>
+			<span class="form-text">Temperature</span>
+		</label>
+		<div class="rest-rankingThresholdText">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+		<br>
+		<label class="form-component" for="suitMus5-option">
+			<input type="radio" value="suitMus5" id="suitMus5-option" name="rest-musSuit">
+			<div class="check"></div>
+			<span class="form-text">Turbidity</span>
+		</label>
+		<div class="rest-rankingThresholdText">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+	</div>
+
 </div>
 
-<!-- Download data Wrapper //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<!-- <div id="aus-downloadData" class="aus-easWrap aus-sections hide">
-	<div id="aus-downloadDiv" class="aus-dlwrap">
-		<h4>The download package contains:</h4>
-		<p id="allParLink">&#8226; Report (<a id="-_AllParcels.pdf" target="_blank">preview</a>)</p>
-		<p id="sbLinksbLink">&#8226; Map of selected wetlands (<a id="-_Setbacks.pdf" target="_blank">preview</a>)</p>
-		<p id="ceosLink">&#8226; All Geospatial Data (Ranked HUCs) </p>
-		<p id="larParLink">&#8226; Map(s) of the 10 largest OSP eligible parcels (<a id="-_Parcels_Large.pdf" target="_blank">preview</a>)</p>
-		<p id="csvDesc">&#8226; CSV file of OSP eligible parcel attributes</p>
-		<div style="margin-top:12px;"><button class="button button-primary" id="dlBtn">Download</button></div>
-	</div>
-</div> -->
-
-<!-- Info Wrapper //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<!-- <div id="aus-showInfo" class="aus-sections hide">
-	<section style="height: 250px;">
-		<h2>Documentation</h2>
-		<h3 class="elemInfo">Australia Atrribute Descriptions</h3>
-		<div id="exwrap" class="explainWrap">
-			<h4 class="ccInfo">Fish and aquatic habitat</h4>
-			<p id="ccInfo" class="ccInfo">Fish and aquatic habitat text placeholder Lorem ipsum dolor sit amet, leo et nunc ac. Nunc tincidunt vivamus, in suscipit lectus est quia magnis diam. Et non rutrum elit eget leo tempus, mauris pellentesque fringilla ante sed vestibulum vel, consequat morbi tincidunt aliquam, at duis possimus nulla. Netus diam et phasellus ut adipiscing, duis in vel</p>
-			<h4 class="cndInfo">Flood Abatement</h4> 
-			<p id="cndInfo" class="cndInfo">Flood abatement help text placeholder Lorem ipsum dolor sit amet, leo et nunc ac. Nunc tincidunt vivamus, in suscipit lectus est quia magnis diam. Et non rutrum elit eget leo tempus, mauris pellentesque fringilla ante sed vestibulum vel, consequat morbi tincidunt aliquam, at duis possimus nulla. Netus diam et phasellus ut adipiscing, duis in vel</p>
-			<h4 class="iasInfo">Nitrogen</h4>
-			<p id="iasInfo" class="iasInfo">Nitrogen placeholder text Lorem ipsum dolor sit amet, leo et nunc ac. Nunc tincidunt vivamus, in suscipit lectus est quia magnis diam. Et non rutrum elit eget leo tempus, mauris pellentesque fringilla ante sed vestibulum vel, consequat morbi tincidunt aliquam, at duis possimus nulla. Netus diam et phasellus ut adipiscing, duis in vel</p>
-			<h4 class="ospInfo">Sediment and Phosphorous</h4>
-			<p class="ospInfo">Sediment and Phosphorous text placeholder Lorem ipsum dolor sit amet, leo et nunc ac. Nunc tincidunt vivamus, in suscipit lectus est quia magnis diam. Et non rutrum elit eget leo tempus, mauris pellentesque fringilla ante sed vestibulum vel, consequat morbi tincidunt aliquam, at duis possimus nulla. Netus diam et phasellus ut adipiscing, duis in vel</p>
-		</div>
-	</section>
-</div> -->

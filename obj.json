@@ -1,8 +1,8 @@
 {
 	"visibleLayers": [1],
-	"viewRadCBCh":'all',
-	"enhanceTech":'Marsh and Mangrove Enhancement',
-	"supData":'None',
+	"viewRadCBCh":"all",
+	"enhanceTech":"Marsh and Mangrove Enhancement",
+	"supData":"None",
 	"selHuc": "6",
 	"mngmtAction": "cons",
 	"floodFreq": "1 in 100",
