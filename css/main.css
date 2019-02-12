@@ -30,9 +30,15 @@
 .chosen-container-single .chosen-drop{
 	margin-top: 0px !important;
 }
+hr {
+    box-sizing: content-box; height: 0; overflow: visible; width: 90%; margin-left: 15px; border-color: rgba(0,0,0,.2);
+}
+.form-component{
+	margin-bottom: 6px !important;
+}
 /* css styles for the australia restoration explorer */
 .rest-selectAHabitatWrapper{
-	text-align: center; margin-top: 20px;
+	text-align: center; margin-top: 10px;
 }
 .rest-legendWrapper{
 	display: flex; height: 26px; width: 80%;  margin: 20px auto 0 auto; border:grey solid 1px;
@@ -63,3 +69,48 @@
 	display: none; color: rgba(140, 33, 48,.8); font-size: 11px; width: 90%; font-weight: bold; margin-top: -10px; 
 	font-style: italic;
 }
+.rest-viewChangeText{
+	color: #2f6384; width: 170px; margin-left: 10px; font-weight: bold; font-size: 12px;
+}
+.rest-viewChangeText:hover{
+	 cursor: pointer;
+}
+.rest-yearLabels{
+	margin-left: 28px; 
+}
+.rest-sliderLabel{
+	margin-top: -43px; font-size: 14px; font-weight: bold;
+}
+.rest-yearLabelsWrapper{
+	display: flex; margin-top: 5px;
+}
+.rest-yearSliderWrapper{
+	display: flex; align-items: center; margin-left: 10px; margin-top: 42px; height: 10px;
+}
+.rest-riseLabels{
+	margin-left: 53px; 
+}
+.rest-riseLabelsWrapper{
+	display: flex; margin-top: 5px;
+}
+.rest-riseSliderWrapper{
+	display: flex; align-items: center; margin-left: 10px; height: 10px; margin-top: 40px;
+}
+.rest-flowToggleWrapper{
+	margin-left: 10px; 
+}
+.rest-floodToggleWrapper{
+	margin-left: 10px; margin-top: 0px;
+}
+.rest-floodText{
+	display: none; color: rgba(140, 33, 48,.8); font-size: 11px; width: 90%; font-weight: bold; 
+	font-style: italic;
+}
+
+
+
+
+
+
+
+

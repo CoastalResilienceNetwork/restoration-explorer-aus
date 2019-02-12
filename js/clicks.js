@@ -6,13 +6,10 @@ function ( declare, Query, QueryTask,FeatureLayer, Search, SimpleLineSymbol, Sim
 
         return declare(null, {
 			eventListeners: function(t){
-				console.log('clicks')
 				$('#' + t.id + 'viewRankingText').on('click', function(v){
-					console.log(v.currentTarget.textContent);
 					let text = v.currentTarget.textContent;
 					if(text == 'View Ranking Thresholds'){
 						$('.rest-rankingThresholdText').slideDown();
-						console.log($(v.currentTarget)[0])
 						$(v.currentTarget).html('Hide Ranking Thresholds')
 						$(v.currentTarget).css('color', 'rgb(140, 33, 48)')
 					}else{
@@ -20,7 +17,18 @@ function ( declare, Query, QueryTask,FeatureLayer, Search, SimpleLineSymbol, Sim
 						$(v.currentTarget).html('View Ranking Thresholds');
 						$(v.currentTarget).css('color', '#2f6384');
 					}
-
+				})
+				$('#' + t.id + 'viewChangeText').on('click', function(v){
+					let text = v.currentTarget.textContent;
+					if(text == 'View Change Scenarios'){
+						$('.rest-floodText').slideDown();
+						$(v.currentTarget).html('Hide Change Scenarios')
+						$(v.currentTarget).css('color', 'rgb(140, 33, 48)')
+					}else{
+						$('.rest-floodText').slideUp();
+						$(v.currentTarget).html('View Change Scenarios');
+						$(v.currentTarget).css('color', '#2f6384');
+					}
 				})
 // // work with Radio buttons (how would you like to view shoreline data) ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // 				$('#' + t.id + 'aus-viewRadioWrap input').on('click',function(c){

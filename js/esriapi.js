@@ -34,6 +34,17 @@ function ( 	ArcGISDynamicMapServiceLayer, Extent, SpatialReference, Query, Query
 						// $('#' + c.target.id ).parent().next().find("span").html(v)
 					});
 
+				$(function() {
+				  $("#" + t.id + "sldr").slider({ min: 1, max: 4, range: false, })
+				    // .slider("pips", { rest: "label"})
+				    // .slider("float");
+				});
+				$(function() {
+				  $("#" + t.id + "sldr2").slider({ min: 1, max: 3, range: false, })
+				    // .slider("pips", { rest: "label"})
+				    // .slider("float");
+				});
+
 // // Dynamic layer on load ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // 				t.dynamicLayer.on("load", function () { 			
 // 					t.layersArray = t.dynamicLayer.layerInfos;

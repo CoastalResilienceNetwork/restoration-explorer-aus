@@ -8,7 +8,7 @@ The unique ContentPane id makes all the element ids unique and prevents duplicat
 <div class="rest-mainContentWrap" style="padding-left: 7px; margin-top: 10px;">
 
 	<div class="blueFont">
-		app description area Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+		Coastal Resilience is a decision-support tool that incorporates the best available science and local data to enable communities and coastal managers to visualize the risks imposed by coastal hazards.
 	</div>
 
 	<div id="selectAHabitatWrapper" class="rest-selectAHabitatWrapper">
@@ -30,7 +30,7 @@ The unique ContentPane id makes all the element ids unique and prevents duplicat
 		<div class="rest-legendItem" style="background-color: rgb(235,115,33);"></div>
 		<div class="rest-legendItem" style="background-color: rgb(192,0,1);">Low</div>
 	</div>
-
+	<!-- <hr> -->
 	<h4 class="rest-resultsLabel">How would you like to view the results?</h4>
 
 	<div class="rest-resultsRadBtns">
@@ -46,8 +46,8 @@ The unique ContentPane id makes all the element ids unique and prevents duplicat
 			<span class="form-text">Show information on individual suitability variables</span>
 		</label>
 	</div>
-
-	<h4 class="rest-resultsLabel">Select a suitability variable to view.</h4>
+	<!-- <hr> -->
+	<h4 class="rest-resultsLabel" style="margin-top: 7px;">Select a suitability variable to view.</h4>
 	<div id="viewRankingText" class="rest-viewRankingText">View Ranking Thresholds</div>
 
 	<div id="wetlandsSuitWrapper" class="rest-wetlandsSuitWrapper">
@@ -66,7 +66,7 @@ The unique ContentPane id makes all the element ids unique and prevents duplicat
 		<div class="rest-rankingThresholdText">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
 		<br>
 		<label class="form-component" for="suitWet3-option">
-			<input checked value="suitWet3" type="radio" id="suitWet3-option" name="rest-wetlandSuit">
+			<input  value="suitWet3" type="radio" id="suitWet3-option" name="rest-wetlandSuit">
 			<div class="check"></div>
 			<span class="form-text">Proximity to protected lands</span>
 		</label>
@@ -124,5 +124,52 @@ The unique ContentPane id makes all the element ids unique and prevents duplicat
 		<div class="rest-rankingThresholdText">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
 	</div>
 
+	<h4 class="rest-resultsLabel" style="margin-top: 7px;">Change coastal flood scenario.</h4>
+	<div id="viewChangeText" class="rest-viewChangeText">View Change Scenarios</div>
+	<div id="yearSliderWrapper" class="rest-yearSliderWrapper">
+		<div class="rest-sliderLabel">Scenario Year:</div>
+		<div class="slider-container" style="width:185px; margin-left: 30px;">
+			<div id="sldr" class="slider"></div>
+			<div class="rest-yearLabelsWrapper">
+				<div class="rest-yearLabels" style="margin-left: -14px;">2020</div>
+				<div class="rest-yearLabels">2035</div>
+				<div class="rest-yearLabels">2050</div>
+				<div class="rest-yearLabels">2075</div>
+			</div>
+		</div>
+	</div>
+	<div class="rest-floodText">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+	<div id="riseSliderWrapper" class="rest-riseSliderWrapper">
+		<div class="rest-sliderLabel">Sea Level Rise:</div>
+		<div class="slider-container" style="width:185px; margin-left: 30px;">
+			<div id="sldr2" class="slider"></div>
+			<div class="rest-riseLabelsWrapper">
+				<div class="rest-riseLabels" style="margin-left: -14px;">High</div>
+				<div class="rest-riseLabels">Medium</div>
+				<div class="rest-riseLabels">Low</div>
+			</div>
+		</div>
+	</div>
+	<div class="rest-floodText">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+	<div class="rest-flowToggleWrapper">
+		<h4 class="rest-resultsLabel" style="margin-top: 7px; font-size: 14px;">Seasonal River Flow:</h4>
+		<div class="toggle-btn" style="width:250px; margin-left: 10px;">
+			<input checked="true" type="radio" id="flow1" name="flow" value="low"/>
+			<label for="flow1">Low</label>
+			<input type="radio" id="flow2" name="flow" value="high"/>
+			<label for="flow2">High</label>
+		</div>
+	</div>
+	<div class="rest-floodText">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+	<div class="rest-floodToggleWrapper">
+		<h4 class="rest-resultsLabel" style="margin-top: 7px; font-size: 14px;">Flood Event:</h4>
+		<div class="toggle-btn" style="width:250px; margin-left: 10px;">
+			<input checked="true" type="radio" id="flood1" name="flood" value="10"/>
+			<label for="flood1">10 Year</label>
+			<input type="radio" id="flood2" name="flood" value="100"/>
+			<label for="flood2">100 Year</label>
+		</div>
+	</div>
+	<div class="rest-floodText" style="margin-bottom: 15px;">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
 </div>
 
