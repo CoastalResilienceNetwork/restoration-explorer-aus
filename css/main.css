@@ -106,7 +106,9 @@ hr {
 	display: none; color: rgba(140, 33, 48,.8); font-size: 11px; width: 90%; font-weight: bold; 
 	font-style: italic;
 }
-
+.rest-opacitySlider{
+	position: absolute; display: flex; bottom: 10px; align-items: center; margin-left: 24px;
+}
 
 
 

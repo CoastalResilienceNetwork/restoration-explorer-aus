@@ -10,7 +10,7 @@ define([
 function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, obj, content, esriapi, clicks, lang ) {
 	return declare(PluginBase, {
 		// The height and width are set here when an infographic is defined. When the user click Continue it rebuilds the app window with whatever you put in.
-		toolbarName: "Restoration Explorer - Beta", showServiceLayersInLegend: true, allowIdentifyWhenActive: false, rendered: false, resizable: false,
+		toolbarName: "Restoration Explorer - Beta", showServiceLayersInLegend: false, allowIdentifyWhenActive: false, rendered: false, resizable: false,
 		hasCustomPrint: false, size:'custom', width:420, hasHelp:false, 
 		
 		// First function called when the user clicks the pluging icon. 

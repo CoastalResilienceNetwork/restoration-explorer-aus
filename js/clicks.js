@@ -6,6 +6,7 @@ function ( declare, Query, QueryTask,FeatureLayer, Search, SimpleLineSymbol, Sim
 
         return declare(null, {
 			eventListeners: function(t){
+				// handle the help text click event
 				$('#' + t.id + 'viewRankingText').on('click', function(v){
 					let text = v.currentTarget.textContent;
 					if(text == 'View Ranking Thresholds'){

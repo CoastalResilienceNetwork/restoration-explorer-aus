@@ -17,7 +17,7 @@ The unique ContentPane id makes all the element ids unique and prevents duplicat
 		<div class="chosen-wrap">
 			<select data-placeholder="Select a habitat" id="habitatDropdown" class="chosen">
 				<option></option>
-				<option value="one">Wetlands</option>
+				<option selected value="one">Wetlands</option>
 				<option value="two">Mussels - Coming Soon</option>
 			</select>
 		</div>
@@ -127,18 +127,28 @@ The unique ContentPane id makes all the element ids unique and prevents duplicat
 	<h4 class="rest-resultsLabel" style="margin-top: 7px;">Change coastal flood scenario.</h4>
 	<div id="viewChangeText" class="rest-viewChangeText">View Change Scenarios</div>
 	<div id="yearSliderWrapper" class="rest-yearSliderWrapper">
-		<div class="rest-sliderLabel">Scenario Year:</div>
+		<div class="rest-sliderLabel">Water Rise:</div>
 		<div class="slider-container" style="width:185px; margin-left: 30px;">
 			<div id="sldr" class="slider"></div>
 			<div class="rest-yearLabelsWrapper">
-				<div class="rest-yearLabels" style="margin-left: -14px;">2020</div>
-				<div class="rest-yearLabels">2035</div>
-				<div class="rest-yearLabels">2050</div>
-				<div class="rest-yearLabels">2075</div>
+				<div class="rest-yearLabels" style="margin-left: -14px;">0.5m</div>
+				<div class="rest-yearLabels">0.8m</div>
+				<div class="rest-yearLabels">1.1m</div>
+				<div class="rest-yearLabels">1.5m</div>
 			</div>
 		</div>
 	</div>
 	<div class="rest-floodText">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+
+	<!-- site opacity slider -->
+	<div class="rest-opacitySlider">
+		<div style="margin-top: -10px;margin-right: 15px; ">Opaque</div>
+		<div class=" slider-container range-slider" style="width:200px;">
+			<div id="opacity-slider" class="slider"></div>
+		</div>
+		<div style="margin-top: -10px; margin-left: 15px; ">Transparent</div>
+	</div>
+	
 	<!-- <div id="riseSliderWrapper" class="rest-riseSliderWrapper">
 		<div class="rest-sliderLabel">Sea Level Rise:</div>
 		<div class="slider-container" style="width:185px; margin-left: 30px;">
