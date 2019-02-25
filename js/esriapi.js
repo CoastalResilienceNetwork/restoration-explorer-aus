@@ -11,40 +11,9 @@ function ( 	ArcGISDynamicMapServiceLayer, Extent, SpatialReference, Query, Query
         "use strict";
 
         return declare(null, {
+
 			esriApiFunctions: function(t){	
-				t.map.setMapCursor("pointer");
-				t.map.on("zoom-end", function(evt){
-					t.map.setMapCursor("pointer");
-				});
-				//For Chosen options visit https://harvesthq.github.io/chosen/
-				//Single deselect only works if the first option in the select tag is blank
-
-				$("#" + t.id + "habitatDropdown").chosen({allow_single_deselect:true,"disable_search": true, width:"200px"})
-					.change(function(c){
-					
-					});
-				// slider year
-				$(function() {
-				  $("#" + t.id + "opacity-slider").slider({ min: 1, max: 100, range: false, })
-				    
-				});
-				// slider year
-				$(function() {
-				  $("#" + t.id + "sldr").slider({ min: 1, max: 4, range: false, })
-				    
-				});
-				// on water rise slide
-				$("#" + t.id + "sldr").on('slide', function(v){
-					console.log(v);
-
-				})
-				// slider rise
-				$(function() {
-				  $("#" + t.id + "sldr2").slider({ min: 1, max: 3, range: false, })
-				 
-				});
-
-// Dynamic layer on load ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+				// Dynamic layer on load ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 					// Add dynamic map service
 				t.url = 'https://dev-services.coastalresilience.org/arcgis/rest/services/Australia/Restoration_Explorer_v3/MapServer'
 				t.dynamicLayer = new ArcGISDynamicMapServiceLayer(t.url, {opacity:0.7});
@@ -52,12 +21,54 @@ function ( 	ArcGISDynamicMapServiceLayer, Extent, SpatialReference, Query, Query
 				if (t.obj.visibleLayers.length > 0){	
 					t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
 				}
-				t.dynamicLayer.on("load", function () { 			
-					t.layersArray = t.dynamicLayer.layerInfos;
+				t.dynamicLayer.on("load", function () {
 					t.map.setExtent(t.dynamicLayer.fullExtent.expand(1.5), true)
-					console.log(t.layersArray)
+					// get layers array, set extent, change map cursor 			
+					t.layersArray = t.dynamicLayer.layerInfos;
+					
 
-				})
+					t.map.setMapCursor("pointer");
+					t.map.on("zoom-end", function(evt){
+						t.map.setMapCursor("pointer");
+					});
+
+
+					//For Chosen options visit https://harvesthq.github.io/chosen/
+					//Single deselect only works if the first option in the select tag is blank
+					$("#" + t.id + "habitatDropdown").chosen({allow_single_deselect:true,"disable_search": true, width:"200px"})
+						.change(function(c){
+						
+						});
+					// opacity slider
+					$(function() {
+					    $("#" + t.id + "opacity-slider").slider({ min: 1, max: 100, range: false, values:[70] })
+					    // on opacity slide
+					    $("#" + t.id + "opacity-slider").on('slide', function(v,ui){
+					  		t.dynamicLayer.setOpacity(ui.value/100); // set init opacity
+					    })
+					});
+					// water rise slider
+					$(function() {
+					    $("#" + t.id + "sldr").slider({ min: 1, max: 4, range: false, })
+
+					});
+					// slider rise
+					$(function() {
+					  $("#" + t.id + "sldr2").slider({ min: 1, max: 3, range: false, })
+					 
+					});
+					// build a name layers array
+					t.layersNameArray = []
+					$.each(t.layersArray, function(i,v){
+						t.layersNameArray.push(v.name);
+					})
+				}) // end of layer load function
+
+
+
+
+
+
 				
 
 

@@ -52,35 +52,35 @@ The unique ContentPane id makes all the element ids unique and prevents duplicat
 
 	<div id="wetlandsSuitWrapper" class="rest-wetlandsSuitWrapper">
 		<label class="form-component" for="suitWet1-option">
-			<input checked value="suitWet1" type="radio" id="suitWet1-option" name="rest-wetlandSuit">
+			<input disabled checked value="Protected_Area_Ras" type="radio" id="suitWet1-option" name="rest-wetlandSuit">
 			<div class="check"></div>
 			<span class="form-text">Soil waterlog potential</span>
 		</label>
 		<div class="rest-rankingThresholdText">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
 		<br>
 		<label class="form-component" for="suitWet2-option">
-			<input type="radio" value="suitWet2" id="suitWet2-option" name="rest-wetlandSuit">
+			<input disabled type="radio" value="PctWaterLog_Ras" id="suitWet2-option" name="rest-wetlandSuit">
 			<div class="check"></div>
 			<span class="form-text">Proximity to existing wetlands</span>
 		</label>
 		<div class="rest-rankingThresholdText">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
 		<br>
 		<label class="form-component" for="suitWet3-option">
-			<input  value="suitWet3" type="radio" id="suitWet3-option" name="rest-wetlandSuit">
+			<input disabled value="PctFloodRisk_Ras" type="radio" id="suitWet3-option" name="rest-wetlandSuit">
 			<div class="check"></div>
 			<span class="form-text">Proximity to protected lands</span>
 		</label>
 		<div class="rest-rankingThresholdText">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
 		<br>
 		<label class="form-component" for="suitWet4-option">
-			<input type="radio" value="suitWet4" id="suitWet4-option" name="rest-wetlandSuit">
+			<input disabled type="radio" value="Existing_Marsh_Ras" id="suitWet4-option" name="rest-wetlandSuit">
 			<div class="check"></div>
 			<span class="form-text">Potential to reduce runoff</span>
 		</label>
 		<div class="rest-rankingThresholdText">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
 		<br>
 		<label class="form-component" for="suitWet5-option">
-			<input type="radio" value="suitWet5" id="suitWet5-option" name="rest-wetlandSuit">
+			<input disabled type="radio" value="coastalFlood" id="suitWet5-option" name="rest-wetlandSuit">
 			<div class="check"></div>
 			<span class="form-text">Potential to accommodate coastal flooding</span>
 		</label>
@@ -124,6 +124,8 @@ The unique ContentPane id makes all the element ids unique and prevents duplicat
 		<div class="rest-rankingThresholdText">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
 	</div>
 
+	<!-- <div class="rest-coastalFloodOverlay"></div> -->
+
 	<h4 class="rest-resultsLabel" style="margin-top: 7px;">Change coastal flood scenario.</h4>
 	<div id="viewChangeText" class="rest-viewChangeText">View Change Scenarios</div>
 	<div id="yearSliderWrapper" class="rest-yearSliderWrapper">
@@ -140,13 +142,15 @@ The unique ContentPane id makes all the element ids unique and prevents duplicat
 	</div>
 	<div class="rest-floodText">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
 
+
 	<!-- site opacity slider -->
 	<div class="rest-opacitySlider">
-		<div style="margin-top: -10px;margin-right: 15px; ">Opaque</div>
+
+		<div style="margin-top: -10px; margin-right: 15px; color: rgb(44, 98, 133)"><b>Opaque</b></div>
 		<div class=" slider-container range-slider" style="width:200px;">
 			<div id="opacity-slider" class="slider"></div>
 		</div>
-		<div style="margin-top: -10px; margin-left: 15px; ">Transparent</div>
+		<div style="margin-top: -10px; margin-left: 15px; color: rgb(44, 98, 133) "><b>Transparent</b></div>
 	</div>
 	
 	<!-- <div id="riseSliderWrapper" class="rest-riseSliderWrapper">

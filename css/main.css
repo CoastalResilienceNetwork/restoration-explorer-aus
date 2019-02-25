@@ -87,6 +87,9 @@ hr {
 .rest-yearSliderWrapper{
 	display: flex; align-items: center; margin-left: 10px; margin-top: 42px; height: 10px;
 }
+.rest-coastalFloodOverlay{
+	background-color: rgba(240,240,240,.3)
+}
 .rest-riseLabels{
 	margin-left: 53px; 
 }
@@ -107,7 +110,8 @@ hr {
 	font-style: italic;
 }
 .rest-opacitySlider{
-	position: absolute; display: flex; bottom: 10px; align-items: center; margin-left: 24px;
+	position: absolute; display: flex; bottom: 0px; left: 0px; align-items: center; justify-content: center; width: 100%; 
+	background-color:rgb(245,245,245); border-top: 1px solid rgba(0,0,0,.2); padding-top: 16px; z-index: 3000;
 }
 
 

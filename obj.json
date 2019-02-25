@@ -1,19 +1,7 @@
 {
 	"visibleLayers": [8],
-	"viewRadCBCh":"all",
-	"enhanceTech":"Marsh and Mangrove Enhancement",
-	"supData":"None",
-	"selHuc": "6",
-	"mngmtAction": "cons",
-	"floodFreq": "1 in 100",
-	"ffDef": "",
-	"huc": "HUC 10",
-	"exp": "",
-	"slIdsVals": [],
-	"slCbIds": [],
-	"rbIds": [],
-	"rbCbIds": [],
+	"viewResultsTracker":"final",
+	"individualVariableTracker": "",
 	"extent": "",
 	"stateSet": "no",
-	"indInit": "yes"
 }

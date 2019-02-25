@@ -31,6 +31,71 @@ function ( declare, Query, QueryTask,FeatureLayer, Search, SimpleLineSymbol, Sim
 						$(v.currentTarget).css('color', '#2f6384');
 					}
 				})
+
+				// main rad buttons click
+				$('.rest-resultsRadBtns input').on('click', function(evt){
+					if(evt.currentTarget.value == 'final'){
+						// disable all suitability variables radio buttons
+						$.each($('.rest-wetlandsSuitWrapper input'), function(i,v){
+							$(v).attr('disabled', true);
+						})
+						t.obj.viewResultsTracker = 'final'
+					}else{
+						// enable all suitability variables radio buttons
+						$.each($('.rest-wetlandsSuitWrapper input'), function(i,v){
+							$(v).attr('disabled', false);
+						})
+						t.obj.viewResultsTracker = 'ind'
+					}
+				})
+				// on individual radio button click
+				$('.rest-wetlandsSuitWrapper input').on('click', function(evt){
+					t.obj.visibleLayers = []
+					let value = evt.currentTarget.value;
+					// find value and disp[]
+					if(value == 'coastalFlood'){
+						// work with the flood slider
+					}else{
+						// display layer based on the value passed
+						console.log(t.layersArray)
+						t.obj.visibleLayers.push(t.layersNameArray.indexOf(value))
+						console.log(t.obj.visibleLayers)
+					}
+					t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
+
+
+				})
+				// on water rise slide
+				$("#" + t.id + "sldr").on('slide', function(v, ui){
+					let val = ui.value
+					t.obj.visibleLayers = []
+					if(t.obj.viewResultsTracker == 'final'){
+						let layer;
+						if(val == 1){
+							layer = 8
+						}else if(val == 2){
+							layer = 9
+						}else if(val == 3){
+							layer = 10
+						}else if(val == 4){
+							layer = 11
+						}
+						t.obj.visibleLayers.push(layer)
+						t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
+					}else if(t.obj.viewResultsTracker == 'ind' && t.obj.individualVariableTracker  =='suitWet5'){
+						console.log('in ind')
+						// get value of 
+					}
+				})
+
+
+
+
+
+
+
+
+
 // // work with Radio buttons (how would you like to view shoreline data) ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // 				$('#' + t.id + 'aus-viewRadioWrap input').on('click',function(c){
 // 					var val = c.target.value
