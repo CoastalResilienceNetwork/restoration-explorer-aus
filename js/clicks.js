@@ -6,6 +6,8 @@ function ( declare, Query, QueryTask,FeatureLayer, Search, SimpleLineSymbol, Sim
 
         return declare(null, {
 			eventListeners: function(t){
+				t.obj.wetlandVal = 'Protected_Area_Ras';
+				t.obj.waterRiseVal= 1
 				// handle the help text click event
 				$('#' + t.id + 'viewRankingText').on('click', function(v){
 					let text = v.currentTarget.textContent;
@@ -34,64 +36,120 @@ function ( declare, Query, QueryTask,FeatureLayer, Search, SimpleLineSymbol, Sim
 
 				// main rad buttons click
 				$('.rest-resultsRadBtns input').on('click', function(evt){
+					t.obj.visibleLayers = []
 					if(evt.currentTarget.value == 'final'){
 						// disable all suitability variables radio buttons
 						$.each($('.rest-wetlandsSuitWrapper input'), function(i,v){
 							$(v).attr('disabled', true);
 						})
+						// turn on summed raster when final rad button is cliked, use the waterRiseTracker
+						let layer;
+						if(t.obj.waterRiseVal == 1){
+							layer = 8
+						}else if(t.obj.waterRiseVal == 2){
+							layer = 9
+						}else if(t.obj.waterRiseVal == 3){
+							layer = 10
+						}else if(t.obj.waterRiseVal == 4){
+							layer = 11
+						}
+						t.obj.visibleLayers.push(layer)
 						t.obj.viewResultsTracker = 'final'
+						// slide down slider bar
+						$('.rest-waterRiseWrapper').slideDown()
 					}else{
+						let layerVal;
 						// enable all suitability variables radio buttons
 						$.each($('.rest-wetlandsSuitWrapper input'), function(i,v){
 							$(v).attr('disabled', false);
 						})
+						console.log(t.obj.waterRiseVal)
+						console.log(t.obj.wetlandVal)
+						if(t.obj.wetlandVal == 'coastalFlood'){
+							if (t.obj.waterRiseVal ==1 ) {
+								layerVal = 4
+							}else if(t.obj.waterRiseVal == 2){
+								layerVal = 5
+							}else if(t.obj.waterRiseVal == 3){
+								layerVal = 6
+							}else if(t.obj.waterRiseVal == 4){
+								layerVal = 7
+							}
+							t.obj.visibleLayers.push(layerVal)
+						}else{
+							t.obj.visibleLayers.push(t.layersNameArray.indexOf(t.obj.wetlandVal))
+						}
+
 						t.obj.viewResultsTracker = 'ind'
+						// slide up slider bar
+						if(t.obj.wetlandVal != 'coastalFlood'){
+							$('.rest-waterRiseWrapper').slideUp()
+						}
+						
 					}
+					console.log(t.obj.visibleLayers)
+					t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
 				})
 				// on individual radio button click
 				$('.rest-wetlandsSuitWrapper input').on('click', function(evt){
 					t.obj.visibleLayers = []
-					let value = evt.currentTarget.value;
-					// find value and disp[]
-					if(value == 'coastalFlood'){
-						// work with the flood slider
+					t.obj.wetlandVal = evt.currentTarget.value;
+					if(t.obj.wetlandVal == 'coastalFlood'){
+						// display the layer based on the water rise slider
+						let layerVal;
+						if (t.obj.waterRiseVal ==1 ) {
+							layerVal = 4
+						}else if(t.obj.waterRiseVal == 2){
+							layerVal = 5
+						}else if(t.obj.waterRiseVal == 3){
+							layerVal = 6
+						}else if(t.obj.waterRiseVal == 4){
+							layerVal = 7
+						}
+						t.obj.visibleLayers.push(layerVal)
+						// slide up slider bar
+						$('.rest-waterRiseWrapper').slideDown()
 					}else{
 						// display layer based on the value passed
-						console.log(t.layersArray)
-						t.obj.visibleLayers.push(t.layersNameArray.indexOf(value))
-						console.log(t.obj.visibleLayers)
+						t.obj.visibleLayers.push(t.layersNameArray.indexOf(t.obj.wetlandVal))
+						// slide up slider bar
+						$('.rest-waterRiseWrapper').slideUp()
 					}
+					console.log(t.obj.visibleLayers)
 					t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
-
-
 				})
 				// on water rise slide
 				$("#" + t.id + "sldr").on('slide', function(v, ui){
-					let val = ui.value
+					t.obj.waterRiseVal = ui.value
 					t.obj.visibleLayers = []
+					// console.log(t.obj.viewResultsTracker,t.obj.wetlandVal)
 					if(t.obj.viewResultsTracker == 'final'){
 						let layer;
-						if(val == 1){
+						if(t.obj.waterRiseVal == 1){
 							layer = 8
-						}else if(val == 2){
+						}else if(t.obj.waterRiseVal == 2){
 							layer = 9
-						}else if(val == 3){
+						}else if(t.obj.waterRiseVal == 3){
 							layer = 10
-						}else if(val == 4){
+						}else if(t.obj.waterRiseVal == 4){
 							layer = 11
 						}
 						t.obj.visibleLayers.push(layer)
-						t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
-					}else if(t.obj.viewResultsTracker == 'ind' && t.obj.individualVariableTracker  =='suitWet5'){
-						console.log('in ind')
-						// get value of 
+					}else if(t.obj.viewResultsTracker == 'ind' && t.obj.wetlandVal  =='coastalFlood'){
+						let layerVal;
+						if (t.obj.waterRiseVal ==1 ) {
+							layerVal = 4
+						}else if(t.obj.waterRiseVal == 2){
+							layerVal = 5
+						}else if(t.obj.waterRiseVal == 3){
+							layerVal = 6
+						}else if(t.obj.waterRiseVal == 4){
+							layerVal = 7
+						}
+						t.obj.visibleLayers.push(layerVal)
 					}
+					t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
 				})
-
-
-
-
-
 
 
 
