@@ -22,7 +22,7 @@ function ( 	ArcGISDynamicMapServiceLayer, Extent, SpatialReference, Query, Query
 					t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
 				}
 				t.dynamicLayer.on("load", function () {
-					t.map.setExtent(t.dynamicLayer.fullExtent.expand(1.5), true)
+					t.map.setExtent(t.dynamicLayer.fullExtent.expand(1.2), true)
 					// get layers array, set extent, change map cursor 			
 					t.layersArray = t.dynamicLayer.layerInfos;
 					

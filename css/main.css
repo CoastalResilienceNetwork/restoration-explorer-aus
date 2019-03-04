@@ -66,7 +66,7 @@ hr {
 	 cursor: pointer;
 }
 .rest-rankingThresholdText{
-	display: none; color: rgba(140, 33, 48,.8); font-size: 11px; width: 90%; font-weight: bold; margin-top: -10px; 
+	display: none; color: rgba(140, 33, 48,.8); font-size: 11px; width: 90%; font-weight: bold; margin-top: -6px; 
 	font-style: italic;
 }
 .rest-viewChangeText{
@@ -85,7 +85,7 @@ hr {
 	display: flex; margin-top: 5px;
 }
 .rest-yearSliderWrapper{
-	display: flex; align-items: center; margin-left: 20px; margin-top: 33px; height: 10px;
+	display: flex; align-items: center; margin-left: 20px; margin-top: 37px; height: 10px;
 }
 .rest-coastalFloodOverlay{
 	background-color: rgba(240,240,240,.3)
