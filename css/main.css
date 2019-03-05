@@ -44,7 +44,7 @@ hr {
 	display: flex; height: 26px; width: 80%;  margin: 20px auto 0 auto; border:grey solid 1px;
 }
 .rest-legendItem{
-	width: 80px; display: flex; justify-content: center; align-items: center; color: white; font-weight: bold;
+	width: 80px; display: flex; justify-content: center; align-items: center; color: black; /*text-shadow: 1px 1px white;*/ font-weight: bold;
 	border-left:grey solid 1px;
 }
 .rest-resultsLabel{
