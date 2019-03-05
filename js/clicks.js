@@ -150,6 +150,7 @@ function ( declare, Query, QueryTask,FeatureLayer, Search, SimpleLineSymbol, Sim
 					}
 					t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
 				})
+				
 
 
 
