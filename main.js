@@ -32,10 +32,12 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, obj, conte
 		// Called after hibernate at app startup. Calls the render function which builds the plugins elements and functions.   
 		activate: function (showHelpOnStart) {
 			if (this.rendered == false) {
+				ga('send', 'event', this.toolbarName, 'Opened app');
 				this.rendered = true;							
 				this.render();
 				$(this.printButton).hide();
 			}else{
+				ga('send', 'event', this.toolbarName, 'Re-opened app');
 				this.dynamicLayer.setVisibleLayers(this.obj.visibleLayers);
 				$('#' + this.id).parent().parent().css('display', 'flex');
 				// this.clicks.updateAccord(this);
