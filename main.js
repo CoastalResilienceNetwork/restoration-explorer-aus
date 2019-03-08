@@ -59,13 +59,11 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, obj, conte
 		},
 		// Called when user hits the minimize '_' icon on the pluging. Also called before hibernate when users closes app by clicking 'X'.
 		deactivate: function () {
-			console.log('deactivate')
 			this.open = "no";	
 		},	
 		// Called when user hits 'Save and Share' button. This creates the url that builds the app at a given state using JSON. 
 		// Write anything to you varObject.json file you have tracked during user activity.		
 		getState: function () {
-			console.log('get state')
 			//extent
 			this.obj.extent = this.map.geographicExtent;
 			this.obj.stateSet = "yes";	
@@ -76,7 +74,6 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, obj, conte
 		// Called before activate only when plugin is started from a getState url. 
 		//It's overwrites the default JSON definfed in initialize with the saved stae JSON.
 		setState: function (state) {
-			console.log('set state')
 			this.obj = state;
 		},
 		// Called when the user hits the print icon
@@ -85,7 +82,6 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, obj, conte
 		},	
 		// Called by activate and builds the plugins elements and functions
 		render: function() {
-			console.log('render')
 			//this.oid = -1;
 			//$('.basemap-selector').trigger('change', 3);
 			this.mapScale  = this.map.getScale();

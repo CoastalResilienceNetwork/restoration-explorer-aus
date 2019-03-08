@@ -27,6 +27,7 @@ function ( 	ArcGISDynamicMapServiceLayer, Extent, SpatialReference, Query, Query
 					// if not state set /////////////////////////////////////////////////////////
 					if(t.obj.stateSet == 'yes'){
 						t.dynamicLayer.setOpacity(t.obj.opacitySliderVal/100);
+						// figure out which main radio button needs to be checked
 						$.each($('.rest-resultsRadBtns input'), function(i,v){
 							if(v.value == t.obj.viewResultsTracker){
 								$(v).attr('checked', true);
@@ -34,6 +35,7 @@ function ( 	ArcGISDynamicMapServiceLayer, Extent, SpatialReference, Query, Query
 								$(v).attr('checked', false);
 							}
 						})
+						// find out which wetlands radio button needs to be checked
 						$.each($('.rest-wetlandsSuitWrapper input'), function(i,v){
 							if(v.value == t.obj.wetlandVal){
 								$(v).attr('checked', true);

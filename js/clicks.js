@@ -81,9 +81,7 @@ function ( declare, Query, QueryTask,FeatureLayer, Search, SimpleLineSymbol, Sim
 						if(t.obj.wetlandVal != 'coastalFlood'){
 							$('.rest-waterRiseWrapper').slideUp()
 						}
-						
 					}
-					console.log(t.obj.visibleLayers)
 					t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
 				})
 				// on individual radio button click
@@ -111,15 +109,12 @@ function ( declare, Query, QueryTask,FeatureLayer, Search, SimpleLineSymbol, Sim
 						// slide up slider bar
 						$('.rest-waterRiseWrapper').slideUp()
 					}
-					console.log(t.obj.visibleLayers)
 					t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
 				})
 				// on water rise slide
 				$("#" + t.id + "sldr").on('slide', function(v, ui){
 					t.obj.waterRiseVal = ui.value
 					t.obj.visibleLayers = []
-					console.log(t.obj.waterRiseVal)
-					// console.log(t.obj.viewResultsTracker,t.obj.wetlandVal)
 					if(t.obj.viewResultsTracker == 'final'){
 						let layer;
 						if(t.obj.waterRiseVal == 1){
