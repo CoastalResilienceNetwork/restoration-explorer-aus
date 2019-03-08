@@ -1,0 +1,203 @@
+﻿<!--This HTML is used in the render function to build the elements within the plugin. The render function first creates a
+Dijit ContentPane to hold all the elements. The ContentPane is assigned a dynamic id upon creation. The render function
+takes the ContentPane id and prepends it to every element with a declared id in this HTML before the elements are created.
+The unique ContentPane id makes all the element ids unique and prevents duplicate id errors across other apps.-->
+
+
+<!-- Main content Wrapper -->
+<div class="rest-mainContentWrap" style="padding-left: 7px; margin-top: 10px; margin-bottom: 75px;">
+
+	<div class="blueFont">
+		This app can be used to guide wetland and mussel restoration planning in the Peel Harvey Estuary.
+	</div>
+
+	<div id="selectAHabitatWrapper" class="rest-selectAHabitatWrapper">
+		<!-- For Chosen options visit https://harvesthq.github.io/chosen/ -->
+		<!-- Add class chos  to select's parent -->
+		<div class="chosen-wrap">
+			<select data-placeholder="Select a habitat" id="habitatDropdown" class="chosen">
+				<option></option>
+				<option selected value="one">Wetlands</option>
+				<option value="two">Mussels - Coming Soon</option>
+			</select>
+		</div>
+	</div>
+
+	<div id="legendWrapper" class="rest-legendWrapper">
+		<!-- <div class="risk-legendItem" style="background-color: rgb(255,255,129);">Low</div>
+		<div class="risk-legendItem" style="background-color: rgb(116,232,54);"></div>
+		<div class="risk-legendItem" style="background-color: rgb(66,183,103);"></div>
+		<div class="risk-legendItem" style="background-color: rgb(31,106,158;"></div>
+		<div class="risk-legendItem" style="background-color: rgb(47,85,151);">High</div> -->
+
+		<div class="rest-legendItem" style="background-color: rgb(47,85,151);">High</div>
+		<div class="rest-legendItem" style="background-color: rgb(31,106,158);"></div>
+		<div class="rest-legendItem" style="background-color: rgb(66,183,103);"></div>
+		<div class="rest-legendItem" style="background-color: rgb(116,232,54);"></div>
+		<div class="rest-legendItem" style="background-color: rgb(255,255,129);">Low</div>
+<!-- 
+		<div class="rest-legendItem" style="background-color: rgb(47,85,151);">High</div>
+		<div class="rest-legendItem" style="background-color: rgb(180,199,231);"></div>
+		<div class="rest-legendItem" style="background-color: rgb(250,247,110);"></div>
+		<div class="rest-legendItem" style="background-color: rgb(235,115,33);"></div>
+		<div class="rest-legendItem" style="background-color: rgb(192,0,1);">Low</div> -->
+	</div>
+	<!-- <hr> -->
+	<h4 class="rest-resultsLabel">How would you like to view the results?</h4>
+
+	<div class="rest-resultsRadBtns">
+		<label class="form-component" for="a-option">
+			<input checked value="final" type="radio" id="a-option" name="rest-results">
+			<div class="check"></div>
+			<span class="form-text">Show final suitability map</span>
+		</label>
+		<br>
+		<label class="form-component" for="b-option">
+			<input type="radio" value="individual" id="b-option" name="rest-results">
+			<div class="check"></div>
+			<span class="form-text">Show information on individual suitability variables</span>
+		</label>
+	</div>
+	<!-- <hr> -->
+	<h4 class="rest-resultsLabel" style="margin-top: 7px;">Select a suitability variable to view.</h4>
+	<div id="viewRankingText" class="rest-viewRankingText">View Ranking Thresholds</div>
+
+	<div id="wetlandsSuitWrapper" class="rest-wetlandsSuitWrapper">
+		<label class="form-component" for="suitWet1-option">
+			<input disabled checked value="Protected_Area_Ras" type="radio" id="suitWet1-option" name="rest-wetlandSuit">
+			<div class="check"></div>
+			<span class="form-text">Soil waterlog potential</span>
+		</label>
+		<div class="rest-rankingThresholdText">Land with high susceptibility for excess surface water to pond based on average seasonal rainfall, from the Dept of Agriculture. High is >= 50%, Medium is 10-50%, and Low is <=10%</div>
+		<br>
+		<label class="form-component" for="suitWet2-option">
+			<input disabled type="radio" value="PctWaterLog_Ras" id="suitWet2-option" name="rest-wetlandSuit">
+			<div class="check"></div>
+			<span class="form-text">Proximity to existing wetlands</span>
+		</label>
+		<div class="rest-rankingThresholdText">The location of existing wetlands should be considered when planning restoration/conservation actions. Extracted from the Department of Agriculture 2018 catchment-scale land use dataset. High = Within 300m of existing wetland, Medium is within 300-500m, Low is within 500-1000m, and 999 = pervious surfaces that are excluded.</div>
+		<br>
+		<label class="form-component" for="suitWet3-option">
+			<input disabled value="PctFloodRisk_Ras" type="radio" id="suitWet3-option" name="rest-wetlandSuit">
+			<div class="check"></div>
+			<span class="form-text">Proximity to protected lands</span>
+		</label>
+		<div class="rest-rankingThresholdText">Restoring wetlands near existing protected areas help to create a green corridor for large scale impact. Extracted from the Department of Agriculture 2018 catchment-scale land use dataset. High = Within 300m of protected area, Medium is within 300-500m, Low is within 500-1000m, and 999 = pervious surfaces that are excluded.</div>
+		<br>
+		<label class="form-component" for="suitWet4-option">
+			<input disabled type="radio" value="Existing_Marsh_Ras" id="suitWet4-option" name="rest-wetlandSuit">
+			<div class="check"></div>
+			<span class="form-text">Potential to reduce runoff</span>
+		</label>
+		<div class="rest-rankingThresholdText">Land with high susceptibility to flood due to overflowing streams and/or precipitation run off, from the Dept of Agriculture. High is >= 50%, Medium is 10-50%, and Low is <=10%  </div>
+		<br>
+		<label class="form-component" for="suitWet5-option">
+			<input disabled type="radio" value="coastalFlood" id="suitWet5-option" name="rest-wetlandSuit">
+			<div class="check"></div>
+			<span class="form-text">Potential to accommodate coastal flooding</span>
+		</label>
+		<div class="rest-rankingThresholdText">Undeveloped estuarine land near projected flood extents can be prioritized for conservation to allow for coastal wetlands to migrate inland as sea levels rise. High = Within 500m of flood extent, Medium is within 500-1,000m, Low is within 1,000-1,500m, and 999 = pervious surfaces that are excluded.</div>
+	</div>
+
+	<div id="musselsSuitWrapper" class="rest-musselsSuitWrapper">
+		<label class="form-component" for="suitMus1-option">
+			<input checked value="suitMus1" type="radio" id="suitMus1-option" name="rest-musSuit">
+			<div class="check"></div>
+			<span class="form-text">Ammonium</span>
+		</label>
+		<div class="rest-rankingThresholdText">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+		<br>
+		<label class="form-component" for="suitMus2-option">
+			<input type="radio" value="suitMus2" id="suitMus2-option" name="rest-musSuit">
+			<div class="check"></div>
+			<span class="form-text">Oxygen</span>
+		</label>
+		<div class="rest-rankingThresholdText">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+		<br>
+		<label class="form-component" for="suitMus3-option">
+			<input checked value="suitMus3" type="radio" id="suitMus3-option" name="rest-musSuit">
+			<div class="check"></div>
+			<span class="form-text">Salinity</span>
+		</label>
+		<div class="rest-rankingThresholdText">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+		<br>
+		<label class="form-component" for="suitMus4-option">
+			<input type="radio" value="suitMus4" id="suitMus4-option" name="rest-musSuit">
+			<div class="check"></div>
+			<span class="form-text">Temperature</span>
+		</label>
+		<div class="rest-rankingThresholdText">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+		<br>
+		<label class="form-component" for="suitMus5-option">
+			<input type="radio" value="suitMus5" id="suitMus5-option" name="rest-musSuit">
+			<div class="check"></div>
+			<span class="form-text">Turbidity</span>
+		</label>
+		<div class="rest-rankingThresholdText">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+	</div>
+
+	<!-- <div class="rest-coastalFloodOverlay"></div> -->
+	<div class="rest-waterRiseWrapper">
+		<h4 class="rest-resultsLabel" style="margin-top: 7px; margin-left: 10px;">Change coastal flood scenario.</h4>
+		<div style="display: none;" id="viewChangeText" class="rest-viewChangeText">View Change Scenarios</div>
+		<div id="yearSliderWrapper" class="rest-yearSliderWrapper">
+			<div class="rest-sliderLabel">Water Rise:</div>
+			<div class="slider-container" style="width:185px; margin-left: 30px;">
+				<div id="sldr" class="slider"></div>
+				<div class="rest-yearLabelsWrapper">
+					<div class="rest-yearLabels" style="margin-left: -14px;">0.5m</div>
+					<div class="rest-yearLabels">0.8m</div>
+					<div class="rest-yearLabels">1.1m</div>
+					<div class="rest-yearLabels">1.5m</div>
+				</div>
+			</div>
+		</div>
+		<div class="rest-floodText">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+	</div>
+	
+
+
+	<!-- site opacity slider -->
+	<div class="rest-opacitySlider">
+
+		<div style="margin-top: -10px; margin-right: 15px; color: rgb(44, 98, 133)"><b>Opaque</b></div>
+		<div class=" slider-container range-slider" style="width:200px;">
+			<div id="opacity-slider" class="slider"></div>
+		</div>
+		<div style="margin-top: -10px; margin-left: 15px; color: rgb(44, 98, 133) "><b>Transparent</b></div>
+	</div>
+	
+	<!-- <div id="riseSliderWrapper" class="rest-riseSliderWrapper">
+		<div class="rest-sliderLabel">Sea Level Rise:</div>
+		<div class="slider-container" style="width:185px; margin-left: 30px;">
+			<div id="sldr2" class="slider"></div>
+			<div class="rest-riseLabelsWrapper">
+				<div class="rest-riseLabels" style="margin-left: -14px;">High</div>
+				<div class="rest-riseLabels">Medium</div>
+				<div class="rest-riseLabels">Low</div>
+			</div>
+		</div>
+	</div>
+	<div class="rest-floodText">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+	<div class="rest-flowToggleWrapper">
+		<h4 class="rest-resultsLabel" style="margin-top: 7px; font-size: 14px;">Seasonal River Flow:</h4>
+		<div class="toggle-btn" style="width:250px; margin-left: 10px;">
+			<input checked="true" type="radio" id="flow1" name="flow" value="low"/>
+			<label for="flow1">Low</label>
+			<input type="radio" id="flow2" name="flow" value="high"/>
+			<label for="flow2">High</label>
+		</div>
+	</div>
+	<div class="rest-floodText">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+	<div class="rest-floodToggleWrapper">
+		<h4 class="rest-resultsLabel" style="margin-top: 7px; font-size: 14px;">Flood Event:</h4>
+		<div class="toggle-btn" style="width:250px; margin-left: 10px;">
+			<input checked="true" type="radio" id="flood1" name="flood" value="10"/>
+			<label for="flood1">10 Year</label>
+			<input type="radio" id="flood2" name="flood" value="100"/>
+			<label for="flood2">100 Year</label>
+		</div>
+	</div>
+	<div class="rest-floodText" style="margin-bottom: 15px;">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div> -->
+</div>
+
