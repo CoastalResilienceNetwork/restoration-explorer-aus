@@ -59,62 +59,24 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, obj, conte
 		},
 		// Called when user hits the minimize '_' icon on the pluging. Also called before hibernate when users closes app by clicking 'X'.
 		deactivate: function () {
+			console.log('deactivate')
 			this.open = "no";	
 		},	
 		// Called when user hits 'Save and Share' button. This creates the url that builds the app at a given state using JSON. 
 		// Write anything to you varObject.json file you have tracked during user activity.		
 		getState: function () {
-			// remove this conditional statement when minimize is added
-			if ( $('#' + this.id ).is(":visible") ){
-				// Get slider ids and values when values do not equal min or max
-				$.each($('#' + this.id + 'mng-act-wrap .slider'),lang.hitch(this,function(i,v){
-					var idArray = v.id.split('-');
-					var id = "-" + idArray[1] + "-" + idArray[2];
-					var min = $('#' + v.id).slider("option", "min");
-					var max = $('#' + v.id).slider("option", "max");
-					var values = $('#' + v.id).slider("option", "values");
-					if (min != values[0] || max != values[1]){
-						this.obj.slIdsVals.push([ id, [values[0], values[1]] ])
-					}
-				}));	
-				// Git ids of checked checkboxes above sliders
-				$.each( $('#' + this.id + 'aus-wrap .-slCb'),lang.hitch(this,function(i,v){
-					if (v.checked == true){
-						var id = "-" + v.id.split('-').pop();
-						this.obj.slCbIds.push(id)
-					}
-				}))
-				// Get ids of checked radio buttons
-				$.each( $('#' + this.id + ' .aus-radio-indent input'),lang.hitch(this,function(i,v){
-					if (v.checked == true){
-						var id = "-" + v.id.split('-').pop();
-						this.obj.rbIds.push(id)
-					}
-				}));	
-				$.each( $('#' + this.id + ' .aus-radio-indent1 input'),lang.hitch(this,function(i,v){
-					if (v.checked == true){
-						var id = "-" + v.id.split('-').pop();
-						this.obj.rbIds.push(id)
-					}
-				}));	
-				// Get ids of checked checkboxes above radio buttons
-				$.each( $('#' + this.id + 'aus-wrap .rb_cb'),lang.hitch(this,function(i,v){
-					if (v.checked == true){
-						// var id = "-" + v.id.split('-').pop();
-						// this.obj.rbCbIds.push(id)
-					}
-				}));	
-				//extent
-				this.obj.extent = this.map.geographicExtent;
-				this.obj.stateSet = "yes";	
-				var state = new Object();
-				state = this.obj;
-				return state;	
-			}
+			console.log('get state')
+			//extent
+			this.obj.extent = this.map.geographicExtent;
+			this.obj.stateSet = "yes";	
+			var state = new Object();
+			state = this.obj;
+			return state;	
 		},
 		// Called before activate only when plugin is started from a getState url. 
 		//It's overwrites the default JSON definfed in initialize with the saved stae JSON.
 		setState: function (state) {
+			console.log('set state')
 			this.obj = state;
 		},
 		// Called when the user hits the print icon
@@ -123,6 +85,7 @@ function ( 	declare, PluginBase, ContentPane, dom, domStyle, domGeom, obj, conte
 		},	
 		// Called by activate and builds the plugins elements and functions
 		render: function() {
+			console.log('render')
 			//this.oid = -1;
 			//$('.basemap-selector').trigger('change', 3);
 			this.mapScale  = this.map.getScale();

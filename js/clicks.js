@@ -6,8 +6,6 @@ function ( declare, Query, QueryTask,FeatureLayer, Search, SimpleLineSymbol, Sim
 
         return declare(null, {
 			eventListeners: function(t){
-				t.obj.wetlandVal = 'Protected_Area_Ras';
-				t.obj.waterRiseVal= 1
 				// handle the help text click event
 				$('#' + t.id + 'viewRankingText').on('click', function(v){
 					let text = v.currentTarget.textContent;
@@ -63,8 +61,6 @@ function ( declare, Query, QueryTask,FeatureLayer, Search, SimpleLineSymbol, Sim
 						$.each($('.rest-wetlandsSuitWrapper input'), function(i,v){
 							$(v).attr('disabled', false);
 						})
-						console.log(t.obj.waterRiseVal)
-						console.log(t.obj.wetlandVal)
 						if(t.obj.wetlandVal == 'coastalFlood'){
 							if (t.obj.waterRiseVal ==1 ) {
 								layerVal = 4
@@ -80,7 +76,7 @@ function ( declare, Query, QueryTask,FeatureLayer, Search, SimpleLineSymbol, Sim
 							t.obj.visibleLayers.push(t.layersNameArray.indexOf(t.obj.wetlandVal))
 						}
 
-						t.obj.viewResultsTracker = 'ind'
+						t.obj.viewResultsTracker = 'individual'
 						// slide up slider bar
 						if(t.obj.wetlandVal != 'coastalFlood'){
 							$('.rest-waterRiseWrapper').slideUp()
@@ -122,6 +118,7 @@ function ( declare, Query, QueryTask,FeatureLayer, Search, SimpleLineSymbol, Sim
 				$("#" + t.id + "sldr").on('slide', function(v, ui){
 					t.obj.waterRiseVal = ui.value
 					t.obj.visibleLayers = []
+					console.log(t.obj.waterRiseVal)
 					// console.log(t.obj.viewResultsTracker,t.obj.wetlandVal)
 					if(t.obj.viewResultsTracker == 'final'){
 						let layer;
@@ -135,7 +132,7 @@ function ( declare, Query, QueryTask,FeatureLayer, Search, SimpleLineSymbol, Sim
 							layer = 11
 						}
 						t.obj.visibleLayers.push(layer)
-					}else if(t.obj.viewResultsTracker == 'ind' && t.obj.wetlandVal  =='coastalFlood'){
+					}else if(t.obj.viewResultsTracker == 'individual' && t.obj.wetlandVal  =='coastalFlood'){
 						let layerVal;
 						if (t.obj.waterRiseVal ==1 ) {
 							layerVal = 4
