@@ -53,10 +53,11 @@ hr {
 .rest-resultsRadBtns{
 	margin-left: 10px;
 }
-.rest-wetlandsSuitWrapper{
-	margin-left: 10px;
+.rest-wetlandsWrapper{
+	margin-left: 10px; display: none;
 }
-.rest-musselsSuitWrapper{
+
+.rest-musselsWrapper {
 	margin-left: 10px; display: none;
 }
 .rest-viewRankingText{
