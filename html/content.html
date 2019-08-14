@@ -127,8 +127,8 @@ The unique ContentPane id makes all the element ids unique and prevents duplicat
 					</div>
 				</div>
 			</div>
-			<div class="rest-floodText">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-				commodo consequat.</div>
+			<!-- <div class="rest-floodText">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+				commodo consequat.</div> -->
 		</div>
 	</div>
 
@@ -138,19 +138,76 @@ The unique ContentPane id makes all the element ids unique and prevents duplicat
 
 	<!-- mussel habitat wrapper -->
 	<div class="rest-musselsWrapper">
+		<div id="legendWrapper" class="rest-legendWrapper">
+			<div class="rest-legendItem" style="background-color: rgb(47,85,151);">High</div>
+			<div class="rest-legendItem" style="background-color: rgb(31,106,158);"></div>
+			<div class="rest-legendItem" style="background-color: rgb(66,183,103);"></div>
+			<div class="rest-legendItem" style="background-color: rgb(116,232,54);"></div>
+			<div class="rest-legendItem" style="background-color: rgb(255,255,129);">Low</div>
+		</div>
 		<h4 class="rest-resultsLabel">How would you like to view the results?</h4>
-		<div class="rest-resultsRadBtns">
-			<label class="form-component" for="a-option">
-				<input checked value="final" type="radio" id="a-option" name="rest-results">
+		<div class="rest-mussResultsRadBtns">
+			<label class="form-component" for="mussFinal-option">
+				<input checked value="final" type="radio" id="mussFinal-option" name="mussRest-results">
 				<div class="check"></div>
 				<span class="form-text">Show final suitability map</span>
 			</label>
 			<br>
-			<label class="form-component" for="b-option">
-				<input type="radio" value="individual" id="b-option" name="rest-results">
+			<label class="form-component" for="mussInd-option">
+				<input type="radio" value="individual" id="mussInd-option" name="mussRest-results">
 				<div class="check"></div>
 				<span class="form-text">Show information on individual suitability variables</span>
 			</label>
+		</div>
+		
+		<!-- Muss Individual variables -->
+		<h4 class="rest-resultsLabel">Select a suitability variable to view.</h4>
+		<!-- Wet/Dry Toggle Button -->
+		<div class="rest-wetDryWrapper">
+			<span class="rest-resultsLabel">Select Seasonal Rainfall:</span>
+			<label class="form-component radio-pill" for="wet-option">
+				<input checked type="radio" id="wet-option" name="pill">
+				<div class="check"></div>
+				<span class="form-text">Wet</span>
+			</label>
+			<label class="form-component radio-pill" for="dry-option">
+				<input type="radio" id="dry-option" name="pill">
+				<div class="check"></div>
+				<span class="form-text">Dry</span>
+			</label>
+		</div>
+		<div class="rest-mussIndVarWrapper">
+			<label class="form-component" for="suitMuss1-option">
+				<input disabled checked value="Protected_Area_Ras" type="radio" id="suitMuss1-option" name="rest-mussSuit">
+				<div class="check"></div>
+				<span class="form-text">Temperature (Celsius)</span>
+			</label>
+			<label class="form-component" for="suitMuss2-option">
+				<input disabled value="Protected_Area_Ras" type="radio" id="suitMuss2-option" name="rest-mussSuit">
+				<div class="check"></div>
+				<span class="form-text">Salinity (PSU) Practical Salinity Unit</span>
+			</label>
+			<label class="form-component" for="suitMuss3-option">
+				<input disabled value="Protected_Area_Ras" type="radio" id="suitMuss3-option" name="rest-mussSuit">
+				<div class="check"></div>
+				<span class="form-text">Ammonium NH4 (mg/L)</span>
+			</label>
+		</div>
+		<div class="rest-waterRiseWrapper">
+			<h4 class="rest-resultsLabel" style="margin-top: 7px; margin-left: 10px;">Change coastal flood scenario.</h4>
+			<div style="display: none;" id="viewChangeText" class="rest-viewChangeText">View Change Scenarios</div>
+			<div id="yearSliderWrapper" class="rest-yearSliderWrapper">
+				<div class="rest-sliderLabel">Water Rise:</div>
+				<div class="slider-container" style="width:185px; margin-left: 30px;">
+					<div id="mussSldr" class="slider"></div>
+					<div class="rest-yearLabelsWrapper">
+						<div class="rest-yearLabels" style="margin-left: -24px;">Current</div>
+						<div class="rest-yearLabels" style="margin-left: 25px;">0.9m</div>
+						<div class="rest-yearLabels">1.2m</div>
+						<div class="rest-yearLabels">1.5m</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 	

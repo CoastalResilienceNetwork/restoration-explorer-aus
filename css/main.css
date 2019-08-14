@@ -51,7 +51,7 @@ hr {
 	margin-bottom: 5px; margin-top: 20px;
 }
 .rest-resultsRadBtns{
-	margin-left: 10px;
+	margin-left: 0px;
 }
 .rest-wetlandsWrapper{
 	margin-left: 10px; display: none;
@@ -75,6 +75,18 @@ hr {
 }
 .rest-viewChangeText:hover{
 	 cursor: pointer;
+}
+.rest-wetDryWrapper{
+	margin-top: 10px; display: flex;
+}
+.rest-wetDryWrapper label, .rest-wetDryWrapper span{
+	margin: 0px;
+}
+.rest-wetDryWrapper span {
+	margin-right: 10px;
+}
+.rest-wetDryWrapper label:nth-child(3) {
+	padding-left: 5px;
 }
 .rest-yearLabels{
 	margin-left: 28px; 

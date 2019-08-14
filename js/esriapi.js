@@ -94,6 +94,11 @@ function ( 	ArcGISDynamicMapServiceLayer, Extent, SpatialReference, Query, Query
 					    $("#" + t.id + "sldr").slider({ min: 1, max: 4, range: false,values:[t.obj.waterRiseVal] })
 
 					});
+						// muss water rise slider
+					$(function() {
+					    $("#" + t.id + "mussSldr").slider({ min: 1, max: 4, range: false,values:[t.obj.waterRiseVal] })
+
+					});
 					// slider rise
 					$(function() {
 					  $("#" + t.id + "sldr2").slider({ min: 1, max: 3, range: false, })

@@ -1,10 +1,11 @@
 {
-	"visibleLayers": [8],
+	"visibleLayers": [],
 	"viewResultsTracker":"final",
 	"individualVariableTracker": "",
 	"extent": "",
 	"opacitySliderVal": 70,
 	"wetlandVal":"Protected_Area_Ras",
 	"waterRiseVal": 1,
+	"mussWaterRiseVal":3,
 	"stateSet": "no",
 }
