@@ -161,18 +161,22 @@ The unique ContentPane id makes all the element ids unique and prevents duplicat
 		</div>
 		<!-- Wet/Dry Toggle Button -->
 		<h4 class="rest-resultsLabel">Select Seasonal Rainfall.</h4>
+		<div id="mussViewRankingText" class="rest-mussViewRankingText">View Ranking Thresholds</div>
 		<div class="rest-wetDryWrapper">
 			<!-- <span class="rest-resultsLabel">Select Seasonal Rainfall:</span> -->
-			<label class="form-component radio-pill" for="wet-option">
-				<input checked type="radio" id="wet-option" value="wet-option" name="pill">
+			<label class="form-component radio-pill" for="wet">
+				<input checked type="radio" id="wet" value="wet" name="pill">
 				<div class="check"></div>
 				<span class="form-text">Wet</span>
 			</label>
-			<label class="form-component radio-pill" for="dry-option">
-				<input type="radio" id="dry-option" value="dry-option" name="pill">
+			<label class="form-component radio-pill" for="dry">
+				<input type="radio" id="dry" value="dry" name="pill">
 				<div class="check"></div>
 				<span class="form-text">Dry</span>
 			</label>
+		</div>
+		<div class="rest-mussRankingThresholdText">Between 10 and 20 degrees C is optimal for blue mussels.
+			Temperature data from modelled 2016 mid-day.
 		</div>
 		
 		<!-- Muss Individual variables -->
@@ -183,16 +187,30 @@ The unique ContentPane id makes all the element ids unique and prevents duplicat
 				<div class="check"></div>
 				<span class="form-text">Temperature (Celsius)</span>
 			</label>
+			<div class="rest-mussRankingThresholdText">Between 10 and 20 degrees C is optimal for blue mussels. 
+				Temperature data from modelled 2016 mid-day.
+			</div>
+			<br>
 			<label class="form-component" for="suitMuss2-option">
 				<input disabled value="Sal" type="radio" id="suitMuss2-option" name="rest-mussSuit">
 				<div class="check"></div>
 				<span class="form-text">Salinity (PSU) Practical Salinity Unit</span>
 			</label>
+			<div class="rest-mussRankingThresholdText">
+				Salinity levels between 20 to 30 PSU (practical salinity unit) is optimal for blue mussel growth. Data from modelled
+				2016 mid-day.
+			</div>
+			<br>
 			<label class="form-component" for="suitMuss3-option">
 				<input disabled value="Amm" type="radio" id="suitMuss3-option" name="rest-mussSuit">
 				<div class="check"></div>
 				<span class="form-text">Ammonium NH4 (mg/L)</span>
 			</label>
+			<div class="rest-mussRankingThresholdText">
+				Nutrient runoff from the catchment can be toxic to mussels. Ammonia levels lower than 0.3 mg/L are optimal for blue
+				mussels. Levels greater than 0.1 mg/L hinder mussel survivability and growth. Data from modelled 2016 mid-day levels of
+				NH4 ammonia.
+			</div>
 		</div>
 	</div>
 	

@@ -18,12 +18,15 @@ function ( declare, Query, QueryTask,FeatureLayer, Search, SimpleLineSymbol, Sim
 				// on main dropdown menu change ///////////////////////////////////////
 				$("#" + t.id + "habitatDropdown").on('change', function (v, ui) {
 					mainDropDownLayerDisplay(v.currentTarget.value)
+
 					if(v.currentTarget.value){
 						// do something with the dropdown
 						if(ui.selected == 'wetlands'){
+							t.obj.mainDropDownValue = "wetlands"
 							$('.rest-wetlandsWrapper').slideDown()
 							$('.rest-musselsWrapper').slideUp()
 						}else if(ui.selected == 'mussels'){
+							t.obj.mainDropDownValue = "mussels"
 							$('.rest-musselsWrapper').slideDown()
 							$('.rest-wetlandsWrapper').slideUp()
 						}
@@ -31,6 +34,19 @@ function ( declare, Query, QueryTask,FeatureLayer, Search, SimpleLineSymbol, Sim
 						// no value selected, and slide up both wrappers
 						$('.rest-wetlandsWrapper').slideUp();
 						$('.rest-musselsWrapper').slideUp();
+					}
+				})
+				// handle the wetland help text click event
+				$('#' + t.id + 'mussViewRankingText').on('click', function (v) {
+					let text = v.currentTarget.textContent;
+					if (text == 'View Ranking Thresholds') {
+						$('.rest-mussRankingThresholdText').slideDown();
+						$(v.currentTarget).html('Hide Ranking Thresholds')
+						$(v.currentTarget).css('color', 'rgb(140, 33, 48)')
+					} else {
+						$('.rest-mussRankingThresholdText').slideUp();
+						$(v.currentTarget).html('View Ranking Thresholds');
+						$(v.currentTarget).css('color', '#2f6384');
 					}
 				})
 				// wetland functionality ////////////////////////////////////////
@@ -182,9 +198,9 @@ function ( declare, Query, QueryTask,FeatureLayer, Search, SimpleLineSymbol, Sim
 
 				// on wet/dry toggle button click
 				$('.rest-wetDryWrapper input').on('click', (evt)=>{
-					if(evt.currentTarget.value == 'wet-option'){
+					if(evt.currentTarget.value == 'wet'){
 						t.obj.mussWetDry = "wet"
-					}else if(evt.currentTarget.value == 'dry-option'){
+					}else if(evt.currentTarget.value == 'dry'){
 						t.obj.mussWetDry = "dry"
 					}
 					displayMusselsLayer();

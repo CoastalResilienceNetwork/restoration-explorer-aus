@@ -12,5 +12,6 @@
 	"mussWetDry":"wet",
 	"mussViewResultsTracker":"mussFinal",
 	"mussIndividualVariableTracker": "Temp",
+	"mainDropDownValue": "",
 	"stateSet": "no",
 }

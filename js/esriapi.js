@@ -21,6 +21,52 @@ function ( 	ArcGISDynamicMapServiceLayer, Extent, SpatialReference, Query, Query
 					// if not state set /////////////////////////////////////////////////////////
 					if(t.obj.stateSet == 'yes'){
 						t.dynamicLayer.setOpacity(t.obj.opacitySliderVal/100);
+
+						// set value of main dropdown menu and slide down appropriate section
+						$('#' + t.id + 'habitatDropdown').val(t.obj.mainDropDownValue)
+						// slide down the correct section
+						if(t.obj.mainDropDownValue == 'wetlands'){
+							$('.rest-wetlandsWrapper').slideDown();
+						} else if (t.obj.mainDropDownValue == 'mussels') {
+							$('.rest-musselsWrapper').slideDown();
+						}
+						// check the correct starting mussels checkbox
+						$.each($('.rest-mussResultsRadBtns input'), function (i, v) {
+							if (v.value == t.obj.mussViewResultsTracker) {
+								$(v).attr('checked', true);
+							} else {
+								$(v).attr('checked', false);
+							}
+						})
+						// handle disabling of ind radio buttons
+						if (t.obj.mussViewResultsTracker == 'mussFinal') {
+							$.each($('.rest-mussIndVarWrapper input'), function (i, v) {
+								$(v).attr('disabled', true)
+							})
+						} else if (t.obj.mussViewResultsTracker == 'mussInd') {
+							$.each($('.rest-mussIndVarWrapper input'), function (i, v) {
+								$(v).attr('disabled', false)
+							})
+						}
+						// find out which mussels radio button needs to be checked
+						$.each($('.rest-mussIndVarWrapper input'), function (i, v) {
+							if (v.value == t.obj.mussIndividualVariableTracker) {
+								$(v).attr('checked', true);
+							} else {
+								$(v).attr('checked', false);
+							}
+						})
+						
+						// find out which mussels wet/dry button needs to be checked
+						$.each($('.rest-wetDryWrapper input'), function (i, v) {
+							if (v.value == t.obj.mussWetDry) {
+								$(v).attr('checked', true);
+							} else {
+								$(v).attr('checked', false);
+							}
+						})
+						
+
 						// figure out which main radio button needs to be checked
 						$.each($('.rest-resultsRadBtns input'), function(i,v){
 							if(v.value == t.obj.viewResultsTracker){

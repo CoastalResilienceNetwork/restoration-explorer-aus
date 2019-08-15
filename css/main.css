@@ -60,6 +60,16 @@ hr {
 .rest-musselsWrapper {
 	margin-left: 10px; display: none;
 }
+.rest-mussViewRankingText{
+	color: #2f6384; width: 170px; margin-left: 10px; font-weight: bold; font-size: 12px;
+}
+.rest-mussViewRankingText:hover{
+	 cursor: pointer;
+}
+.rest-mussRankingThresholdText{
+	display: none; color: rgba(140, 33, 48,.8); font-size: 11px; width: 90%; font-weight: bold; margin-top: -6px; 
+	font-style: italic;
+}
 .rest-viewRankingText{
 	color: #2f6384; width: 170px; margin-left: 10px; font-weight: bold; font-size: 12px;
 }
