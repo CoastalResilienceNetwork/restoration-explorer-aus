@@ -17,6 +17,7 @@ function ( 	ArcGISDynamicMapServiceLayer, Extent, SpatialReference, Query, Query
 				t.url = 'https://dev-services.coastalresilience.org/arcgis/rest/services/Australia/Habitat_Restoration_Explorer/MapServer'
 				t.dynamicLayer = new ArcGISDynamicMapServiceLayer(t.url, {opacity:0.7});
 				t.map.addLayer(t.dynamicLayer);
+				console.log('api functions')
 				t.dynamicLayer.on("load", function () {
 					// if not state set /////////////////////////////////////////////////////////
 					if(t.obj.stateSet == 'yes'){
@@ -101,6 +102,7 @@ function ( 	ArcGISDynamicMapServiceLayer, Extent, SpatialReference, Query, Query
 							}
 						}
 					}else{
+						console.log('set extent', t.dynamicLayer.fullExtent)
 						t.map.setExtent(t.dynamicLayer.fullExtent.expand(1.2), true)
 					}
 
