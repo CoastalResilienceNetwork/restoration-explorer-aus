@@ -14,16 +14,10 @@ function ( 	ArcGISDynamicMapServiceLayer, Extent, SpatialReference, Query, Query
 
 			esriApiFunctions: function(t){	
 				// Dynamic layer on load ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-					// Add dynamic map service
 				t.url = 'https://dev-services.coastalresilience.org/arcgis/rest/services/Australia/Habitat_Restoration_Explorer/MapServer'
 				t.dynamicLayer = new ArcGISDynamicMapServiceLayer(t.url, {opacity:0.7});
 				t.map.addLayer(t.dynamicLayer);
-				if (t.obj.visibleLayers.length > 0){	
-					t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
-				}
 				t.dynamicLayer.on("load", function () {
-
-
 					// if not state set /////////////////////////////////////////////////////////
 					if(t.obj.stateSet == 'yes'){
 						t.dynamicLayer.setOpacity(t.obj.opacitySliderVal/100);
@@ -50,7 +44,6 @@ function ( 	ArcGISDynamicMapServiceLayer, Extent, SpatialReference, Query, Query
 								$(v).attr('disabled', true)
 							})
 							$('.rest-waterRiseWrapper').slideDown()
-
 						}else if(t.obj.viewResultsTracker == 'individual'){
 							$.each($('.rest-wetlandsSuitWrapper input'), function(i,v){
 								$(v).attr('disabled', false)
@@ -72,13 +65,11 @@ function ( 	ArcGISDynamicMapServiceLayer, Extent, SpatialReference, Query, Query
 					t.map.on("zoom-end", function(evt){
 						t.map.setMapCursor("pointer");
 					});
-
-
 					//For Chosen options visit https://harvesthq.github.io/chosen/
 					//Single deselect only works if the first option in the select tag is blank
 					$("#" + t.id + "habitatDropdown").chosen({allow_single_deselect:true,"disable_search": true, width:"200px"})
 						.change(function(c){
-						
+							
 						});
 					// opacity slider
 					$(function() {
