@@ -159,12 +159,10 @@ The unique ContentPane id makes all the element ids unique and prevents duplicat
 				<span class="form-text">Show information on individual suitability variables</span>
 			</label>
 		</div>
-		
-		<!-- Muss Individual variables -->
-		<h4 class="rest-resultsLabel">Select a suitability variable to view.</h4>
 		<!-- Wet/Dry Toggle Button -->
+		<h4 class="rest-resultsLabel">Select Seasonal Rainfall.</h4>
 		<div class="rest-wetDryWrapper">
-			<span class="rest-resultsLabel">Select Seasonal Rainfall:</span>
+			<!-- <span class="rest-resultsLabel">Select Seasonal Rainfall:</span> -->
 			<label class="form-component radio-pill" for="wet-option">
 				<input checked type="radio" id="wet-option" value="wet-option" name="pill">
 				<div class="check"></div>
@@ -176,9 +174,12 @@ The unique ContentPane id makes all the element ids unique and prevents duplicat
 				<span class="form-text">Dry</span>
 			</label>
 		</div>
+		
+		<!-- Muss Individual variables -->
+		<h4 class="rest-resultsLabel">Select a suitability variable to view.</h4>
 		<div class="rest-mussIndVarWrapper">
 			<label class="form-component" for="suitMuss1-option">
-				<input  checked value="Temp" type="radio" id="suitMuss1-option" name="rest-mussSuit">
+				<input disabled checked value="Temp" type="radio" id="suitMuss1-option" name="rest-mussSuit">
 				<div class="check"></div>
 				<span class="form-text">Temperature (Celsius)</span>
 			</label>
