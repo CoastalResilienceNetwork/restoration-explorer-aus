@@ -14,19 +14,60 @@ function ( 	ArcGISDynamicMapServiceLayer, Extent, SpatialReference, Query, Query
 
 			esriApiFunctions: function(t){	
 				// Dynamic layer on load ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-					// Add dynamic map service
-				t.url = 'https://services2.coastalresilience.org/arcgis/rest/services/Australia/Habitat_Restoration_Explorer/MapServer'
+				t.url = 'https://dev-services.coastalresilience.org/arcgis/rest/services/Australia/Habitat_Restoration_Explorer/MapServer'
 				t.dynamicLayer = new ArcGISDynamicMapServiceLayer(t.url, {opacity:0.7});
 				t.map.addLayer(t.dynamicLayer);
-				if (t.obj.visibleLayers.length > 0){	
-					t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
-				}
+				console.log('api functions')
 				t.dynamicLayer.on("load", function () {
-
-
 					// if not state set /////////////////////////////////////////////////////////
 					if(t.obj.stateSet == 'yes'){
 						t.dynamicLayer.setOpacity(t.obj.opacitySliderVal/100);
+
+						// set value of main dropdown menu and slide down appropriate section
+						$('#' + t.id + 'habitatDropdown').val(t.obj.mainDropDownValue)
+						// slide down the correct section
+						if(t.obj.mainDropDownValue == 'wetlands'){
+							$('.rest-wetlandsWrapper').slideDown();
+						} else if (t.obj.mainDropDownValue == 'mussels') {
+							$('.rest-musselsWrapper').slideDown();
+						}
+						// check the correct starting mussels checkbox
+						$.each($('.rest-mussResultsRadBtns input'), function (i, v) {
+							if (v.value == t.obj.mussViewResultsTracker) {
+								$(v).attr('checked', true);
+							} else {
+								$(v).attr('checked', false);
+							}
+						})
+						// handle disabling of ind radio buttons
+						if (t.obj.mussViewResultsTracker == 'mussFinal') {
+							$.each($('.rest-mussIndVarWrapper input'), function (i, v) {
+								$(v).attr('disabled', true)
+							})
+						} else if (t.obj.mussViewResultsTracker == 'mussInd') {
+							$.each($('.rest-mussIndVarWrapper input'), function (i, v) {
+								$(v).attr('disabled', false)
+							})
+						}
+						// find out which mussels radio button needs to be checked
+						$.each($('.rest-mussIndVarWrapper input'), function (i, v) {
+							if (v.value == t.obj.mussIndividualVariableTracker) {
+								$(v).attr('checked', true);
+							} else {
+								$(v).attr('checked', false);
+							}
+						})
+						
+						// find out which mussels wet/dry button needs to be checked
+						$.each($('.rest-wetDryWrapper input'), function (i, v) {
+							if (v.value == t.obj.mussWetDry) {
+								$(v).attr('checked', true);
+							} else {
+								$(v).attr('checked', false);
+							}
+						})
+						
+
 						// figure out which main radio button needs to be checked
 						$.each($('.rest-resultsRadBtns input'), function(i,v){
 							if(v.value == t.obj.viewResultsTracker){
@@ -50,7 +91,6 @@ function ( 	ArcGISDynamicMapServiceLayer, Extent, SpatialReference, Query, Query
 								$(v).attr('disabled', true)
 							})
 							$('.rest-waterRiseWrapper').slideDown()
-
 						}else if(t.obj.viewResultsTracker == 'individual'){
 							$.each($('.rest-wetlandsSuitWrapper input'), function(i,v){
 								$(v).attr('disabled', false)
@@ -62,6 +102,7 @@ function ( 	ArcGISDynamicMapServiceLayer, Extent, SpatialReference, Query, Query
 							}
 						}
 					}else{
+						console.log('set extent', t.dynamicLayer.fullExtent)
 						t.map.setExtent(t.dynamicLayer.fullExtent.expand(1.2), true)
 					}
 
@@ -72,13 +113,11 @@ function ( 	ArcGISDynamicMapServiceLayer, Extent, SpatialReference, Query, Query
 					t.map.on("zoom-end", function(evt){
 						t.map.setMapCursor("pointer");
 					});
-
-
 					//For Chosen options visit https://harvesthq.github.io/chosen/
 					//Single deselect only works if the first option in the select tag is blank
 					$("#" + t.id + "habitatDropdown").chosen({allow_single_deselect:true,"disable_search": true, width:"200px"})
 						.change(function(c){
-						
+							
 						});
 					// opacity slider
 					$(function() {
@@ -92,6 +131,11 @@ function ( 	ArcGISDynamicMapServiceLayer, Extent, SpatialReference, Query, Query
 					// water rise slider
 					$(function() {
 					    $("#" + t.id + "sldr").slider({ min: 1, max: 4, range: false,values:[t.obj.waterRiseVal] })
+
+					});
+						// muss water rise slider
+					$(function() {
+					    $("#" + t.id + "mussSldr").slider({ min: 1, max: 4, range: false,values:[t.obj.waterRiseVal] })
 
 					});
 					// slider rise

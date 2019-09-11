@@ -6,7 +6,51 @@ function ( declare, Query, QueryTask,FeatureLayer, Search, SimpleLineSymbol, Sim
 
         return declare(null, {
 			eventListeners: function(t){
-				// handle the help text click event
+				const mainDropDownLayerDisplay = (val) => {
+					t.obj.visibleLayers = []
+					if (val == 'wetlands') {
+						t.obj.visibleLayers.push(t.obj.wetlandLayer)
+					} else if (val == 'mussels') {
+						t.obj.visibleLayers.push(t.obj.musselLayer)
+					}
+					t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
+				}
+				// on main dropdown menu change ///////////////////////////////////////
+				$("#" + t.id + "habitatDropdown").on('change', function (v, ui) {
+					mainDropDownLayerDisplay(v.currentTarget.value)
+
+					if(v.currentTarget.value){
+						// do something with the dropdown
+						if(ui.selected == 'wetlands'){
+							t.obj.mainDropDownValue = "wetlands"
+							$('.rest-wetlandsWrapper').slideDown()
+							$('.rest-musselsWrapper').slideUp()
+						}else if(ui.selected == 'mussels'){
+							t.obj.mainDropDownValue = "mussels"
+							$('.rest-musselsWrapper').slideDown()
+							$('.rest-wetlandsWrapper').slideUp()
+						}
+					}else{
+						// no value selected, and slide up both wrappers
+						$('.rest-wetlandsWrapper').slideUp();
+						$('.rest-musselsWrapper').slideUp();
+					}
+				})
+				// handle the wetland help text click event
+				$('#' + t.id + 'mussViewRankingText').on('click', function (v) {
+					let text = v.currentTarget.textContent;
+					if (text == 'View Ranking Thresholds') {
+						$('.rest-mussRankingThresholdText').slideDown();
+						$(v.currentTarget).html('Hide Ranking Thresholds')
+						$(v.currentTarget).css('color', 'rgb(140, 33, 48)')
+					} else {
+						$('.rest-mussRankingThresholdText').slideUp();
+						$(v.currentTarget).html('View Ranking Thresholds');
+						$(v.currentTarget).css('color', '#2f6384');
+					}
+				})
+				// wetland functionality ////////////////////////////////////////
+				// handle the wetland help text click event
 				$('#' + t.id + 'viewRankingText').on('click', function(v){
 					let text = v.currentTarget.textContent;
 					if(text == 'View Ranking Thresholds'){
@@ -32,7 +76,7 @@ function ( declare, Query, QueryTask,FeatureLayer, Search, SimpleLineSymbol, Sim
 					}
 				})
 
-				// main rad buttons click
+				// main wetland rad buttons click
 				$('.rest-resultsRadBtns input').on('click', function(evt){
 					t.obj.visibleLayers = []
 					if(evt.currentTarget.value == 'final'){
@@ -41,37 +85,38 @@ function ( declare, Query, QueryTask,FeatureLayer, Search, SimpleLineSymbol, Sim
 							$(v).attr('disabled', true);
 						})
 						// turn on summed raster when final rad button is cliked, use the waterRiseTracker
-						let layer;
+						
+						
 						if(t.obj.waterRiseVal == 1){
-							layer = 8
+							t.obj.wetlandLayer = 8
 						}else if(t.obj.waterRiseVal == 2){
-							layer = 9
+							t.obj.wetlandLayer = 9
 						}else if(t.obj.waterRiseVal == 3){
-							layer = 10
+							t.obj.wetlandLayer = 10
 						}else if(t.obj.waterRiseVal == 4){
-							layer = 11
+							t.obj.wetlandLayer = 11
 						}
-						t.obj.visibleLayers.push(layer)
+						t.obj.visibleLayers.push(t.obj.wetlandLayer)
 						t.obj.viewResultsTracker = 'final'
 						// slide down slider bar
 						$('.rest-waterRiseWrapper').slideDown()
 					}else{
-						let layerVal;
+						
 						// enable all suitability variables radio buttons
 						$.each($('.rest-wetlandsSuitWrapper input'), function(i,v){
 							$(v).attr('disabled', false);
 						})
 						if(t.obj.wetlandVal == 'coastalFlood'){
 							if (t.obj.waterRiseVal ==1 ) {
-								layerVal = 4
+								t.obj.wetlandLayer = 4
 							}else if(t.obj.waterRiseVal == 2){
-								layerVal = 5
+								t.obj.wetlandLayer = 5
 							}else if(t.obj.waterRiseVal == 3){
-								layerVal = 6
+								t.obj.wetlandLayer = 6
 							}else if(t.obj.waterRiseVal == 4){
-								layerVal = 7
+								t.obj.wetlandLayer = 7
 							}
-							t.obj.visibleLayers.push(layerVal)
+							t.obj.visibleLayers.push(t.obj.wetlandLayer)
 						}else{
 							t.obj.visibleLayers.push(t.layersNameArray.indexOf(t.obj.wetlandVal))
 						}
@@ -84,23 +129,22 @@ function ( declare, Query, QueryTask,FeatureLayer, Search, SimpleLineSymbol, Sim
 					}
 					t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
 				})
-				// on individual radio button click
+				// on individual wetland radio button click
 				$('.rest-wetlandsSuitWrapper input').on('click', function(evt){
 					t.obj.visibleLayers = []
 					t.obj.wetlandVal = evt.currentTarget.value;
 					if(t.obj.wetlandVal == 'coastalFlood'){
 						// display the layer based on the water rise slider
-						let layerVal;
 						if (t.obj.waterRiseVal ==1 ) {
-							layerVal = 4
+							t.obj.wetlandLayer = 4
 						}else if(t.obj.waterRiseVal == 2){
-							layerVal = 5
+							t.obj.wetlandLayer = 5
 						}else if(t.obj.waterRiseVal == 3){
-							layerVal = 6
+							t.obj.wetlandLayer = 6
 						}else if(t.obj.waterRiseVal == 4){
-							layerVal = 7
+							t.obj.wetlandLayer = 7
 						}
-						t.obj.visibleLayers.push(layerVal)
+						t.obj.visibleLayers.push(t.obj.wetlandLayer)
 						// slide up slider bar
 						$('.rest-waterRiseWrapper').slideDown()
 					}else{
@@ -111,185 +155,108 @@ function ( declare, Query, QueryTask,FeatureLayer, Search, SimpleLineSymbol, Sim
 					}
 					t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
 				})
-				// on water rise slide
+				// on wetland water rise slide
 				$("#" + t.id + "sldr").on('slide', function(v, ui){
 					t.obj.waterRiseVal = ui.value
 					t.obj.visibleLayers = []
 					if(t.obj.viewResultsTracker == 'final'){
-						let layer;
 						if(t.obj.waterRiseVal == 1){
-							layer = 8
+							t.obj.wetlandLayer = 8
 						}else if(t.obj.waterRiseVal == 2){
-							layer = 9
+							t.obj.wetlandLayer = 9
 						}else if(t.obj.waterRiseVal == 3){
-							layer = 10
+							t.obj.wetlandLayer = 10
 						}else if(t.obj.waterRiseVal == 4){
-							layer = 11
+							t.obj.wetlandLayer = 11
 						}
-						t.obj.visibleLayers.push(layer)
+						t.obj.visibleLayers.push(t.obj.wetlandLayer)
 					}else if(t.obj.viewResultsTracker == 'individual' && t.obj.wetlandVal  =='coastalFlood'){
-						let layerVal;
 						if (t.obj.waterRiseVal ==1 ) {
-							layerVal = 4
+							t.obj.wetlandLayer = 4
 						}else if(t.obj.waterRiseVal == 2){
-							layerVal = 5
+							t.obj.wetlandLayer = 5
 						}else if(t.obj.waterRiseVal == 3){
-							layerVal = 6
+							t.obj.wetlandLayer = 6
 						}else if(t.obj.waterRiseVal == 4){
-							layerVal = 7
+							t.obj.wetlandLayer = 7
 						}
-						t.obj.visibleLayers.push(layerVal)
+						t.obj.visibleLayers.push(t.obj.wetlandLayer)
 					}
 					t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
 				})
-				
 
+				// mussels section functionality *****************************************************************
+				$('.rest-mussResultsRadBtns input').on('click', (evt) => {
+					if (evt.currentTarget.value == 'mussFinal') {
+						t.obj.mussViewResultsTracker = 'mussFinal'
+					} else if (evt.currentTarget.value == 'mussInd'){
+						t.obj.mussViewResultsTracker = 'mussInd'
+					}
+					disableEnableMussIndButtons();
+					displayMusselsLayer();
+				})
 
+				// on wet/dry toggle button click
+				$('.rest-wetDryWrapper input').on('click', (evt)=>{
+					if(evt.currentTarget.value == 'wet'){
+						t.obj.mussWetDry = "wet"
+					}else if(evt.currentTarget.value == 'dry'){
+						t.obj.mussWetDry = "dry"
+					}
+					displayMusselsLayer();
+				})
 
+				// on muss individual radio button click
+				$('.rest-mussIndVarWrapper input').on('click', (evt) => {
+					t.obj.mussIndividualVariableTracker = evt.currentTarget.value;
+					displayMusselsLayer()
+				})
 
-// // work with Radio buttons (how would you like to view shoreline data) ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// 				$('#' + t.id + 'aus-viewRadioWrap input').on('click',function(c){
-// 					var val = c.target.value
-// 					if (val == 'all'){
-// 						t.techLyr = 1
-// 						t.obj.visibleLayers = [t.techLyr]
-// 						t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
-// 						$('#' + t.id + 'aus-enhanceFuncWrap').slideUp()
-// 						$('#' + t.id + 'sup1').prop('checked', true);
-// 					}
-// 					if (val == 'ind'){
-// 						$('#' + t.id + 'sup1').prop('checked', true);
-// 						if(t.obj.indInit == 'yes'){
-// 							t.techLyr = 2;
-// 							t.obj.visibleLayers = [t.techLyr]
-// 							t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
-// 							t.obj.indInit = 'no'
-// 						}else{
-// 							$.each($( '#' + t.id +'funcWrapper input'),function(i,v){
-// 								if(v.checked == true){
-// 									var val = v.value;
-// 									$.each($(t.layersArray),function(i,v){
-// 										var lyrName = v.name;
-// 										if(val == lyrName){
-// 											t.techLyr = v.id
-// 										}
-// 									});
-// 								}
-// 							});
-// 							t.obj.visibleLayers = [t.techLyr]
-// 							t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
-// 						}
-// 						$('#' + t.id + 'aus-enhanceFuncWrap').slideDown()
-// 					}
-// 				})
-// // work with Radio buttons indiv. techniques ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// 				$('#' + t.id + 'funcWrapper input').on('click',function(c){
-// 					var val = c.target.value
-// 					$.each($(t.layersArray),function(i,v){
-// 						var lyrName = v.name;
-// 						if(val == lyrName){
-// 							t.techLyr = v.id
-// 							t.obj.visibleLayers = [v.id];
-// 					 		t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
-// 						}
-// 					});
-// 				})
-// // work with Radio buttons sup data section ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// 				$('.aus-supDataWrap input').on('click',function(c){
-// 					var val = c.target.value
-// 					$.each($(t.layersArray),function(i,v){
-// 						var lyrName = v.name;
-// 						if(val == lyrName){
-// 							t.techLyr = v.id
-// 							t.obj.visibleLayers = [v.id];
-// 					 		t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
-// 						}
-// 						if(val == 'None'){
-// 							$.each($( '#' + t.id +'aus-viewRadioWrap input'),function(i,v){
-// 								if (v.checked == true){
-// 									if(v.value == 'all'){
-// 										$( '#' + v.id).trigger('click');
-// 									}else{
-// 										$.each($( '#' + t.id +'aus-enhanceFuncWrap input'),function(i,v){
-// 											if(v.checked == true){
-// 												$( '#' + v.id).trigger('click');
-// 											}
-// 										});
-// 									}
-// 								}
-// 							});
-// 						}
-// 					});
-// 				});
-// // feature layer init ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// 				t.attributeData = new FeatureLayer(t.url + "/6", { mode: FeatureLayer.MODE_SELECTION, outFields: ["*"] });
-// 				// Map click ////////////////////////////////////////
-// 				t.map.on("click", function(evt) {
-// 					if(t.open == 'yes'){
-// 						t.obj.pnt = evt.mapPoint;
-// 						var q = new Query();
-// 						q.geometry = t.obj.pnt;
-// 						t.attributeData.selectFeatures(q,esri.layers.FeatureLayer.SELECTION_NEW);
-// 					}
-// 				});
-// // // On selection complete ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// 				t.attributeData.on('selection-complete', function(evt){
-// 					if(evt.features.length > 0){
-// 						t.layerDefs = []
-// 						var OID = evt.features[0].attributes.OBJECTID;
-// 						var beach = evt.features[0].attributes.beach
-// 						var exposure = evt.features[0].attributes.exposure
-// 						var mm = evt.features[0].attributes.mm
-// 						var slope = evt.features[0].attributes.slope
-// 						// Handle converting attributes to html text
-// 						if(beach == 1){
-// 							beach = 'Present'
-// 						}else{
-// 							beach = 'Not Present'
-// 						}
-// 						if(mm == 1){
-// 							mm = 'Present'
-// 						}else{
-// 							mm = 'Not Present'
-// 						}
-// 						if(exposure == 10){
-// 							exposure = 'Low'
-// 						}else if(exposure == 7){
-// 							exposure = 'Medium'
-// 						}else{
-// 							exposure = 'High'
-// 						}
-
-// 						if(slope == 10){
-// 							slope = 'Flat'
-// 						}else if(slope == 7){
-// 							slope = 'Moderate'
-// 						}else{
-// 							slope = 'Steep'
-// 						}
-// 						$('#' + t.id + 'aus-attWrap').slideDown()
-// 						$('#' + t.id + 'clickInst').slideUp()
-// 						t.layerDefs[0] = 'OBJECTID = ' + OID;
-// 						t.dynamicLayer.setLayerDefinitions(t.layerDefs);
-// 						t.obj.visibleLayers = [0,t.techLyr];
-// 						$('#' + t.id + 'attExp').html(exposure);
-// 						$('#' + t.id + 'attSlope').html(slope);
-// 						$('#' + t.id + 'attBP').html(beach);
-// 						$('#' + t.id + 'attMM').html(mm);
-						
-// 					}else{
-// 						$('#' + t.id + 'clickInst').slideDown()
-// 						$('#' + t.id + 'aus-attWrap').slideUp()
-// 						t.obj.visibleLayers = [t.techLyr];
-// 					}
-// 					t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
-// 				});
-// 				// use this area to colapse attributes and check sup data to none.
-// 				$('#' + t.id + 'aus-viewRadioWrap input ,#' + t.id + 'funcWrapper input, #' + t.id + 'aus-supDataWrap').on('click',function(c){
-// 					//$('#' + t.id + 'sup1').trigger('click');
-// 					$('#' + t.id + 'aus-attWrap').slideUp();
-// 					$('#' + t.id + 'clickInst').slideDown();
-// 				});
+				// display the correct mussels layer
+				const displayMusselsLayer = ()=>{
+					t.obj.visibleLayers = [];
+					if (t.obj.mussViewResultsTracker == 'mussFinal') {
+						if (t.obj.mussWetDry == 'wet'){
+							t.obj.musselLayer = 18
+						}else{
+							t.obj.musselLayer = 19
+						}
+					} else if (t.obj.mussViewResultsTracker == 'mussInd') {
+						if (t.obj.mussWetDry == 'wet') {
+							if (t.obj.mussIndividualVariableTracker == 'Temp') {
+								t.obj.musselLayer = 17
+							}else if(t.obj.mussIndividualVariableTracker == 'Sal') {
+								t.obj.musselLayer = 14
+							} else if (t.obj.mussIndividualVariableTracker == 'Amm') {
+								t.obj.musselLayer = 13
+							}
+						} else {
+							if (t.obj.mussIndividualVariableTracker == 'Temp') {
+								t.obj.musselLayer = 16
+							} else if (t.obj.mussIndividualVariableTracker == 'Sal') {
+								t.obj.musselLayer = 15
+							} else if (t.obj.mussIndividualVariableTracker == 'Amm') {
+								t.obj.musselLayer = 12
+							}
+						}
+					}
+					t.obj.visibleLayers.push(t.obj.musselLayer);
+					t.dynamicLayer.setVisibleLayers(t.obj.visibleLayers);
+				}
+				// work with muss ind radio buttons enable/disable
+				const disableEnableMussIndButtons = ()=>{
+					if(t.obj.mussViewResultsTracker == 'mussFinal'){
+						// disable rad buttons
+						$.each($('.rest-mussIndVarWrapper input'), function (i, v) {
+							$(v).attr('disabled', true);
+						})
+					}else{
+						// enable all suitability variables radio buttons
+						$.each($('.rest-mussIndVarWrapper input'), function (i, v) {
+							$(v).attr('disabled', false);
+						})
+					}
+				}
 			},
 			
 			commaSeparateNumber: function(val){

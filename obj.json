@@ -1,10 +1,17 @@
 {
-	"visibleLayers": [8],
+	"visibleLayers": [],
 	"viewResultsTracker":"final",
 	"individualVariableTracker": "",
 	"extent": "",
 	"opacitySliderVal": 70,
 	"wetlandVal":"Protected_Area_Ras",
+	"wetlandLayer": 8,
+	"musselLayer": 18,
 	"waterRiseVal": 1,
+	"mussWaterRiseVal":3,
+	"mussWetDry":"wet",
+	"mussViewResultsTracker":"mussFinal",
+	"mussIndividualVariableTracker": "Temp",
+	"mainDropDownValue": "",
 	"stateSet": "no",
 }

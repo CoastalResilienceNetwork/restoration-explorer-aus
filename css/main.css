@@ -51,13 +51,24 @@ hr {
 	margin-bottom: 5px; margin-top: 20px;
 }
 .rest-resultsRadBtns{
-	margin-left: 10px;
+	margin-left: 0px;
 }
-.rest-wetlandsSuitWrapper{
-	margin-left: 10px;
-}
-.rest-musselsSuitWrapper{
+.rest-wetlandsWrapper{
 	margin-left: 10px; display: none;
+}
+
+.rest-musselsWrapper {
+	margin-left: 10px; display: none;
+}
+.rest-mussViewRankingText{
+	color: #2f6384; width: 170px; margin-left: 10px; font-weight: bold; font-size: 12px;
+}
+.rest-mussViewRankingText:hover{
+	 cursor: pointer;
+}
+.rest-mussRankingThresholdText{
+	display: none; color: rgba(140, 33, 48,.8); font-size: 11px; width: 90%; font-weight: bold; margin-top: -6px; 
+	font-style: italic;
 }
 .rest-viewRankingText{
 	color: #2f6384; width: 170px; margin-left: 10px; font-weight: bold; font-size: 12px;
@@ -74,6 +85,18 @@ hr {
 }
 .rest-viewChangeText:hover{
 	 cursor: pointer;
+}
+.rest-wetDryWrapper{
+	margin-top: 10px; display: flex;
+}
+.rest-wetDryWrapper label, .rest-wetDryWrapper span{
+	margin: 0px;
+}
+.rest-wetDryWrapper span {
+	margin-right: 10px;
+}
+.rest-wetDryWrapper label:nth-child(3) {
+	padding-left: 5px;
 }
 .rest-yearLabels{
 	margin-left: 28px; 
